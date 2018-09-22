@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "JSON",
+        "repositoryURL": "https://github.com/dankogai/swift-json.git",
+        "state": {
+          "branch": null,
+          "revision": "12e37ec0a9e5d979de7cd3d00e0495a87c62834d",
+          "version": "4.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

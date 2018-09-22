@@ -10,7 +10,7 @@ final class JsonLogicTests: XCTestCase {
     func testEqualsWithTwoSameConstants() {
         let rule =
         """
-            { "==" : [1, 1] }
+            { "===" : [1, 1] }
         """
 
         guard let result: Bool = try? jsonLogic.applyRule(rule, to: nil) else {
@@ -24,7 +24,7 @@ final class JsonLogicTests: XCTestCase {
     func testEqualsWithDifferentSameConstants() {
         let rule =
         """
-            { "==" : [1, 2] }
+            { "===" : [1, 2] }
         """
         let expectedResult = false
 
@@ -131,11 +131,50 @@ final class JsonLogicTests: XCTestCase {
         XCTAssertEqual(expectedResult, result)
     }
 
+    func testSetOneStringArrayVariableFromData() {
+        let rule =
+        """
+            { "var" : ["a"] }
+        """
+        let data =
+        """
+            { "a" : "1" }
+        """
+        let expectedResult = "1"
+
+        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
+            XCTFail("The data should be parsed correctly")
+            return
+        }
+
+        XCTAssertEqual(expectedResult, result)
+    }
+
+    func testAddTwoIntsFromVariables() {
+        let rule =
+        """
+            { "===" : [{ "var" : ["a"] }, "1"] }
+        """
+        let data =
+        """
+            { "a" : "1" }
+        """
+        let expectedResult = true
+
+        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
+            XCTFail("The data should be parsed correctly")
+            return
+        }
+
+        XCTAssertEqual(expectedResult, result)
+    }
+
     static var allTests = [
         ("testEqualsWithTwoSameConstants", testEqualsWithTwoSameConstants),
         ("testEqualsWithDifferentSameConstants", testEqualsWithDifferentSameConstants),
         ("testSetOneIntegerVariableFromData", testSetOneIntegerVariableFromData),
         ("testSetOneStringVariableFromData", testSetOneStringVariableFromData),
-        ("testSetOneStringNestedVariableFromData", testSetOneStringNestedVariableFromData)
+        ("testSetOneStringNestedVariableFromData", testSetOneStringNestedVariableFromData),
+        ("testAddTwoIntsFromVariables", testAddTwoIntsFromVariables)
     ]
 }

@@ -1,0 +1,143 @@
+disabled_rules: # rule identifiers to exclude from running
+#  - colon
+#  - opening_brace
+#  - comma
+#  - trailing_comma
+#  - force_cast
+# - type_name
+ - nesting
+#  - trailing_semicolon
+#  - function_body_length
+#  - nesting
+#  - conditional_binding_cascade
+#  - operator_whitespace
+#  - control_statement
+#  - legacy_constant
+#  - line_length
+#  - return_arrow_whitespace
+#  - trailing_whitespace
+#  - closing_brace
+#  - statement_position
+# - type_body_length
+#  - function_parameter_count
+#  - todo
+#  - legacy_constructor
+#  - valid_docs
+#  - missing_docs
+#  - file_length
+#  - leading_whitespace
+#  - trailing_newline
+ - identifier_name
+#  - syntactic_sugar
+#  - vertical_parameter_alignment
+#  - void_return
+#  - vertical_whitespace
+#  - mark
+#  - notification_center_detachment
+#  - for_where
+#  - large_tuple
+#  - class_delegate_protocol
+#  - closure_parameter_position
+#  - shorthand_operator
+#  - cyclomatic_complexity
+#  - implicit_getter
+#  - unused_optional_binding
+#  - unused_closure_parameter
+#  - redundant_void_return
+#  - unused_enumerated
+#  - redundant_discardable_let
+opt_in_rules: # some rules are only opt-in
+  - empty_count
+  - first_where
+  - force_unwrapping
+  - implicit_return
+  - implicitly_unwrapped_optional
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - multiline_arguments
+  - multiline_parameters
+  - number_separator
+  - operator_usage_whitespace
+  - pattern_matching_keywords
+  - sorted_first_last
+#  - sorted_imports
+  - switch_case_on_newline
+  - vertical_parameter_alignment_on_call
+  - yoda_condition
+  # Find all the available rules by running:
+  # swiftlint rules
+cyclomatic_complexity:
+  warning: 16
+empty_count:
+  severity: warning
+force_cast:
+  severity: warning
+force_try:
+  severity: warning
+line_length: 160
+function_body_length:
+ warning: 40
+type_body_length:
+ warning: 250
+file_length:
+  warning: 1000
+type_name:
+  min_length: 3
+  max_length: 64
+identifier_name:
+  min_length: # only min_length
+    warning: 3 # only error
+  max_length: # only min_length
+    warning: 64 # only error
+  excluded: # excluded via string array
+    - id
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
+
+custom_rules:
+  late_force_unwrapping:
+    included: ".*.swift"
+    regex: '\(\S+\?\.\S+\)!'
+    name: "Late Force Unwrapping"
+    message: "Don't use ? first to force unwrap later – directly unwrap within the parantheses."
+    severity: warning
+  multiple_closure_params:
+    included: ".*.swift"
+    regex: '\} *\) *\{'
+    name: "Multiple Closure Params"
+    message: "Don't use multiple in-line closures – save one or more of them to variables instead."
+    severity: warning
+  single_line_return:
+    included: ".*.swift"
+    regex: '\.\S+ *\{(?: *return|[^\n\}]+ in return) [^\}]+\}'
+    name: "Single Line Return"
+    message: "Remove the 'return' when returning from a single line closure."
+    severity: warning
+  space_before_comment:
+    included: ".*.swift"
+    regex: '\n[ ]{0}[^\/ \n][^\n]*\n[ ]{0}\/\/|\n[ ]{4}[^\/ \n][^\n]*\n[ ]{4}\/\/|\n[ ]{8}[^\/ \n][^\n]*\n[ ]{8}\/\/|\n[ ]{16}[^\/ \n][^\n]*\n[ ]{16}\/\/|\n[ ]{20}[^\/ \n][^\n]*\n[ ]{20}\/\/|\n[ ]{24}[^\/ \n][^\n]*\n[ ]{24}\/\/'
+    name: "Space Before Comment"
+    message: "Always put a space line before a comment line and always comment code beforehand."
+    severity: warning
+  unnecessary_case_break:
+    included: ".*.swift"
+    regex: '(case)(?:[^\n\}]+\n){2,}\s*break *\n|\n *\n *break(?:\n *\n|\n *\})'
+    name: "Unnecessary Case Break"
+    message: "Don't use break in switch cases – Swift breaks by default. Use () for empty statement."
+    severity: warning
+  unnecessary_nil_assignment:
+    included: ".*.swift"
+    regex: 'var \S+\s*:\s*[^\s]+\?\s*=\s*nil'
+    name: "Unnecessary Nil Assignment"
+    message: "Don't assign nil as a value when defining an optional type – it's nil by default."
+    severity: warning
+  vertical_whitespaces_around_mark:
+    included: ".*.swift"
+    regex: '\/\/\s*MARK:[^\n]*(\n)(?!\n)|(\n\n\n)[ \t]*\/\/\s*MARK:|[^\s{]\n[^\n\/]*\/\/\s*MARK:'
+    name: "Vertical Whitespaces Around MARK:"
+    message: "Include a single vertical whitespace (empty line) before and after MARK: comments."
+  vertical_whitespace_closing_braces:
+    included: ".*.swift"
+    regex: '\n[ \t]*\n[ \t]*[)}\]]'
+    name: "Vertical Whitespace before Closing Braces"
+    message: "Don't include vertical whitespace (empty line) before closing braces."
+    severity: warning

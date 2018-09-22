@@ -11,14 +11,17 @@ let package = Package(
             targets: ["jsonlogic-swift"]),
         .executable(
             name: "jsonlogic",
-            targets: ["jsonlogic"])
+            targets: ["jsonlogic"]),
     ],
     dependencies: [
+        .package(
+            url: "https://github.com/dankogai/swift-json.git", from: "4.0.0"
+        )
     ],
     targets: [
         .target(
             name: "jsonlogic-swift",
-            dependencies: []),
+            dependencies: ["JSON"]),
         .target(
             name: "jsonlogic",
             dependencies: ["jsonlogic-swift"]),
@@ -27,4 +30,3 @@ let package = Package(
             dependencies: ["jsonlogic-swift"])
     ]
 )
-
