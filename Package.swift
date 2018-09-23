@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -16,7 +16,8 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/dankogai/swift-json.git", from: "4.0.0"
-        )
+        ),
+        .package(url: "https://github.com/typelift/SwiftCheck.git", from: "0.8.1")
     ],
     targets: [
         .target(
@@ -27,6 +28,6 @@ let package = Package(
             dependencies: ["jsonlogic-swift"]),
         .testTarget(
             name: "jsonlogic-swiftTests",
-            dependencies: ["jsonlogic-swift"])
+            dependencies: ["jsonlogic-swift", "SwiftCheck"])
     ]
 )
