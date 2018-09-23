@@ -10,15 +10,15 @@ import JSON
 import os.log
 
 struct Log {
-    static var general = OSLog(subsystem: "swiftlogic", category: "general")
+//    static var general = OSLog(subsystem: "swiftlogic", category: "general")
 
-    static func log(message: StaticString, type: OSLogType = .debug) -> Void {
-        os_log(message, log: Log.general, type: type)
-    }
+//    static func log(message: StaticString, type: OSLogType = .debug) -> Void {
+//        os_log(message, log: Log.general, type: type)
+//    }
 
-    static func log(message: StaticString, args: CVarArg, type: OSLogType = .debug) -> Void {
-        os_log(message, log: Log.general, type: type, args)
-    }
+//    static func log(message: StaticString, args: CVarArg, type: OSLogType = .debug) -> Void {
+//        os_log(message, log: Log.general, type: type, args)
+//    }
 }
 
 //BNF
@@ -109,7 +109,7 @@ struct VarExpression: Expression {
         var partialResult: JSON? = data
         for key in variablePathParts {
             if key == variablePathParts.last {
-                Log.log(message: "key is %@", args: key)
+//                Log.log(message: "key is %@", args: key)
 //                let lala = partialResult?[key]
                 if let result = partialResult?[key] {
                     return result
@@ -194,7 +194,7 @@ class Parser {
     }
 
     func parseExpression() throws -> Expression {
-        Log.log(message: "parsing var expression")
+//        Log.log(message: "parsing var expression")
             guard let nextToken = popNextToken() else {
                 throw parseErrorWhenParsingToken(nil, expected: Token.single_string(""))
             }
