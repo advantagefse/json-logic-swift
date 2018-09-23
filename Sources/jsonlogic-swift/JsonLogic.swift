@@ -8,130 +8,50 @@
 import Foundation
 import JSON
 
-public protocol Value {
-    func value() -> Bool?
-    func value() -> Int?
-    func value() -> String?
-
-    //Dynamic casting, or throw at runtimme exception if the value is not supported
-//    func value<T>() -> T?
-}
-
-extension Bool: Value {
-    public func value() -> Bool? {
-        return self
-    }
-
-    public func value() -> Int? {
-        switch self {
-        case true:
-            return 1
-        default:
-            return 0
+enum JSONLogicError : Error, Equatable {
+    static func == (lhs: JSONLogicError, rhs: JSONLogicError) -> Bool {
+        switch lhs {
+        case canNotParseJSONdata:
+            return rhs == canNotParseJSONdata;
+        case let canNotConvertResultToType(ltype):
+            if case let canNotConvertResultToType(rtype) = rhs {
+                return ltype == rtype
+            }
+            return false
         }
     }
 
-    public func value() -> String? {
-        return "\(self)"
-    }
-
-//    public func value<T>() -> T? {
-//        return nil
-//    }
-}
-
-extension String: Value {
-    public func value() -> Bool? {
-        return false
-    }
-
-    public func value() -> Int? {
-        return 0
-    }
-
-    public func value() -> String? {
-        return self
-    }
-
-//    public func value<T>() -> T? {
-//        return nil
-//    }
-}
-
-extension Int: Value {
-    public func value() -> Bool? {
-        return self == 0
-    }
-
-    public func value() -> Int? {
-        return self
-    }
-
-    public func value() -> String? {
-
-        return "\(self)"
-    }
-
-//    public func value<T>() -> T? {
-//        return nil
-//    }
-}
-
-extension Double: Value {
-    public func value() -> Bool? {
-        return self == 0.0
-    }
-
-    public func value() -> Int? {
-        return Int(self)
-    }
-
-    public func value() -> String? {
-        return "\(self)"
-    }
-
-//    public func value<T>() -> T? {
-//        return nil
-//    }
+    case canNotParseJSONdata
+    case canNotConvertResultToType(Any.Type)
 }
 
 public class JsonLogic {
 
-    public init() {
-    }
+    public init() {}
 
-    public func applyRule<T : Value>(_ jsonString: String, to jsonDataOrNil: String? = nil) throws -> T {
+    public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> T {
+        var jsonData : JSON? = nil
 
-        let jsonData = jsonDataOrNil ?? "{}"
+        if let jsonDataOrNil = jsonDataOrNil {
+            jsonData = JSON(string: jsonDataOrNil)
+        }
 
-        if let data = jsonData.data(using: .utf8) {
-            let jSON = JSON(string: jsonData)
-//            let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
+        if let tokens: [Token] = try! Tokenizer(jsonString: jsonRule)?.tokens {
 
-//            [""].filter({ type(of:$0) == String.self })
+            let result = try Parser(tokens: tokens).parseExpression().evalWithData(jsonData)
 
-            if let tokens: [Token] = try! Tokenizer(jsonString: jsonString)?.tokens {
-
-                switch T.self {
-                case let t as Bool.Type:
-                    return try Parser(tokens: tokens).parseExpression().evalWithData(jSON).bool! as! T
-
-//                    return try Parser(tokens: tokens).parse().evalWithData(jSON).bool as! T
-                case let t as Int.Type:
-                    return try Int(Parser(tokens: tokens).parseExpression().evalWithData(jSON).number!) as! T
-                case let t as String.Type:
-
-                    return try Parser(tokens: tokens).parseExpression().evalWithData(jSON).string! as! T
-
-//                    return try "\(String(describing: Parser(tokens: tokens).parse().evalWithData(jSON).string))" as! T
-                default:
-                    throw ParseError.GenericError("Do not know how to convert to result type \(T.self)")
-                }
+            switch T.self {
+            case is Double.Type:
+                return result.number! as! T
+            case is Bool.Type:
+                return result.bool! as! T
+            case is Int.Type:
+                return Int(result.number!) as! T
+            case is String.Type:
+                return result.string! as! T
+            default:
+                throw JSONLogicError.canNotConvertResultToType(T.self)
             }
-            else {
-            }
-        } else {
-            print("Could not convert jsonString to Data using utf8 encoding")
         }
 
         throw ParseError.GenericError("Error parsing")

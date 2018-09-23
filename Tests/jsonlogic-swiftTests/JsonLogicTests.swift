@@ -169,12 +169,86 @@ final class JsonLogicTests: XCTestCase {
         XCTAssertEqual(expectedResult, result)
     }
 
+    func testNestedVar() {
+        let rule =
+        """
+            { "var" : [{ "var" : ["a"] }] }
+        """
+        let data =
+        """
+            { "a" : "b", "b" : "1" }
+        """
+        let expectedResult = "1"
+
+        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
+            XCTFail("The data should be parsed correctly")
+            return
+        }
+
+        XCTAssertEqual(expectedResult, result)
+    }
+
+    func testNestedVarWithStrictEquals() {
+        let rule =
+        """
+            { "===" : [ {"var" : [ {"var" : ["a"]} ] }, {"var" : ["oneNest.one"]}] }
+        """
+        let data =
+        """
+            { "a" : "b", "b" : "1", "oneNest" : {"one" : "1"} }
+        """
+        let expectedResult = true
+
+        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
+            XCTFail("The data should be parsed correctly")
+            return
+        }
+
+        XCTAssertEqual(expectedResult, result)
+    }
+
+    func testNestedStrictEqualsWithVar() {
+        let rule =
+        """
+            { "var" : [ {"var" : [ {"var" : ["a"] } ] } ] }
+        """
+        let data =
+        """
+            { "a" : "b", "b" : "oneNest.one", "oneNest" : {"one" : "10"} }
+        """
+        let expectedResult = "10"
+
+        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
+            XCTFail("The data should be parsed correctly")
+            return
+        }
+
+        XCTAssertEqual(expectedResult, result)
+    }
+
+    func testNotSupportedResultType() {
+        let rule =
+        """
+            { "===" : [1, 1] }
+        """
+
+        class SomeType {}
+
+        XCTAssertThrowsError(try { let _ : SomeType = try jsonLogic.applyRule(rule, to: nil) }(), "") { error in
+            XCTAssertEqual(error as! JSONLogicError, JSONLogicError.canNotConvertResultToType(SomeType.self))
+        }
+    }
+
     static var allTests = [
         ("testEqualsWithTwoSameConstants", testEqualsWithTwoSameConstants),
         ("testEqualsWithDifferentSameConstants", testEqualsWithDifferentSameConstants),
         ("testSetOneIntegerVariableFromData", testSetOneIntegerVariableFromData),
         ("testSetOneStringVariableFromData", testSetOneStringVariableFromData),
         ("testSetOneStringNestedVariableFromData", testSetOneStringNestedVariableFromData),
-        ("testAddTwoIntsFromVariables", testAddTwoIntsFromVariables)
+        ("testAddTwoIntsFromVariables", testAddTwoIntsFromVariables),
+        ("testNestedVar", testNestedVar),
+        ("testNestedVarWithStrictEquals", testNestedVarWithStrictEquals),
+        ("testNestedStrictEqualsWithVar", testNestedStrictEqualsWithVar),
+        ("testNotSupportedResultType", testNotSupportedResultType)
     ]
 }

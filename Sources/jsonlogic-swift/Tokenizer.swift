@@ -17,14 +17,10 @@ indirect enum Token {
     case var_operator(arg1: Token)
     case var_operator_array(arg1: [Token])
     case strict_equals_operator(arg1: Token, arg2: Token)
-//    case array_single_string([String])
-//    case array_single_int([Int])
-//    case string_value(Value)
     case single_string(String)
     case single_boolean(Bool)
     case single_integer(Int)
     case single_double(Double)
-//    case singleValue(JSON)
     case array_of_tokens([Token])
     case empty
 }
@@ -54,6 +50,9 @@ open class Tokenizer {
                 }
                 else if let array = value as? [Any] {
                     return .var_operator_array(arg1: try tokenize(array))
+                }
+                else if let object = value as? [String: Any] {
+                    return .var_operator(arg1: try tokenize(object))
                 }
                 else {
                     throw TokenizerError.UnExpectedToken(value)

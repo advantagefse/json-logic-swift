@@ -36,10 +36,6 @@ enum ParseError: Error {
     case GenericError(String)
 }
 
-enum ExpressionEvaluationError: Error {
-    case UnconvertableValue(from: String, to: String)
-}
-
 protocol Expression {
     func evalWithData(_ data: JSON?) throws -> JSON
 }
@@ -68,29 +64,6 @@ extension AnyExpression: Expression where ResultType == JSON {
         return try self._evalWithData(data)
     }
 
-    //    init<E: Expression>(xpr: E) where E.ResultType == ResultType {
-    //        self.evalWithData = xpr.evalWithData
-    //    }
-}
-
-//extension AnyExpression: Expression where ResultType == String {
-//
-//    func evalWithData(_ data: JSON?) throws -> JSON {
-//        return try JSON(self._evalWithData(data))
-//    }
-//
-////    func evalWithData(_ data: JSON?) throws -> ResultType {
-////        return try self._evalWithData(data)
-////    }
-//
-//    //    init<E: Expression>(xpr: E) where E.ResultType == ResultType {
-//    //        self.evalWithData = xpr.evalWithData
-//    //    }
-//}
-//
-
-extension AnyExpression where ResultType == JSON {
-
     init(_ value: JSON) {
         self._evalWithData = { (_) -> ResultType in
             return value
@@ -100,6 +73,10 @@ extension AnyExpression where ResultType == JSON {
     init(_ expression: Expression) {
         _evalWithData = expression.evalWithData
     }
+
+    //    init<E: Expression>(xpr: E) where E.ResultType == ResultType {
+    //        self.evalWithData = xpr.evalWithData
+    //    }
 }
 
 struct Strict_equals_expression: Expression {
@@ -164,7 +141,6 @@ struct VarExpression: Expression {
 }
 
 class Parser {
-
     //    private let json: JSON
     private let tokens: [Token]
     private let totalTokens: Int
