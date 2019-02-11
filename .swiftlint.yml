@@ -35,7 +35,7 @@ disabled_rules: # rule identifiers to exclude from running
 #  - mark
 #  - notification_center_detachment
 #  - for_where
-#  - large_tuple
+ - large_tuple
 #  - class_delegate_protocol
 #  - closure_parameter_position
 #  - shorthand_operator
@@ -47,11 +47,18 @@ disabled_rules: # rule identifiers to exclude from running
 #  - unused_enumerated
 #  - redundant_discardable_let
 opt_in_rules: # some rules are only opt-in
-  - empty_count
+  - anyobject_protocol
+  - array_init
+  - contains_over_first_not_nil
+  - empty_string
+  - empty_xctest_method
+  - convenience_type
+  - unused_import
+  - missing_docs
+  - untyped_error_in_catch
   - first_where
-  - force_unwrapping
   - implicit_return
-  - implicitly_unwrapped_optional
+  # - implicitly_unwrapped_optional
   - let_var_whitespace
   - literal_expression_end_indentation
   - multiline_arguments
@@ -62,21 +69,34 @@ opt_in_rules: # some rules are only opt-in
   - sorted_first_last
 #  - sorted_imports
   - switch_case_on_newline
-  - vertical_parameter_alignment_on_call
+#  - vertical_parameter_alignment_on_call bug -> https://github.com/realm/SwiftLint/issues/2468
   - yoda_condition
   # Find all the available rules by running:
   # swiftlint rules
+included: # paths to include during linting. `--path` is ignored if present.
+   - Sources
+   - Tests
+#  - ProductProtype
+#  - PrototypeTests
+#  - ProductWidget
+#  - SDK
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - .build
 cyclomatic_complexity:
-  warning: 16
+  warning: 14
+  error: 16
 empty_count:
   severity: warning
 force_cast:
   severity: warning
 force_try:
   severity: warning
-line_length: 160
+line_length: 100
 function_body_length:
- warning: 40
+  warning: 30
+  error: 40
 type_body_length:
  warning: 250
 file_length:
@@ -100,23 +120,17 @@ custom_rules:
     name: "Late Force Unwrapping"
     message: "Don't use ? first to force unwrap later – directly unwrap within the parantheses."
     severity: warning
-  multiple_closure_params:
-    included: ".*.swift"
-    regex: '\} *\) *\{'
-    name: "Multiple Closure Params"
-    message: "Don't use multiple in-line closures – save one or more of them to variables instead."
-    severity: warning
+#  multiple_closure_params:
+#    included: ".*.swift"
+#    regex: '\} *\) *\{'
+#    name: "Multiple Closure Params"
+#    message: "Don't use multiple in-line closures – save one or more of them to variables instead."
+#    severity: warning
   single_line_return:
     included: ".*.swift"
     regex: '\.\S+ *\{(?: *return|[^\n\}]+ in return) [^\}]+\}'
     name: "Single Line Return"
     message: "Remove the 'return' when returning from a single line closure."
-    severity: warning
-  space_before_comment:
-    included: ".*.swift"
-    regex: '\n[ ]{0}[^\/ \n][^\n]*\n[ ]{0}\/\/|\n[ ]{4}[^\/ \n][^\n]*\n[ ]{4}\/\/|\n[ ]{8}[^\/ \n][^\n]*\n[ ]{8}\/\/|\n[ ]{16}[^\/ \n][^\n]*\n[ ]{16}\/\/|\n[ ]{20}[^\/ \n][^\n]*\n[ ]{20}\/\/|\n[ ]{24}[^\/ \n][^\n]*\n[ ]{24}\/\/'
-    name: "Space Before Comment"
-    message: "Always put a space line before a comment line and always comment code beforehand."
     severity: warning
   unnecessary_case_break:
     included: ".*.swift"

@@ -8,20 +8,23 @@
 import Foundation
 import JSON
 
-enum JSONLogicError : Error, Equatable {
+enum JSONLogicError: Error, Equatable {
     static func == (lhs: JSONLogicError, rhs: JSONLogicError) -> Bool {
         switch lhs {
-        case canNotParseJSONdata:
-            return rhs == canNotParseJSONdata;
+        case canNotParseJSONData:
+            return rhs == canNotParseJSONData
         case let canNotConvertResultToType(ltype):
             if case let canNotConvertResultToType(rtype) = rhs {
                 return ltype == rtype
             }
             return false
+        case .canNotParseJSONRule:
+            return lhs == canNotParseJSONRule
         }
     }
 
-    case canNotParseJSONdata
+    case canNotParseJSONData
+    case canNotParseJSONRule
     case canNotConvertResultToType(Any.Type)
 }
 
@@ -30,31 +33,60 @@ public class JsonLogic {
     public init() {}
 
     public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> T {
-        var jsonData : JSON? = nil
+        var jsonData: JSON?
 
         if let jsonDataOrNil = jsonDataOrNil {
             jsonData = JSON(string: jsonDataOrNil)
         }
 
-        if let tokens: [Token] = try! Tokenizer(jsonString: jsonRule)?.tokens {
+        let result = try Parser(json: JSON(string: jsonRule)).parse().evalWithData(jsonData)
 
-            let result = try Parser(tokens: tokens).parseExpression().evalWithData(jsonData)
-
-            switch T.self {
-            case is Double.Type:
-                return result.number! as! T
-            case is Bool.Type:
-                return result.bool! as! T
-            case is Int.Type:
-                return Int(result.number!) as! T
-            case is String.Type:
-                return result.string! as! T
-            default:
-                throw JSONLogicError.canNotConvertResultToType(T.self)
-            }
+        guard let convertedResult = try result.convertToSwiftTypes() as? T else {
+            throw JSONLogicError.canNotConvertResultToType(T.self)
         }
-
-        throw ParseError.GenericError("Error parsing")
+        return convertedResult
     }
+
+//    public func applyRule(_ jsonRule: String, to jsonDataOrNil: String?) -> Any?  {
+//        var jsonData: JSON?
+//
+//        if let jsonDataOrNil = jsonDataOrNil {
+//            jsonData = JSON(string: jsonDataOrNil)
+//        }
+//
+//        let result = try? Parser(json: JSON(string: jsonRule)).parse().evalWithData(jsonData)
+//
+//        do {
+//            return try result?.convertToSwiftStandarObjects()
+//        }
+//        catch {
+//            return nil
+//        }
+//    }
 }
 
+extension JSON {
+    func convertToSwiftTypes() throws -> Any? {
+        switch self {
+        case .Error:
+            throw JSONLogicError.canNotParseJSONData
+        case .Null:
+            return nil
+        case .Bool:
+            return self.bool!
+        case .Number:
+            let n = self.number!
+            if let int = Int(exactly: n) {
+                return int
+            }
+            return n
+        case .String:
+            return self.string!
+        case .Array:
+            return try self.map { try $0.1.convertToSwiftTypes() }
+        case .Object:
+            let o = self.object!
+            return try o.mapValues { try $0.convertToSwiftTypes() }
+        }
+    }
+}

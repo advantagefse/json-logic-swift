@@ -12,5 +12,6 @@ let data =
 { "name" : "Jon" }
 """
 
-let result: String? = try! jsonLogic.applyRule(rule, to: data)
-print("applyRule(\"\(rule)\",\"\(data)\") = \(String(describing: result))")
+let result: String? = try? jsonLogic.applyRule(rule, to: data)
+
+print("result = \(String(describing: result))")

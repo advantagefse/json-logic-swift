@@ -1,5 +1,5 @@
 import XCTest
-import SwiftCheck
+//import SwiftCheck
 
 @testable import jsonlogic_swift
 
@@ -94,24 +94,24 @@ final class JsonLogicTests: XCTestCase {
         XCTAssertEqual(expectedResult, result)
     }
 
-//    func testSetTwoStringVariablesFromData() {
-//        let rule =
-//        """
-//            { "var" : "a" }
-//        """
-//        let data =
-//        """
-//            { "a" : true }
-//        """
-//        let expectedResult = true
-//
-//        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
-//            XCTFail("The data should be parsed correctly")
-//            return
-//        }
-//
-//        XCTAssertEqual(expectedResult, result)
-//    }
+    func testSetTwoStringVariablesFromData() {
+        let rule =
+        """
+            { "var" : "a" }
+        """
+        let data =
+        """
+            { "a" : true }
+        """
+        let expectedResult = true
+
+        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
+            XCTFail("The data should be parsed correctly")
+            return
+        }
+
+        XCTAssertEqual(expectedResult, result)
+    }
 
     func testSetOneStringNestedVariableFromData() {
         let rule =
@@ -235,100 +235,10 @@ final class JsonLogicTests: XCTestCase {
 
         class SomeType {}
 
-        XCTAssertThrowsError(try { let _ : SomeType = try jsonLogic.applyRule(rule, to: nil) }(), "") { error in
-            XCTAssertEqual(error as! JSONLogicError, JSONLogicError.canNotConvertResultToType(SomeType.self))
+        XCTAssertThrowsError(try { try jsonLogic.applyRule(rule) as SomeType }(), "") {
+            //swiftlint:disable:next force_cast
+            XCTAssertEqual($0 as! JSONLogicError, .canNotConvertResultToType(SomeType.self))
         }
-    }
-
-    func testStrictEqualsIntProperty() {
-
-        property("The reverse of the reverse of an array is that array") <- forAll { (first : Int, second : Int) in
-            let rule =
-            """
-            { "===" : [\(first), \(second)] }
-            """
-
-            let expectedResult = first == second
-
-            guard let result: Bool = try? self.jsonLogic.applyRule(rule, to: nil) else {
-                return false
-            }
-
-            return result == expectedResult
-        }
-    }
-
-    func testStrictEqualsDoubleProperty() {
-
-        property("The reverse of the reverse of an array is that array") <- forAll { (first : Double, second : Double) in
-            let rule =
-            """
-            { "===" : [\(first), \(second)] }
-            """
-
-            let expectedResult = first == second
-
-            guard let result: Bool = try? self.jsonLogic.applyRule(rule, to: nil) else {
-                return false
-            }
-
-            return result == expectedResult
-        }
-    }
-
-    func testStrictEqualsBoolProperty() {
-
-        property("The reverse of the reverse of an array is that array") <- forAll { (first : Bool, second : Bool) in
-            let rule =
-            """
-            { "===" : [\(first), \(second)] }
-            """
-
-            let expectedResult = first == second
-
-            guard let result: Bool = try? self.jsonLogic.applyRule(rule, to: nil) else {
-                return false
-            }
-
-            return result == expectedResult
-        }
-    }
-
-    func testStrictEqualsStringProperty() {
-
-        property("The reverse of the reverse of an array is that array") <- forAll { (first : String, second : String) in
-            do {
-            let rule =
-            """
-            { "===" : [\(first), \(second)] }
-            """
-
-            let expectedResult = first == second
-
-            guard let result: Bool = try? self.jsonLogic.applyRule(rule, to: nil) else {
-                return false
-            }
-
-            return result == expectedResult
-            }
-            catch {
-                return false
-            }
-        }
-    }
-
-    func testBug() {
-        let rule =
-        """
-            { "===" : [, ] }
-        """
-
-        guard let result: Bool = try? jsonLogic.applyRule(rule, to: nil) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertTrue(result)
     }
 
     static var allTests = [
