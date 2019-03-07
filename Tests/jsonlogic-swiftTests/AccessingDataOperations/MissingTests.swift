@@ -14,6 +14,18 @@ class MissingTests: XCTestCase {
     let jsonLogic = JsonLogic()
     let emptyStringArray = [String]()
 
+    func testVar_withEmptyVarName() {
+        let rule =
+                """
+                {"var":[""]}
+                """
+        let data =
+                """
+                [1, 2, 3]
+                """
+        XCTAssertEqual([1, 2, 3], try jsonLogic.applyRule(rule, to: data))
+    }
+
     func testMissing() {
         var rule =
         """

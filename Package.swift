@@ -16,8 +16,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/dankogai/swift-json.git", from: "4.0.0"
-        ),
-        .package(url: "https://github.com/typelift/SwiftCheck.git", from: "0.8.1")
+        )
     ],
     targets: [
         .target(
@@ -28,6 +27,6 @@ let package = Package(
             dependencies: ["jsonlogic-swift"]),
         .testTarget(
             name: "jsonlogic-swiftTests",
-            dependencies: ["jsonlogic-swift", "SwiftCheck"])
+            dependencies: ["jsonlogic-swift"])
     ]
 )

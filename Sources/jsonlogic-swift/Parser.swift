@@ -550,6 +550,145 @@ struct MissingSome: Expression {
     }
 }
 
+struct ArrayMap: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        guard let array = self.expression as? ArrayOfExpressions,
+            array.expressions.count >= 2,
+        let dataArray = try? array.expressions[0].evalWithData(data)
+                else {
+                return JSON.Null
+        }
+
+        let mapOperation = array.expressions[1]
+
+        let result = try dataArray.map({ try mapOperation.evalWithData($1) } )
+        return JSON.Array(result) 
+    }
+}
+
+struct ArrayReduce: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        guard let array = self.expression as? ArrayOfExpressions,
+              array.expressions.count >= 3,
+              let dataArray = try? array.expressions[0].evalWithData(data),
+              let intoValue: JSON = try? array.expressions[2].evalWithData(data)
+                else {
+            return JSON.Null
+        }
+        let reduceOperation = array.expressions[1]
+
+        return try dataArray.reduce(into: intoValue) {
+            $0 = try reduceOperation.evalWithData(JSON(["accumulator":$0,  "current":$1.value]))
+        }
+    }
+}
+
+struct ArrayFilter: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        guard let array = self.expression as? ArrayOfExpressions,
+            array.expressions.count >= 2,
+            case let JSON.Array(dataArray) = try array.expressions[0].evalWithData(data)
+            else {
+                return JSON.Null
+        }
+
+        let filterOperation = array.expressions[1]
+
+        return JSON.Array(try dataArray.filter({ try filterOperation.evalWithData($0).thruthy() }))
+    }
+}
+
+struct ArrayNone: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        guard let array = self.expression as? ArrayOfExpressions,
+            array.expressions.count >= 2,
+            case let JSON.Array(dataArray) = try array.expressions[0].evalWithData(data)
+            else {
+                return JSON.Null
+        }
+        let operation = array.expressions[1]
+
+        return JSON.Bool(try dataArray.reduce(into: true) {
+            $0 = try $0 && !operation.evalWithData($1).thruthy()
+        })
+    }
+}
+
+struct ArrayAll: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        guard let array = self.expression as? ArrayOfExpressions,
+              array.expressions.count >= 2,
+              case let JSON.Array(dataArray) = try array.expressions[0].evalWithData(data)
+                else {
+            return JSON.Null
+        }
+
+        let operation = array.expressions[1]
+
+        return JSON.Bool(try dataArray.reduce(into: !dataArray.isEmpty) {
+            $0 = try $0 && operation.evalWithData($1).thruthy()
+        })
+    }
+}
+
+struct ArraySome: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        guard let array = self.expression as? ArrayOfExpressions,
+              array.expressions.count >= 2,
+              case let JSON.Array(dataArray) = try array.expressions[0].evalWithData(data)
+                else {
+            return JSON.Null
+        }
+
+        let operation = array.expressions[1]
+
+        return JSON.Bool(try dataArray.reduce(into: false) {
+            $0 = try $0 || operation.evalWithData($1).thruthy()
+        })
+    }
+}
+
+struct ArrayMerge: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let dataArray = try expression.evalWithData(data)
+
+        return JSON.Array(recursiveFlattenArray(dataArray))
+    }
+
+    func recursiveFlattenArray(_ json: JSON) -> [JSON] {
+        switch json {
+        case let .Array(array):
+            return array.flatMap({ recursiveFlattenArray($0) })
+        default:
+            return [json]
+        }
+    }
+}
+
+struct Log: Expression {
+    let expression: Expression
+
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let result = try expression.evalWithData(data)
+        print("\(String(describing: try result.convertToSwiftTypes()))")
+        return result
+    }
+}
+
 class Parser {
     private let json: JSON
 
@@ -564,6 +703,7 @@ class Parser {
     func parse(json: JSON) throws -> Expression {
         switch json {
         case .Error:
+
             throw ParseError.GenericError("Error parsing json '\(json)'")
         case .Null:
             return SingleValueExpression(json: json)
@@ -663,6 +803,22 @@ class Parser {
             return Missing(expression: try self.parse(json: value))
         case "missing_some":
             return MissingSome(expression: try self.parse(json: value))
+        case "map":
+            return ArrayMap(expression: try self.parse(json: value))
+        case "reduce":
+            return ArrayReduce(expression: try self.parse(json: value))
+        case "filter":
+            return ArrayFilter(expression: try self.parse(json: value))
+        case "none":
+            return ArrayNone(expression: try self.parse(json: value))
+        case "all":
+            return ArrayAll(expression: try self.parse(json: value))
+        case "some":
+            return ArraySome(expression: try self.parse(json: value))
+        case "merge":
+            return ArrayMerge(expression: try self.parse(json: value))
+        case "log":
+            return Log(expression: try self.parse(json: value))
         default:
             throw ParseError.UnimplementedExpressionFor(key)
         }

@@ -9,7 +9,7 @@ import Foundation
 import JSON
 
 enum JSONLogicError: Error, Equatable {
-    static func == (lhs: JSONLogicError, rhs: JSONLogicError) -> Bool {
+    static func ==(lhs: JSONLogicError, rhs: JSONLogicError) -> Bool {
         switch lhs {
         case canNotParseJSONData:
             return rhs == canNotParseJSONData
@@ -30,7 +30,8 @@ enum JSONLogicError: Error, Equatable {
 
 public class JsonLogic {
 
-    public init() {}
+    public init() {
+    }
 
     public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> T {
         var jsonData: JSON?
@@ -41,37 +42,23 @@ public class JsonLogic {
 
         let result = try Parser(json: JSON(string: jsonRule)).parse().evalWithData(jsonData)
 
-        guard let convertedResult = try result.convertToSwiftTypes() as? T else {
+        let convertedToSwiftStandarType = try result.convertToSwiftTypes()
+
+        guard let convertedResult = convertedToSwiftStandarType as? T else {
             throw JSONLogicError.canNotConvertResultToType(T.self)
         }
         return convertedResult
     }
-
-//    public func applyRule(_ jsonRule: String, to jsonDataOrNil: String?) -> Any?  {
-//        var jsonData: JSON?
-//
-//        if let jsonDataOrNil = jsonDataOrNil {
-//            jsonData = JSON(string: jsonDataOrNil)
-//        }
-//
-//        let result = try? Parser(json: JSON(string: jsonRule)).parse().evalWithData(jsonData)
-//
-//        do {
-//            return try result?.convertToSwiftStandarObjects()
-//        }
-//        catch {
-//            return nil
-//        }
-//    }
 }
 
 extension JSON {
+
     func convertToSwiftTypes() throws -> Any? {
         switch self {
         case .Error:
             throw JSONLogicError.canNotParseJSONData
         case .Null:
-            return nil
+            return Optional<Any>.none
         case .Bool:
             return self.bool!
         case .Number:
@@ -82,11 +69,20 @@ extension JSON {
             return n
         case .String:
             return self.string!
-        case .Array:
-            return try self.map { try $0.1.convertToSwiftTypes() }
+//        case let JSON.Array(array) where array.isEmpty:
+//            return Swift.Array<Any>()
+        case let JSON.Array(array):
+            return try array.map { try $0.convertToSwiftTypes() }
+//            var swiftArray: Swift.Array<Any> = []
+//            for item in array {
+//                swiftArray.append(try item.convertToSwiftTypes()!)
+//            }
+//            return swiftArray
         case .Object:
             let o = self.object!
-            return try o.mapValues { try $0.convertToSwiftTypes() }
+            return try o.mapValues {
+                try $0.convertToSwiftTypes()
+            }
         }
     }
 }

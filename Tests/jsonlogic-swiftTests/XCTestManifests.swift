@@ -10,7 +10,8 @@ public func allTests() -> [XCTestCaseEntry] {
         testCase(GreaterThanOrEqualTests.allTests),
         testCase(LessThanTests.allTests),
         testCase(LessThanOrEqualTests.allTests),
-        testCase(BetweenTests.allTests)
+        testCase(BetweenTests.allTests),
+        testCase(ArrayMapTests.allTests)
     ]
 }
 #endif
