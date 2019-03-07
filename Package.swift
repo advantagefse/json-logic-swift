@@ -4,14 +4,14 @@
 import PackageDescription
 
 let package = Package(
-    name: "jsonlogic-swift",
+    name: "jsonlogic",
     products: [
         .library(
-            name: "jsonlogic-swift",
-            targets: ["jsonlogic-swift"]),
-        .executable(
             name: "jsonlogic",
             targets: ["jsonlogic"]),
+        .executable(
+            name: "jsonlogic-cli",
+            targets: ["jsonlogic-cli"]),
     ],
     dependencies: [
         .package(
@@ -20,13 +20,13 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "jsonlogic-swift",
-            dependencies: ["JSON"]),
+            name: "jsonlogic-cli",
+            dependencies: ["jsonlogic"]),
         .target(
             name: "jsonlogic",
-            dependencies: ["jsonlogic-swift"]),
+            dependencies: ["JSON"]),
         .testTarget(
-            name: "jsonlogic-swiftTests",
-            dependencies: ["jsonlogic-swift"])
+            name: "jsonlogicTests",
+            dependencies: ["jsonlogic"])
     ]
 )

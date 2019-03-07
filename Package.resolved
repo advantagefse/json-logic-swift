@@ -2,30 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "FileCheck",
-        "repositoryURL": "https://github.com/llvm-swift/FileCheck.git",
-        "state": {
-          "branch": null,
-          "revision": "89b8480055f9adf8ce2f9ad5e2fac7ac1076242e",
-          "version": "0.0.8"
-        }
-      },
-      {
         "package": "JSON",
         "repositoryURL": "https://github.com/dankogai/swift-json.git",
         "state": {
           "branch": null,
           "revision": "12e37ec0a9e5d979de7cd3d00e0495a87c62834d",
           "version": "4.0.2"
-        }
-      },
-      {
-        "package": "SwiftCheck",
-        "repositoryURL": "https://github.com/typelift/SwiftCheck.git",
-        "state": {
-          "branch": null,
-          "revision": "cf9958085b2ee1643e541e407c3233d1b76c18ff",
-          "version": "0.11.0"
         }
       }
     ]
