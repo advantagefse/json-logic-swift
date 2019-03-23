@@ -26,12 +26,43 @@ class LogTests: XCTestCase {
         XCTAssertEqual("12,3", try applyRule(rule, to: nil))
     }
 
+//swiftlint:disable:next function_body_length
     func testLog_nestedInOtherExpressions() {
 
         let rule =
-                """
-                {"if":[{"==":[{"log":{"%":[{"var":"i"},15]}},0]},"fizzbuzz",{"log":{"==":[{"%":[{"var":"i"},3]},0]}},"fizz",{"==":[{"%":[{"var":"i"},{"log":5}]},0]},{"log":"buzz"},{"var":"i"}]}
-                """
+"""
+        {
+            "if": [{
+            "==": [{
+                "log": {
+                    "%": [{
+                        "var": "i"
+                    }, 15]
+                }
+            }, 0]
+        }, "fizzbuzz", {
+            "log": {
+                "==": [{
+                    "%": [{
+                        "var": "i"
+                    }, 3]
+                }, 0]
+            }
+        }, "fizz", {
+            "==": [{
+                "%": [{
+                    "var": "i"
+                }, {
+                    "log": 5
+                }]
+            }, 0]
+        }, {
+            "log": "buzz"
+        }, {
+            "var": "i"
+        }]
+        }
+"""
 
         XCTAssertEqual("fizzbuzz", try applyRule(rule, to: "{\"i\" : 0}"))
         XCTAssertEqual(1, try applyRule(rule, to: "{\"i\" : 1}"))

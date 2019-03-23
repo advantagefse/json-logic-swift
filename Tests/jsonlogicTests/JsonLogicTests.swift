@@ -3,7 +3,6 @@ import XCTest
 
 @testable import jsonlogic
 
-//xswiftlint:disable force_try
 final class JsonLogicTests: XCTestCase {
 
     func testEqualsWithTwoSameConstants() {

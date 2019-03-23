@@ -168,7 +168,7 @@ struct If: Expression {
     }
 
     func IfWithExpressions(_ expressions: [Expression], andData data: JSON?) throws -> JSON {
-        if expressions.count == 0 {
+        if expressions.isEmpty {
             return JSON.Null
         } else if expressions.count == 1 {
             return try expressions[0].evalWithData(data)

@@ -126,7 +126,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual([1,2,3], try applyRule(rule, to: data))
+        XCTAssertEqual([1, 2, 3], try applyRule(rule, to: data))
 
         rule =
                 """
@@ -146,7 +146,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual([2,3], try applyRule(rule, to: data))
+        XCTAssertEqual([2, 3], try applyRule(rule, to: data))
 
         rule =
         """
@@ -156,6 +156,6 @@ class ArrayMapTests: XCTestCase {
         """
         {"integers":[1,2,3]}
         """
-        XCTAssertEqual([1,3], try applyRule(rule, to: data))
+        XCTAssertEqual([1, 3], try applyRule(rule, to: data))
     }
 }

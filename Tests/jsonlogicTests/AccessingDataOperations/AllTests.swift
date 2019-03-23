@@ -12,7 +12,7 @@ class AllTests: XCTestCase {
 
     let emptyIntArray = [Int]()
 
-    func testAll() {
+    func testAll_withCurrentArrayElement() {
         var rule =
                 """
                 {"all":[{"var":"integers"}, {">=":[{"var":""}, 1]}]}
@@ -21,19 +21,19 @@ class AllTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual(true, try applyRule(rule, to: data))
+        XCTAssertTrue(try applyRule(rule, to: data))
 
         rule =
                 """
                 {"all":[{"var":"integers"}, {"==":[{"var":""}, 1]}]}
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: data))
+        XCTAssertFalse(try applyRule(rule, to: data))
 
         rule =
                 """
                 {"all":[{"var":"integers"}, {"<":[{"var":""}, 1]}]}
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: data))
+        XCTAssertFalse(try applyRule(rule, to: data))
 
         rule =
                 """
@@ -43,17 +43,19 @@ class AllTests: XCTestCase {
                 """
                 {"integers":[]}
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: data))
+        XCTAssertFalse(try applyRule(rule, to: data))
+    }
 
-        rule =
+    func testAll_withNestedArrayElement() {
+        var rule =
                 """
                 {"all":[ {"var":"items"}, {">=":[{"var":"qty"}, 1]}]}
                 """
-        data =
+        var data =
                 """
                 {"items":[{"qty":1,"sku":"apple"},{"qty":2,"sku":"banana"}]}
                 """
-        XCTAssertEqual(true, try applyRule(rule, to: data))
+        XCTAssertTrue(try applyRule(rule, to: data))
 
         rule =
                 """
@@ -63,7 +65,7 @@ class AllTests: XCTestCase {
                 """
                 {"items":[{"qty":1,"sku":"apple"},{"qty":2,"sku":"banana"}]}
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: data))
+        XCTAssertFalse(try applyRule(rule, to: data))
 
         rule =
                 """
@@ -73,17 +75,18 @@ class AllTests: XCTestCase {
                 """
                 {"items":[{"qty":1,"sku":"apple"},{"qty":2,"sku":"banana"}]}
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: data))
+        XCTAssertFalse(try applyRule(rule, to: data))
+    }
 
-        rule =
+    func testAll_withEmptyDataArray() {
+        let rule =
                 """
                  {"all":[ {"var":"items"}, {">=":[{"var":"qty"}, 1]}]}
                 """
-        data =
+        let data =
                 """
                 {"items":[]}
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: data))
+        XCTAssertFalse(try applyRule(rule, to: data))
     }
-
 }

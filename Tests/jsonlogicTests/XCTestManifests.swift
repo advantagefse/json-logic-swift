@@ -2,7 +2,9 @@ import XCTest
 
 extension AllTests {
     static let __allTests = [
-        ("testAll", testAll),
+        ("testAll_withCurrentArrayElement", testAll_withCurrentArrayElement),
+        ("testAll_withEmptyDataArray", testAll_withEmptyDataArray),
+        ("testAll_withNestedArrayElement", testAll_withNestedArrayElement),
     ]
 }
 

@@ -114,7 +114,7 @@ public final class JsonLogic {
             return convertedResult
         default:
             guard let convertedResult = convertedToSwiftStandardType as? T else {
-//                print("canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
+// print("canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
                 throw JSONLogicError.canNotConvertResultToType(T.self)
             }
             return convertedResult

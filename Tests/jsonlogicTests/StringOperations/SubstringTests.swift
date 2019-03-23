@@ -83,5 +83,4 @@ class SubstringTests: XCTestCase {
                 """
         XCTAssertNil(try applyRule(rule, to: nil))
     }
-
 }

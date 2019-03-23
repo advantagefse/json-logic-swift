@@ -47,6 +47,7 @@ disabled_rules: # rule identifiers to exclude from running
 #  - unused_enumerated
 #  - redundant_discardable_let
 opt_in_rules: # some rules are only opt-in
+  - empty_count
   - anyobject_protocol
   - array_init
   - contains_over_first_not_nil
@@ -84,6 +85,9 @@ excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Carthage
   - Pods
   - .build
+  #The following are generated sources from `swift test --generate-linuxmain`
+  - Tests/jsonlogicTests/XCTestManifests.swift
+  - Tests/LinuxMain.swift
 cyclomatic_complexity:
   warning: 14
   error: 16

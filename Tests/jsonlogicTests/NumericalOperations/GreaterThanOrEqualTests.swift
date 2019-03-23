@@ -69,7 +69,6 @@ class GreaterThanOrEqualTests: XCTestCase {
                 """
           XCTAssertEqual(true, try applyRule(rule, to: nil))
 
-
         rule =
                 """
                 { ">=" : ["b", 1111] }
