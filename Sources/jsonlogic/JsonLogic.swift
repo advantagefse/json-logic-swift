@@ -9,52 +9,99 @@
 import Foundation
 import JSON
 
-enum JSONLogicError: Error, Equatable {
-    static func ==(lhs: JSONLogicError, rhs: JSONLogicError) -> Bool {
+///  Errors that can be thrown from JsonLogic methods
+public enum JSONLogicError: Error, Equatable {
+    public static func == (lhs: JSONLogicError, rhs: JSONLogicError) -> Bool {
         switch lhs {
-        case canNotParseJSONData:
-            return rhs == canNotParseJSONData
+        case let canNotParseJSONData(ltype):
+            if case let canNotParseJSONData(rtype) = rhs {
+                return ltype == rtype
+            }
+            return false
         case let canNotConvertResultToType(ltype):
             if case let canNotConvertResultToType(rtype) = rhs {
                 return ltype == rtype
             }
             return false
-        case .canNotParseJSONRule:
-            return lhs == canNotParseJSONRule
+        case let .canNotParseJSONRule(ltype):
+            if case let canNotParseJSONRule(rtype) = rhs {
+                return ltype == rtype
+            }
+            return false
         }
     }
 
-    case canNotParseJSONData
-    case canNotParseJSONRule
+    /// Invalid json data was passed
+    case canNotParseJSONData(String)
+
+    /// Invalid json rule was passed
+    case canNotParseJSONRule(String)
+
+    /// Could not convert the result from applying the rule to the expected type
     case canNotConvertResultToType(Any.Type)
 }
 
+/**
+    A shortcut method to parse and apply a json logic rule.
+
+    If you need to apply the same rule to multiple json data, it is more efficient to
+    instantiate a `JsonLogic` class that will cache and reuse the parsed rule.
+*/
 public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> T {
-    return try JsonLogic().applyRule(jsonRule, to: jsonDataOrNil)
+    return try JsonLogic(jsonRule).applyRule(to: jsonDataOrNil)
 }
 
+/**
+    It parses json rule strings and executes the rules on provided data.
+*/
 public final class JsonLogic {
-    var jsonData: JSON?
+    private let parsedRule: Expression
 
-    public init() {}
-//    public init?(_ jsonRule: String) {
-//        if let jsonDataOrNil = jsonDataOrNil {
-//            jsonData = JSON(string: jsonDataOrNil)
-//        }
-//
-//        let rule = JSON(string: jsonRule)!
-//    }
+    /**
+    It parses the string containing a json logic and caches the result for reuse.
 
-    public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> T {
+    All calls to `applyRule()` will use the same parsed rule.
+
+    - parameters:
+        - jsonRule: A valid json rule string
+
+    - throws:
+      - `JSONLogicError.canNotParseJSONRule`
+     If The jsonRule could not be parsed, possible the syntax is invalid
+      - `ParseError.UnimplementedExpressionFor(_ operator: String)` :
+     If you pass an json logic operation that is not currently implemented
+      - `ParseError.GenericError(String)` :
+     An error occurred during parsing of the rule
+    */
+    public init(_ jsonRule: String) throws {
+        guard let rule = JSON(string: jsonRule) else {
+            throw JSONLogicError.canNotParseJSONRule("Not valid JSON object")
+        }
+        parsedRule = try Parser(json: rule ).parse()
+    }
+
+    /**
+    It applies the rule, you can optionally pass data to be used for the rule.
+
+    - parameter jsonDataOrNil: Data for the rule to operate on
+
+    - throws:
+      - `JSONLogicError.canNotConvertResultToType(Any.Type)` :
+              When the result from the calculation can not be converted to the return type
+
+            //This throws JSONLogicError.canNotConvertResultToType(Double)
+            let r: Double = JsonLogic("{ "===" : [1, 1] }").applyRule()
+      - `JSONLogicError.canNotParseJSONData(String)` :
+     If `jsonDataOrNil` is not valid json
+    */
+    public func applyRule<T>(to jsonDataOrNil: String? = nil) throws -> T {
         var jsonData: JSON?
 
         if let jsonDataOrNil = jsonDataOrNil {
             jsonData = JSON(string: jsonDataOrNil)
         }
 
-        let rule = JSON(string: jsonRule)!
-
-        let result = try Parser(json: rule ).parse().evalWithData(jsonData)
+        let result = try parsedRule.evalWithData(jsonData)
 
         let convertedToSwiftStandardType = try result.convertToSwiftTypes()
 
@@ -67,7 +114,7 @@ public final class JsonLogic {
             return convertedResult
         default:
             guard let convertedResult = convertedToSwiftStandardType as? T else {
-                print(" canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
+//                print("canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
                 throw JSONLogicError.canNotConvertResultToType(T.self)
             }
             return convertedResult
@@ -79,7 +126,7 @@ extension JSON {
     func convertToSwiftTypes() throws -> Any? {
         switch self {
         case .Error:
-            throw JSONLogicError.canNotParseJSONData
+            throw JSONLogicError.canNotParseJSONData("\(self)")
         case .Null:
             return Optional<Any>.none
         case .Bool:

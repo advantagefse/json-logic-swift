@@ -10,8 +10,6 @@ import XCTest
 
 class NoneTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
-
     func testNone() {
         var rule =
                 """
@@ -21,19 +19,19 @@ class NoneTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(false, try applyRule(rule, to: data))
 
         rule =
                 """
                 {"none":[{"var":"integers"}, {"==":[{"var":""}, 1]}]}
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(false, try applyRule(rule, to: data))
 
         rule =
                 """
                 {"none":[{"var":"integers"}, {"<":[{"var":""}, 1]}]}
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(true, try applyRule(rule, to: data))
     }
 
     func testNone_WithEmptyDataArray() {
@@ -45,7 +43,7 @@ class NoneTests: XCTestCase {
         """
                 {"integers":[]}
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(true, try applyRule(rule, to: data))
 
         rule =
         """
@@ -55,7 +53,7 @@ class NoneTests: XCTestCase {
         """
         {"items":[]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(true, try applyRule(rule, to: data))
 
         rule =
         """
@@ -65,7 +63,7 @@ class NoneTests: XCTestCase {
         """
         {"items":[]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(true, try applyRule(rule, to: data))
     }
 
     func testNone_WithNestedDataItems() {
@@ -77,7 +75,7 @@ class NoneTests: XCTestCase {
         """
                 {"items":[{"qty":1,"sku":"apple"},{"qty":2,"sku":"banana"}]}
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(false, try applyRule(rule, to: data))
 
         rule =
         """
@@ -87,7 +85,7 @@ class NoneTests: XCTestCase {
         """
         {"items":[{"qty":1,"sku":"apple"},{"qty":2,"sku":"banana"}]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(false, try applyRule(rule, to: data))
 
         rule =
         """
@@ -97,12 +95,6 @@ class NoneTests: XCTestCase {
         """
         {"items":[{"qty":1,"sku":"apple"},{"qty":2,"sku":"banana"}]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(true, try applyRule(rule, to: data))
     }
-
-    static var allTests = [
-        ("testNone", testNone),
-        ("testNone_WithEmptyDataArray", testNone_WithEmptyDataArray),
-        ("testNone_WithNestedDataItems", testNone_WithNestedDataItems),
-    ]
 }

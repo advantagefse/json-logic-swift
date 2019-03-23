@@ -1,11 +1,8 @@
 import XCTest
 
-import jsonlogic_swiftTests
+import jsonlogicTests
 
 var tests = [XCTestCaseEntry]()
+tests += jsonlogicTests.__allTests()
 
- // Add all the tests
-tests += jsonlogic_swiftTests.allTests()
-
- // Run the tests
 XCTMain(tests)

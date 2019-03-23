@@ -3,10 +3,8 @@ import XCTest
 
 @testable import jsonlogic
 
-//swiftlint : disable force_try
+//xswiftlint:disable force_try
 final class JsonLogicTests: XCTestCase {
-
-    let jsonLogic = JsonLogic()
 
     func testEqualsWithTwoSameConstants() {
         let rule =
@@ -14,12 +12,7 @@ final class JsonLogicTests: XCTestCase {
             { "===" : [1, 1] }
         """
 
-        guard let result: Bool = try? jsonLogic.applyRule(rule, to: nil) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertTrue(result)
+        XCTAssertTrue(try applyRule(rule, to: nil))
     }
 
     func testEqualsWithDifferentSameConstants() {
@@ -27,14 +20,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "===" : [1, 2] }
         """
-        let expectedResult = false
 
-        guard let result: Bool = try? jsonLogic.applyRule(rule, to: nil) else {
-                XCTFail("The data should be parsed correctly")
-                return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertFalse(try applyRule(rule, to: nil))
     }
 
     func testSetOneStringVariableFromData() {
@@ -46,14 +33,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : "1" }
         """
-        let expectedResult = "1"
 
-        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
-                XCTFail("The data should be parsed correctly")
-                return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual("1", try applyRule(rule, to: data))
     }
 
     func testSetOneIntegerVariableFromData() {
@@ -65,14 +46,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : 1 }
         """
-        let expectedResult = 1
 
-        guard let result: Int = try? jsonLogic.applyRule(rule, to: data) else {
-                XCTFail("The data should be parsed correctly")
-                return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual(1, try applyRule(rule, to: data))
     }
 
     func testSetOneBoolVariableFromData() {
@@ -84,14 +59,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : true }
         """
-        let expectedResult = true
 
-        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertTrue(try applyRule(rule, to: data))
     }
 
     func testSetTwoStringVariablesFromData() {
@@ -103,14 +72,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : true }
         """
-        let expectedResult = true
 
-        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertTrue(try applyRule(rule, to: data))
     }
 
     func testSetOneStringNestedVariableFromData() {
@@ -122,14 +85,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "person" : { "name" : "Jon" } }
         """
-        let expectedResult = "Jon"
 
-        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
-                XCTFail("The data should be parsed correctly")
-                return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual("Jon", try applyRule(rule, to: data))
     }
 
     func testSetOneStringArrayVariableFromData() {
@@ -141,14 +98,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : "1" }
         """
-        let expectedResult = "1"
 
-        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual("1", try applyRule(rule, to: data))
     }
 
     func testAddTwoIntsFromVariables() {
@@ -160,14 +111,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : "1" }
         """
-        let expectedResult = true
 
-        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertTrue(try applyRule(rule, to: data))
     }
 
     func testNestedVar() {
@@ -179,14 +124,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : "b", "b" : "1" }
         """
-        let expectedResult = "1"
 
-        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual("1", try applyRule(rule, to: data))
     }
 
     func testNestedVarWithStrictEquals() {
@@ -198,14 +137,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : "b", "b" : "1", "oneNest" : {"one" : "1"} }
         """
-        let expectedResult = true
 
-        guard let result: Bool = try? jsonLogic.applyRule(rule, to: data) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertTrue(try applyRule(rule, to: data))
     }
 
     func testNestedStrictEqualsWithVar() {
@@ -217,14 +150,8 @@ final class JsonLogicTests: XCTestCase {
         """
             { "a" : "b", "b" : "oneNest.one", "oneNest" : {"one" : "10"} }
         """
-        let expectedResult = "10"
 
-        guard let result: String = try? jsonLogic.applyRule(rule, to: data) else {
-            XCTFail("The data should be parsed correctly")
-            return
-        }
-
-        XCTAssertEqual(expectedResult, result)
+        XCTAssertEqual("10", try applyRule(rule, to: data))
     }
 
     func testNotSupportedResultType() {
@@ -235,22 +162,9 @@ final class JsonLogicTests: XCTestCase {
 
         class SomeType {}
 
-        XCTAssertThrowsError(try { try jsonLogic.applyRule(rule) as SomeType }(), "") {
+        XCTAssertThrowsError(try { try applyRule(rule) as SomeType }(), "") {
             //swiftlint:disable:next force_cast
             XCTAssertEqual($0 as! JSONLogicError, .canNotConvertResultToType(SomeType.self))
         }
     }
-
-    static var allTests = [
-        ("testEqualsWithTwoSameConstants", testEqualsWithTwoSameConstants),
-        ("testEqualsWithDifferentSameConstants", testEqualsWithDifferentSameConstants),
-        ("testSetOneIntegerVariableFromData", testSetOneIntegerVariableFromData),
-        ("testSetOneStringVariableFromData", testSetOneStringVariableFromData),
-        ("testSetOneStringNestedVariableFromData", testSetOneStringNestedVariableFromData),
-        ("testAddTwoIntsFromVariables", testAddTwoIntsFromVariables),
-        ("testNestedVar", testNestedVar),
-        ("testNestedVarWithStrictEquals", testNestedVarWithStrictEquals),
-        ("testNestedStrictEqualsWithVar", testNestedStrictEqualsWithVar),
-        ("testNotSupportedResultType", testNotSupportedResultType)
-    ]
 }

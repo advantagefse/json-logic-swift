@@ -11,56 +11,49 @@ import XCTest
 
 class OrTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
-
     func testOr_twoBooleans() {
         var rule =
                 """
                 {"or": [true, true]}
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
                 """
                 { "or" : [true, false] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
                 """
                 { "or" : [false, false] }
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
 
         rule =
                 """
                 { "or" : [true] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
                 """
                 { "or" : [false] }
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
 
     func testOr_mixedArguments() {
-        XCTAssertEqual(1, try jsonLogic.applyRule("""
+        XCTAssertEqual(1, try applyRule("""
                 { "or": [1, 3] }
                 """, to: nil))
 
-        XCTAssertEqual("a", try jsonLogic.applyRule("""
+        XCTAssertEqual("a", try applyRule("""
                 { "or": ["a"] }
                 """, to: nil))
 
-        XCTAssertEqual(true, try jsonLogic.applyRule("""
+        XCTAssertEqual(true, try applyRule("""
                 { "or": [true,"",3] }
                 """, to: nil))
     }
-
-    static var allTests = [
-        ("testOr_twoBooleans", testOr_twoBooleans),
-        ("testOr_mixedArguments", testOr_mixedArguments)
-    ]
 }

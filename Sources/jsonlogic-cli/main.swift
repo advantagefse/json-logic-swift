@@ -9,7 +9,6 @@
 import jsonlogic
 
 //Example parsing
-let jsonLogic = JsonLogic()
 
 let rule =
 """
@@ -20,6 +19,6 @@ let data =
 { "name" : "Jon" }
 """
 
-let result: String? = try? jsonLogic.applyRule(rule, to: data)
+let result: String? = try? applyRule(rule, to: data)
 
 print("result = \(String(describing: result))")

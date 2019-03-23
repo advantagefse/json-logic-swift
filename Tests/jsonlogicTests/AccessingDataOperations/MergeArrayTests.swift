@@ -10,7 +10,6 @@ import XCTest
 
 class MergeTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
     let emptyIntArray = [Int]()
 
     func testMerge() {
@@ -18,36 +17,36 @@ class MergeTests: XCTestCase {
                 """
                 {"merge":[]}
                 """
-        XCTAssertEqual(emptyIntArray, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(emptyIntArray, try applyRule(rule, to: nil))
         rule =
                 """
                 {"merge":[[1]]}
                 """
-        XCTAssertEqual([1], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1], try applyRule(rule, to: nil))
 
         rule =
                 """
                 {"merge":[[1],[]]}
                 """
-        XCTAssertEqual([1], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1], try applyRule(rule, to: nil))
 
         rule =
                 """
                 {"merge":[[1],[2]]}
                 """
-        XCTAssertEqual([1, 2], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1, 2], try applyRule(rule, to: nil))
 
         rule =
                 """
                 {"merge":[[1], [2], [3]]}
                 """
-        XCTAssertEqual([1, 2, 3], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1, 2, 3], try applyRule(rule, to: nil))
 
         rule =
                 """
                 {"merge":[[1, 2], [3]]}
                 """
-        XCTAssertEqual([1, 2, 3], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1, 2, 3], try applyRule(rule, to: nil))
     }
 
     func testMerge_withNonArrayArguments() {
@@ -55,23 +54,18 @@ class MergeTests: XCTestCase {
                 """
                 {"merge":1}
                 """
-        XCTAssertEqual([1], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1], try applyRule(rule, to: nil))
 
         rule =
                 """
                 {"merge":[1,2]}
                 """
-        XCTAssertEqual([1, 2], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1, 2], try applyRule(rule, to: nil))
 
         rule =
                 """
                 {"merge":[1,[2]]}
                 """
-        XCTAssertEqual([1, 2], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual([1, 2], try applyRule(rule, to: nil))
     }
-
-    static var allTests = [
-        ("testMerge", testMerge),
-        ("testMerge_withNonArrayArguments", testMerge_withNonArrayArguments)
-    ]
 }

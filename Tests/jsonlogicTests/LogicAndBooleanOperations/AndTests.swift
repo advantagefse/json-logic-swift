@@ -11,41 +11,34 @@ import XCTest
 
 class AndTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
-
     func testAnd_twoBooleans() {
-        XCTAssertEqual(true, try jsonLogic.applyRule("""
+        XCTAssertEqual(true, try applyRule("""
                                                   {"and": [true, true]}
                                                   """, to: nil))
 
-        XCTAssertEqual(false, try jsonLogic.applyRule("""
+        XCTAssertEqual(false, try applyRule("""
                                                     { "and" : [true, false] }
                                                     """, to: nil))
 
-        XCTAssertEqual(true, try jsonLogic.applyRule("""
+        XCTAssertEqual(true, try applyRule("""
                                                    { "and" : [true] }
                                                    """, to: nil))
-        XCTAssertEqual(false, try jsonLogic.applyRule("""
+        XCTAssertEqual(false, try applyRule("""
                                                       { "and" : [false] }
                                                      """, to: nil))
     }
 
     func testAnd_mixedArguments() {
-        XCTAssertEqual(3, try jsonLogic.applyRule("""
+        XCTAssertEqual(3, try applyRule("""
                 { "and": [1, 3] }
                 """, to: nil))
 
-        XCTAssertEqual("a", try jsonLogic.applyRule("""
+        XCTAssertEqual("a", try applyRule("""
                 { "and": ["a"] }
                 """, to: nil))
 
-        XCTAssertEqual("", try jsonLogic.applyRule("""
+        XCTAssertEqual("", try applyRule("""
                 { "and": [true,"",3] }
                 """, to: nil))
     }
-
-    static var allTests = [
-        ("testAnd_twoBooleans", testAnd_twoBooleans),
-        ("testAnd_mixedArguments", testAnd_mixedArguments)
-    ]
 }

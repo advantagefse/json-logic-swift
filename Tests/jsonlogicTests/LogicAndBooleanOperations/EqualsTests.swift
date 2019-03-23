@@ -11,20 +11,18 @@ import XCTest
 
 class EqualsTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
-
     func testEquals() {
         var rule =
         """
         {"==":[1,1]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"==":[1,2]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
 
     func testEquals_WithTypeCoercion() {
@@ -32,38 +30,38 @@ class EqualsTests: XCTestCase {
         """
         {"==":[1,"1"]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"==":[1,"2"]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
 
         rule =
         """
         {"==":[1,"1.0"]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"==":[null,1]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
 
         rule =
         """
         {"==":[0,false]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"==":[[1],[1]]}
         """
         //http://jsonlogic.com/play.html returns false here
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
     }
 
     func testNotEquals() {
@@ -71,19 +69,19 @@ class EqualsTests: XCTestCase {
         """
         {"!=":[1,2]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"!=":[1,1]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
 
         rule =
         """
         {"!=":[1,"1"]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
 
     func testNotEquals_WithTypeCoersion() {
@@ -91,25 +89,18 @@ class EqualsTests: XCTestCase {
         """
         {"!=":[1,"1"]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
 
         rule =
         """
         {"!=":[1,"1.0"]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
 
         rule =
         """
         {"!=":[0,true]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
     }
-
-    static var allTests = [
-        ("testEquals", testEquals),
-        ("testEquals_WithTypeCoercion", testEquals_WithTypeCoercion),
-        ("testNotEquals", testNotEquals),
-        ("testNotEquals_WithTypeCoersion", testNotEquals_WithTypeCoersion)
-    ]
 }

@@ -11,7 +11,6 @@ import XCTest
 //swiftlint:disable function_body_length
 class MissingTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
     let emptyStringArray = [String]()
 
     func testVar_withEmptyVarName() {
@@ -23,7 +22,7 @@ class MissingTests: XCTestCase {
                 """
                 [1, 2, 3]
                 """
-        XCTAssertEqual([1, 2, 3], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual([1, 2, 3], try applyRule(rule, to: data))
     }
 
     func testMissing() {
@@ -35,7 +34,7 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple", "c":"carrot"}
         """
-        XCTAssertEqual(["b"], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(["b"], try applyRule(rule, to: data))
 
         rule =
         """
@@ -45,25 +44,25 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple", "b":"banana"}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
 
         rule =
         """
         {"missing":[]}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: nil))
 
         rule =
         """
         {"missing":["a"]}
         """
-        XCTAssertEqual(["a"], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(["a"], try applyRule(rule, to: nil))
 
         rule =
         """
         {"missing":"a"}
         """
-        XCTAssertEqual(["a"], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(["a"], try applyRule(rule, to: nil))
 
         rule =
         """
@@ -73,7 +72,7 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple"}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
 
         rule =
         """
@@ -83,7 +82,7 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple"}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
 
         rule =
         """
@@ -93,7 +92,7 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple"}
         """
-        XCTAssertEqual(["b"], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(["b"], try applyRule(rule, to: data))
 
         rule =
         """
@@ -103,7 +102,7 @@ class MissingTests: XCTestCase {
         """
         {"b":"banana"}
         """
-        XCTAssertEqual(["a"], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(["a"], try applyRule(rule, to: data))
 
         rule =
         """
@@ -113,7 +112,7 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple", "b":"banana"}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
 
         rule =
         """
@@ -123,13 +122,13 @@ class MissingTests: XCTestCase {
         """
         {}
         """
-        XCTAssertEqual(["a", "b"], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(["a", "b"], try applyRule(rule, to: data))
 
         rule =
         """
         {"missing":["a","b"]}
         """
-        XCTAssertEqual(["a", "b"], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(["a", "b"], try applyRule(rule, to: nil))
     }
 
     func testMissing_NestedKeys() {
@@ -141,13 +140,13 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple"}
         """
-        XCTAssertEqual(["a.b"], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(["a.b"], try applyRule(rule, to: data))
 
         rule =
         """
         {"missing":["a.b"]}
         """
-        XCTAssertEqual(["a.b"], try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(["a.b"], try applyRule(rule, to: nil))
 
         rule =
         """
@@ -157,7 +156,7 @@ class MissingTests: XCTestCase {
         """
         {"a":{"c":"apple cake"}}
         """
-        XCTAssertEqual(["a.b"], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(["a.b"], try applyRule(rule, to: data))
 
         rule =
         """
@@ -167,7 +166,7 @@ class MissingTests: XCTestCase {
         """
         {"a":{"b":"apple brownie"}}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
 
         rule =
         """
@@ -177,7 +176,7 @@ class MissingTests: XCTestCase {
         """
         {"a":{"b":"apple brownie"}}
         """
-        XCTAssertEqual(["a.c"], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(["a.c"], try applyRule(rule, to: data))
     }
 
     func testMissing_some() {
@@ -189,7 +188,7 @@ class MissingTests: XCTestCase {
         """
         {"a":"apple"}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
 
         rule =
         """
@@ -199,7 +198,7 @@ class MissingTests: XCTestCase {
         """
         {"b":"banana"}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
 
         rule =
         """
@@ -209,12 +208,6 @@ class MissingTests: XCTestCase {
         """
         {"b":"banana"}
         """
-        XCTAssertEqual(emptyStringArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
     }
-
-    static var allTests = [
-        ("testMissing", testMissing),
-        ("testMissing_NestedKeys", testMissing_NestedKeys),
-        ("testMissing_some", testMissing_some)
-    ]
 }

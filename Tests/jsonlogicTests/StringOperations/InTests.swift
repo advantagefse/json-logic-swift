@@ -10,26 +10,24 @@ import XCTest
 
 class InTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
-
     func testIn_StringArgument() {
         var rule =
         """
         { "in" : ["Spring", "Springfield"] }
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"in":["Spring","Springfield"]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"in":["i","team"]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
 
     func testIn_ArrayArgument() {
@@ -37,17 +35,12 @@ class InTests: XCTestCase {
         """
         {"in":["Bart",["Bart","Homer","Lisa","Marge","Maggie"]]}
         """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
         """
         {"in":["Milhouse",["Bart","Homer","Lisa","Marge","Maggie"]]}
         """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
-
-    static var allTests = [
-        ("testIn_StringArgument", testIn_StringArgument),
-        ("testIn_ArrayArgument", testIn_ArrayArgument)
-    ]
 }

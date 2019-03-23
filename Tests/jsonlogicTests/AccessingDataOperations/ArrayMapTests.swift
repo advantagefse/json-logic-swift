@@ -11,7 +11,6 @@ import XCTest
 //swiftlint:disable function_body_length
 class ArrayMapTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
     let emptyIntArray = [Int]()
 
     func testMap() {
@@ -23,13 +22,13 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual([2, 4, 6], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual([2, 4, 6], try applyRule(rule, to: data))
 
         rule =
                 """
                 {"map":[{"var":"integers"}, {"*":[{"var":""},2]}]}
                 """
-        XCTAssertEqual(emptyIntArray, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(emptyIntArray, try applyRule(rule, to: nil))
 
         rule =
                 """
@@ -43,7 +42,7 @@ class ArrayMapTests: XCTestCase {
                 {"name":"cupcake","qty":3}
                 ]}
                 """
-        XCTAssertEqual([1, 2, 3], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual([1, 2, 3], try applyRule(rule, to: data))
     }
 
     func testReduce() {
@@ -59,7 +58,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3,4]}
                 """
-          XCTAssertEqual(10, try jsonLogic.applyRule(rule, to: data))
+          XCTAssertEqual(10, try applyRule(rule, to: data))
 
         rule =
                 """
@@ -69,7 +68,7 @@ class ArrayMapTests: XCTestCase {
                 0
                 ]}
                 """
-          XCTAssertEqual(0, try jsonLogic.applyRule(rule, to: nil))
+          XCTAssertEqual(0, try applyRule(rule, to: nil))
 
         rule =
                 """
@@ -83,7 +82,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3,4]}
                 """
-        XCTAssertEqual(24, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(24, try applyRule(rule, to: data))
 
         rule =
                 """
@@ -97,7 +96,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3,4]}
                 """
-        XCTAssertEqual(0, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(0, try applyRule(rule, to: data))
 
         rule =
                 """
@@ -115,7 +114,7 @@ class ArrayMapTests: XCTestCase {
                 {"name":"cupcake","qty":3}
                 ]}
                 """
-        XCTAssertEqual(6, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(6, try applyRule(rule, to: data))
     }
 
     func testFilter() {
@@ -127,7 +126,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual([1,2,3], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual([1,2,3], try applyRule(rule, to: data))
 
         rule =
                 """
@@ -137,7 +136,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual(emptyIntArray, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(emptyIntArray, try applyRule(rule, to: data))
 
         rule =
                 """
@@ -147,7 +146,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3]}
                 """
-        XCTAssertEqual([2,3], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual([2,3], try applyRule(rule, to: data))
 
         rule =
         """
@@ -157,12 +156,6 @@ class ArrayMapTests: XCTestCase {
         """
         {"integers":[1,2,3]}
         """
-        XCTAssertEqual([1,3], try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual([1,3], try applyRule(rule, to: data))
     }
-
-    static var allTests = [
-        ("testMap", testMap),
-        ("testReduce", testReduce),
-        ("testFilter", testFilter)
-    ]
 }

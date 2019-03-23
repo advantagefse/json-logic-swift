@@ -11,50 +11,48 @@ import XCTest
 //swiftlint:disable function_body_length
 class CatTests: XCTestCase {
 
-    let jsonLogic = JsonLogic()
-
     func testCat() {
         var rule =
         """
         {"cat":"ice"}
         """
-        XCTAssertEqual("ice", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("ice", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":["ice"]}
         """
-        XCTAssertEqual("ice", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("ice", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":["ice","cream"]}
         """
-        XCTAssertEqual("icecream", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("icecream", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":[1,2]}
         """
-        XCTAssertEqual("12", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("12", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":[1.1,2.1]}
         """
-        XCTAssertEqual("1.12.1", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("1.12.1", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":["Robocop",2]}
         """
-        XCTAssertEqual("Robocop2", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("Robocop2", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":["we all scream for ","ice","cream"]}
         """
-        XCTAssertEqual("we all scream for icecream", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("we all scream for icecream", try applyRule(rule, to: nil))
     }
 
     func testCat_WithNullOrEmpty() {
@@ -62,19 +60,19 @@ class CatTests: XCTestCase {
         """
         {"cat":[1,null]}
         """
-        XCTAssertEqual("1", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("1", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":[1,[]]}
         """
-        XCTAssertEqual("1", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("1", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":[1,""]}
         """
-        XCTAssertEqual("1", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("1", try applyRule(rule, to: nil))
     }
 
     func testCat_WithBoolean() {
@@ -82,13 +80,13 @@ class CatTests: XCTestCase {
         """
         {"cat":["jsonlogic", true]}
         """
-        XCTAssertEqual("jsonlogictrue", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("jsonlogictrue", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":[false, true]}
         """
-        XCTAssertEqual("falsetrue", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("falsetrue", try applyRule(rule, to: nil))
     }
 
     func testCat_WithArrays() {
@@ -96,22 +94,18 @@ class CatTests: XCTestCase {
         """
         {"cat":[1,[2,3]]}
         """
-        XCTAssertEqual("12,3", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("12,3", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":[[1]]}
         """
-        XCTAssertEqual("1", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("1", try applyRule(rule, to: nil))
 
         rule =
         """
         {"cat":[1,[false,true]]}
         """
-        XCTAssertEqual("1false,true", try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual("1false,true", try applyRule(rule, to: nil))
     }
-
-    static var allTests = [
-        ("testCat", testCat)
-    ]
 }
