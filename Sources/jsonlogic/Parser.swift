@@ -3,6 +3,7 @@
 //  jsonlogic
 //
 //  Created by Christos Koninis on 16/06/2018.
+//  Licensed under LGPL
 //
 
 import Foundation
@@ -47,10 +48,7 @@ struct StrictEquals: Expression {
     let rhs: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        let lhsBool = try lhs.evalWithData(data)
-        let rhsBool = try rhs.evalWithData(data)
-
-        return JSON.Bool(lhsBool == rhsBool)
+        return JSON.Bool((try lhs.evalWithData(data)) === (try rhs.evalWithData(data)))
     }
 }
 
@@ -59,12 +57,7 @@ struct Equals: Expression {
     let rhs: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        switch (try lhs.evalWithData(data).toNumber(), try rhs.evalWithData(data).toNumber()) {
-        case let(JSON.Number(lhsNumber), JSON.Number(rhsBool)):
-            return JSON.Bool(lhsNumber == rhsBool)
-        default:
-            return JSON.Null
-        }
+        return JSON.Bool((try lhs.evalWithData(data)) == (try rhs.evalWithData(data)))
     }
 }
 
@@ -72,41 +65,30 @@ struct Add: Expression {
     let arg: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        var sum = 0.0
+        let sum = JSON(0)
         let result = try arg.evalWithData(data)
         switch result {
         case let .Array(array):
-            sum = array.reduce(0.0) { $0 + ($1.toNumber().number!) }
-        case let .Number(number):
-            sum = number
-        case .String:
-            sum = result.toNumber().number!
+            return array.reduce(sum) { $0 + ($1.toNumber()) }
         default:
-            return JSON.Null
+            return result.toNumber()
         }
-        return JSON.Number( sum)
     }
 }
 
-struct Substruct: Expression {
+struct Subtract: Expression {
     let arg: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        var sum = 0.0
         let result = try arg.evalWithData(data)
         switch result {
         case let .Array(array) where array.count == 2:
-            sum = array[0].toNumber().number! - array[1].toNumber().number!
+            return array[0].toNumber() - array[1].toNumber()
         case let .Array(array) where array.count == 1:
-            sum = -array[0].toNumber().number!
-        case let .Number(number):
-            sum = -number
-        case .String:
-            sum = -result.toNumber().number!
+            return -array[0].toNumber()
         default:
-            return JSON.Null
+            return -result.toNumber()
         }
-        return JSON.Number( sum)
     }
 }
 
@@ -114,19 +96,14 @@ struct Multiply: Expression {
     let arg: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        var sum = 1.0
+        let total = JSON(1)
         let result = try arg.evalWithData(data)
         switch result {
         case let .Array(array):
-            sum = array.reduce(1.0) { $0 * ($1.toNumber().number!) }
-        case let .Number(number):
-            sum = number
-        case .String:
-            sum = result.toNumber().number!
+            return array.reduce(total) { $0 * ($1.toNumber()) }
         default:
-            return JSON.Null
+            return result.toNumber()
         }
-        return JSON.Number( sum)
     }
 }
 
@@ -134,15 +111,13 @@ struct Divide: Expression {
     let arg: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        var sum = 0.0
         let result = try arg.evalWithData(data)
         switch result {
         case let .Array(array) where array.count == 2:
-            sum = array[0].toNumber().number! / array[1].toNumber().number!
+            return array[0].toNumber() / array[1].toNumber()
         default:
             return JSON.Null
         }
-        return JSON.Number( sum)
     }
 }
 
@@ -153,11 +128,7 @@ struct Modulo: Expression {
         let result = try arg.evalWithData(data)
         switch result {
         case let .Array(array) where array.count == 2:
-            if let a = array[0].toNumber().number,
-                  let b = array[1].toNumber().number {
-                return JSON.Number(a.truncatingRemainder(dividingBy: b))
-            }
-            fallthrough
+            return array[0] % array[1]
         default:
             return JSON.Null
         }
@@ -172,25 +143,16 @@ struct Comparison: Expression {
         let result = try arg.evalWithData(data)
         switch result {
         case let .Array(array) where array.count == 2:
-            if case let JSON.String(first) = array[0],
-                case let JSON.String(second) = array[1] {
-                return JSON(booleanLiteral: operation(JSON.String(first), JSON.String(second)))
+            if case JSON.String(_) = array[0],
+                case JSON.String(_) = array[1] {
+                return JSON(booleanLiteral: operation(array[0], array[1]))
             }
-            if case let JSON.Number(first) = array[0].toNumber(),
-                case let JSON.Number(second) = array[1].toNumber() {
-                return JSON.Bool(operation(JSON.Number(first), JSON.Number(second)))
-            } else {
-                return JSON(false)
-            }
+            let lala = operation(array[0], array[1])
+            let papa = JSON.Bool(lala)
+            return papa
         case let .Array(array) where array.count == 3:
-            if let first = array[0].toNumber().number,
-                let second = array[1].toNumber().number,
-                let third = array[2].toNumber().number {
-                return JSON.Bool(operation(JSON.Number(first), JSON.Number(second))
-                        && operation(JSON.Number(second), JSON.Number(third)))
-            } else {
-                return JSON(false)
-            }
+            return JSON.Bool(operation(array[0], array[1])
+                                     && operation(array[1], array[2]))
         default:
             return JSON(false)
         }
@@ -244,98 +206,6 @@ struct DoubleNegation: Expression {
     }
 }
 
-extension JSON {
-    func thruthy() -> Bool {
-        switch self {
-        case let .Bool(bool):
-            return bool
-        case let .Number(number):
-            return number != 0
-        case let .String(string):
-            return !string.isEmpty
-        case let .Array(array):
-            return !array.isEmpty
-        case .Object:
-            return true
-        default:
-            return false
-        }
-    }
-}
-
-extension JSON {
-    func toInteger() -> Int? {
-        switch self {
-        case let .Number(number):
-            return Int(exactly: number)
-        default:
-            return nil
-        }
-    }
-}
-
-extension JSON {
-    func toNumber() -> JSON {
-        switch self {
-        case let .Bool(bool):
-            return bool ? 1 : 0
-        case let .Array(array):
-//            return JSON.Null
-            return array.isEmpty ? 0 : 1
-        case .Null:
-            return 0
-        case .Number:
-            return self
-        case let .String(string):
-            guard let number = Double(string) else {
-                return JSON.Null
-            }
-            return JSON(number)
-        default:
-            return JSON.Null
-        }
-    }
-}
-
-extension JSON {
-    func toJsonLogicString() -> String {
-        switch self {
-        case let .Bool(bool):
-            return "\(bool)"
-        case let .Number(number):
-            if let intNumber = Int(exactly: number) {
-                return "\(intNumber)"
-            }
-            return "\(number)"
-        case let .String(string):
-            return string
-        case let .Array(array):
-            return array.map({$0.toJsonLogicString()}).joined(separator: ",")
-        case .Object:
-            return ""
-        default:
-            return ""
-        }
-    }
-}
-
-extension JSON: Comparable {
-    public static func < (lhs: JSON, rhs: JSON) -> Bool {
-        switch (lhs, rhs) {
-        case let (.Number(lhsNumber), .Number(rhsNumber)):
-            return lhsNumber < rhsNumber
-        case let (.String(lhsString), .String(rhsString)):
-            return lhsString < rhsString
-        default:
-            return false
-        }
-    }
-
-    public static func > (lhs: JSON, rhs: JSON) -> Bool {
-        return !(lhs < rhs) && (lhs != rhs)
-    }
-}
-
 struct Not: Expression {
     let lhs: Expression
 
@@ -377,17 +247,17 @@ struct Substr: Expression {
 
     func evalWithData(_ data: JSON?) throws -> JSON {
         guard let str = try stringExpression.evalWithData(data).string,
-            let startDouble = try startExpression.evalWithData(data).number,
-            let start = Int(exactly: startDouble)
+              case let .Int(start) = try startExpression.evalWithData(data)
             else {
                 return JSON.Null
         }
-        let startIndex = str.index(start >= 0 ? str.startIndex : str.endIndex, offsetBy: start)
+        let startIndex = str.index(start >= 0 ? str.startIndex : str.endIndex,
+                                    offsetBy: Int(start))
 
         if lengthExpression != nil {
-            if let lengthDouble = try lengthExpression?.evalWithData(data).number,
-                let length = Int(exactly: lengthDouble) {
-                let endIndex = str.index(length >= 0 ? startIndex : str.endIndex, offsetBy: length)
+            if case let .Int(length)? = try lengthExpression?.evalWithData(data) {
+                let endIndex = str.index(length >= 0 ? startIndex : str.endIndex,
+                                         offsetBy: Int(length))
                 return JSON.String(String(str[startIndex..<endIndex]))
             } else {
                 return JSON.Null
@@ -420,17 +290,36 @@ struct In: Expression {
 struct Cat: Expression {
     let arg: Expression
 
-    func evalWithData(_ data: JSON?) throws -> JSON {
+    private func stringFromJSON(_ json: JSON) -> String {
+        switch json {
+        case let .Bool(bool):
+            return "\(bool)"
+        case let .Double(number):
+            return "\(number)"
+        case let .Int(number):
+            return "\(number)"
+        case let .String(string):
+            return string
+        case let .Array(array):
+            return array.map({stringFromJSON($0)}).joined(separator: ",")
+        case .Dictionary:
+            return ""
+        default:
+            return ""
+        }
+    }
+
+func evalWithData(_ data: JSON?) throws -> JSON {
         var result = ""
 
         let evaluation = try arg.evalWithData(data)
         switch evaluation {
         case let JSON.Array(array):
             result = array.reduce(into: "") { (result, element) in
-                result.append(element.toJsonLogicString())
+                result.append(stringFromJSON(element))
             }
         default:
-            result = evaluation.toJsonLogicString()
+            result = stringFromJSON(evaluation)
         }
 
         return JSON(result)
@@ -521,7 +410,7 @@ struct MissingSome: Expression {
 
         guard case let JSON.Array(array) = arg,
               array.count >= 2,
-              let minMissing = array[0].toInteger(),
+              case let .Int(minMissing) = array[0],
               case let JSON.Array(keys) = array[1] else {
             return JSON.Null
         }
@@ -556,15 +445,15 @@ struct ArrayMap: Expression {
     func evalWithData(_ data: JSON?) throws -> JSON {
         guard let array = self.expression as? ArrayOfExpressions,
             array.expressions.count >= 2,
-        let dataArray = try? array.expressions[0].evalWithData(data)
+        case let JSON.Array(dataArray) = try array.expressions[0].evalWithData(data)
                 else {
-                return JSON.Null
+                return JSON(string: "[]")!
         }
 
         let mapOperation = array.expressions[1]
 
-        let result = try dataArray.map({ try mapOperation.evalWithData($1) } )
-        return JSON.Array(result) 
+        let result = try dataArray.map { json -> JSON in try mapOperation.evalWithData(json) }
+        return JSON.Array(result)
     }
 }
 
@@ -574,15 +463,19 @@ struct ArrayReduce: Expression {
     func evalWithData(_ data: JSON?) throws -> JSON {
         guard let array = self.expression as? ArrayOfExpressions,
               array.expressions.count >= 3,
-              let dataArray = try? array.expressions[0].evalWithData(data),
               let intoValue: JSON = try? array.expressions[2].evalWithData(data)
                 else {
             return JSON.Null
         }
+        guard case let JSON.Array(dataArray) = try array.expressions[0].evalWithData(data) else {
+            return intoValue
+        }
+
         let reduceOperation = array.expressions[1]
 
-        return try dataArray.reduce(into: intoValue) {
-            $0 = try reduceOperation.evalWithData(JSON(["accumulator":$0,  "current":$1.value]))
+        return try dataArray.reduce(into: intoValue) { (result: inout JSON, value: JSON) in
+            let reduceContext = JSON(["accumulator": result, "current": value])
+            result = try reduceOperation.evalWithData(reduceContext)
         }
     }
 }
@@ -703,13 +596,14 @@ class Parser {
     func parse(json: JSON) throws -> Expression {
         switch json {
         case .Error:
-
             throw ParseError.GenericError("Error parsing json '\(json)'")
         case .Null:
             return SingleValueExpression(json: json)
         case .Bool:
             return SingleValueExpression(json: json)
-        case .Number:
+        case .Int:
+            return SingleValueExpression(json: json)
+        case .Double:
             return SingleValueExpression(json: json)
         case .String:
             return SingleValueExpression(json: json)
@@ -719,7 +613,7 @@ class Parser {
                 arrayOfExpressions.append(try parse(json: element))
             }
             return ArrayOfExpressions(expressions: arrayOfExpressions)
-        case let .Object(object):
+        case let .Dictionary(object):
             var arrayOfExpressions: [Expression] = []
             for (key, value) in object {
                 arrayOfExpressions.append(try parseExpressionWithKeyword(key, value: value))
@@ -751,7 +645,7 @@ class Parser {
         case "+":
             return Add(arg: try self.parse(json: value))
         case "-":
-            return Substruct(arg: try self.parse(json: value))
+            return Subtract(arg: try self.parse(json: value))
         case "*":
             return Multiply(arg: try self.parse(json: value))
         case "/":

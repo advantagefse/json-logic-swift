@@ -121,7 +121,7 @@ class LessThanTests: XCTestCase {
                 """
                 { "<" : [0, ["b"]] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
     }
 
     static var allTests = [

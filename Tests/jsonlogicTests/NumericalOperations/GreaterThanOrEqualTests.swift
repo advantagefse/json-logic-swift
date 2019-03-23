@@ -63,19 +63,20 @@ class GreaterThanOrEqualTests: XCTestCase {
                 """
                 { ">=" : ["2", 1111] }
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+          XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
 
         rule =
                 """
                 { ">=" : ["2222", 1111] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+          XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+
 
         rule =
                 """
                 { ">=" : ["b", 1111] }
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
+          XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
 
         rule =
                 """
@@ -105,25 +106,25 @@ class GreaterThanOrEqualTests: XCTestCase {
                 """
                     { "a" : "b", "b" : "1", "oneNest" : {"one" : true} }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+          XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
 
         rule =
                 """
                 { ">=" : [1, {"var" : ["oneNest.one"]} ] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+          XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
 
         rule =
                 """
                 { ">=" : [1, {"var" : ["a"] }] }
                 """
-        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
+          XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
 
         rule =
                 """
                 { ">=" : [1, ["nonExistent"]] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
     }
 
     static var allTests = [

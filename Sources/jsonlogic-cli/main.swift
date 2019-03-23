@@ -1,3 +1,11 @@
+//
+//  JSON.swift
+//  JSON
+//
+//  Created by Christos Koninis on 09/03/2019.
+//  Licensed under LGPL
+//
+
 import jsonlogic
 
 //Example parsing

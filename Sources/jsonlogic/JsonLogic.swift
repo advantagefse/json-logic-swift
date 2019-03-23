@@ -3,6 +3,7 @@
 //  jsonlogic
 //
 //  Created by Christos Koninis on 06/06/2018.
+//  Licensed under LGPL
 //
 
 import Foundation
@@ -28,10 +29,21 @@ enum JSONLogicError: Error, Equatable {
     case canNotConvertResultToType(Any.Type)
 }
 
-public class JsonLogic {
+public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> T {
+    return try JsonLogic().applyRule(jsonRule, to: jsonDataOrNil)
+}
 
-    public init() {
-    }
+public final class JsonLogic {
+    var jsonData: JSON?
+
+    public init() {}
+//    public init?(_ jsonRule: String) {
+//        if let jsonDataOrNil = jsonDataOrNil {
+//            jsonData = JSON(string: jsonDataOrNil)
+//        }
+//
+//        let rule = JSON(string: jsonRule)!
+//    }
 
     public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> T {
         var jsonData: JSON?
@@ -40,19 +52,30 @@ public class JsonLogic {
             jsonData = JSON(string: jsonDataOrNil)
         }
 
-        let result = try Parser(json: JSON(string: jsonRule)).parse().evalWithData(jsonData)
+        let rule = JSON(string: jsonRule)!
 
-        let convertedToSwiftStandarType = try result.convertToSwiftTypes()
+        let result = try Parser(json: rule ).parse().evalWithData(jsonData)
 
-        guard let convertedResult = convertedToSwiftStandarType as? T else {
-            throw JSONLogicError.canNotConvertResultToType(T.self)
+        let convertedToSwiftStandardType = try result.convertToSwiftTypes()
+
+        switch convertedToSwiftStandardType {
+        case let .some(value):
+            guard let convertedResult = value as? T else {
+                print(" canNotConvertResultToType \(T.self) from \(type(of: value))")
+                throw JSONLogicError.canNotConvertResultToType(T.self)
+            }
+            return convertedResult
+        default:
+            guard let convertedResult = convertedToSwiftStandardType as? T else {
+                print(" canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
+                throw JSONLogicError.canNotConvertResultToType(T.self)
+            }
+            return convertedResult
         }
-        return convertedResult
     }
 }
 
 extension JSON {
-
     func convertToSwiftTypes() throws -> Any? {
         switch self {
         case .Error:
@@ -60,26 +83,17 @@ extension JSON {
         case .Null:
             return Optional<Any>.none
         case .Bool:
-            return self.bool!
-        case .Number:
-            let n = self.number!
-            if let int = Int(exactly: n) {
-                return int
-            }
-            return n
+            return self.bool
+        case .Int:
+            return Swift.Int(self.int!)
+        case .Double:
+            return self.double
         case .String:
-            return self.string!
-//        case let JSON.Array(array) where array.isEmpty:
-//            return Swift.Array<Any>()
+            return self.string
         case let JSON.Array(array):
             return try array.map { try $0.convertToSwiftTypes() }
-//            var swiftArray: Swift.Array<Any> = []
-//            for item in array {
-//                swiftArray.append(try item.convertToSwiftTypes()!)
-//            }
-//            return swiftArray
-        case .Object:
-            let o = self.object!
+        case .Dictionary:
+            let o = self.dictionary!
             return try o.mapValues {
                 try $0.convertToSwiftTypes()
             }

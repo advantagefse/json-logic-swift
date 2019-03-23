@@ -59,7 +59,7 @@ class ArrayMapTests: XCTestCase {
                 """
                 {"integers":[1,2,3,4]}
                 """
-        XCTAssertEqual(10, try jsonLogic.applyRule(rule, to: data))
+          XCTAssertEqual(10, try jsonLogic.applyRule(rule, to: data))
 
         rule =
                 """
@@ -69,7 +69,7 @@ class ArrayMapTests: XCTestCase {
                 0
                 ]}
                 """
-        XCTAssertEqual(0, try jsonLogic.applyRule(rule, to: nil))
+          XCTAssertEqual(0, try jsonLogic.applyRule(rule, to: nil))
 
         rule =
                 """

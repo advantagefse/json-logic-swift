@@ -93,7 +93,7 @@ class GreaterThanTests: XCTestCase {
                 """
                 { ">" : [[[]], 0] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: nil))
+        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: nil))
     }
 
     func testGreaterThan_withVariables() {
@@ -124,7 +124,7 @@ class GreaterThanTests: XCTestCase {
                 """
                 { ">" : [2, ["b"]] }
                 """
-        XCTAssertEqual(true, try jsonLogic.applyRule(rule, to: data))
+        XCTAssertEqual(false, try jsonLogic.applyRule(rule, to: data))
     }
 
     static var allTests = [
