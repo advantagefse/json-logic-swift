@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="69774a67-ecac-4e04-aea4-6b8e4f607788" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/json-enum.podspec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jsonlogic.podspec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sources/jsonlogic-cli/main.swift" beforeDir="false" afterPath="$PROJECT_DIR$/Sources/jsonlogic-cli/main.swift" afterDir="false" />
+    </list>
+    <list id="7763a732-4c8b-4c7c-b869-5f20781b9777" name="if" comment="" />
+    <ignored path="$USER_HOME$/Library/Developer/Xcode/DerivedData/jsonlogic-swift-hcjzijfdfgkebefsojgwficvtvkh/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="macos_x86_64" />
+  <component name="FavoritesManager">
+    <favorites_list name="jsonlogic-swift" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sources/jsonlogic/Parser.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2505">
+              <caret line="168" selection-start-line="168" selection-end-line="168" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sources/jsonlogic-cli/main.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="43" lean-forward="true" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="297">
+                <caret line="171" column="127" lean-forward="true" selection-start-line="171" selection-start-column="127" selection-end-line="171" selection-end-column="127" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/LessThanTests.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sources/JSON/JSON.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2190">
+              <caret line="146" column="2" selection-start-line="146" selection-start-column="2" selection-end-line="146" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sources/jsonlogic/JsonLogic.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1725">
+              <caret line="116" column="3" selection-start-line="116" selection-start-column="3" selection-end-line="116" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/CatTests.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/AllTests.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1155">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/ArrayMapTests.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2355">
+              <caret line="158" column="27" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/GreaterThanOrEqualTests.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1050">
+              <caret line="71" selection-start-line="71" selection-end-line="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>diction</find>
+      <find>toNu</find>
+      <find>tonuer</find>
+      <find>==</find>
+      <find>errorDomain</find>
+      <find>toNumber</find>
+      <find>toJsonLogicString</find>
+      <find>stringFromJSON</find>
+      <find>ton</find>
+      <find>arra</find>
+      <find>swiftlint</find>
+      <find>swiftl</find>
+      <find>sum</find>
+      <find>subscri</find>
+      <find>offsetBy</find>
+      <find>start</find>
+      <find>canNotParseJSONData</find>
+      <find>canNotParseJSONRule</find>
+      <find>GenericError</find>
+      <find>parser</find>
+      <find>, try jsonLogic.applyRule(</find>
+      <find>CD25 705C 7CC2 F278 6C93 5210 A992 E855 574F 381B</find>
+      <find>try applyRule(rule</find>
+      <find>testEqualsWithTwoSameConstants</find>
+      <find>testEqualsWithDifferentSameConstants</find>
+      <find>testSetOneIntegerVariableFromData</find>
+      <find>testSetOneStringNestedVariableFromData</find>
+      <find>testSetOneStringVariableFromData</find>
+      <find>testSetOneBoolVariableFromData</find>
+      <find>{&quot;all&quot;:[ {&quot;var&quot;:&quot;items&quot;}, {&quot;&gt;&quot;:[{&quot;var&quot;:&quot;qty&quot;}, 1]}]}</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>JSON.Number(</replace>
+      <replace>JSON.bool(</replace>
+      <replace>JSON.Bool</replace>
+      <replace>JSON.Bool(</replace>
+      <replace />
+      <replace>testNot_</replace>
+      <replace>try</replace>
+      <replace>.Dictionary</replace>
+      <replace>X</replace>
+      <replace>, try applyRule(</replace>
+      <replace>try json(rule</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_COMMON_BRANCH" value="master" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/NumericalOperations/LessThanOrEqualTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/NumericalOperations/LessThanTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/StringOperations/SubstringTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/LogicAndBooleanOperations/OrTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/LogicAndBooleanOperations/NotStrictEqualsTests.swift" />
+        <option value="$PROJECT_DIR$/Sources/jsonlogic-swift/AnyComparable.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations/ArrayTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations/MissingTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/XCTestManifests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations/ArrayMapTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations/NoneTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations/AllTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations/SomeTests.swift" />
+        <option value="$PROJECT_DIR$/Sources/jsonlogic-swift/Parser.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/JsonLogicTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations/MergeArrayTests.swift" />
+        <option value="$PROJECT_DIR$/Sources/jsonlogic-swift/JsonLogic.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/StringOperations/LogTests.swift" />
+        <option value="$PROJECT_DIR$/Sources/jsonlogic/JSON2.swift" />
+        <option value="$PROJECT_DIR$/Package.swift" />
+        <option value="$PROJECT_DIR$/Sources/JSON/JSON.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/MergeArrayTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/MissingTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/NoneTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/SomeTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/ArithmeticTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/CompoundTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/AndTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/DoubleNegationTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/EqualsTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/NotStrictEqualsTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/OrTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/MinMaxTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/BetweenTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/GreaterThanTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/LessThanOrEqualTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/LessThanTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/CatTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/IfTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/InTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/SubstringTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/XCTestManifests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/AllTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/ArrayMapTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/GreaterThanOrEqualTests.swift" />
+        <option value="$PROJECT_DIR$/Sources/jsonlogic/JsonLogic.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/JsonLogicTests.swift" />
+        <option value="$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/LogTests.swift" />
+        <option value="$PROJECT_DIR$/Sources/jsonlogic/Parser.swift" />
+        <option value="$PROJECT_DIR$/Sources/jsonlogic-cli/main.swift" />
+        <option value="$PROJECT_DIR$/README.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1680" />
+    <option name="height" value="1027" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="full.screen.before.presentation.mode" value="true" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
+    <property name="tasks.open.task.update.state.enabled" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/StringOperations" />
+      <recent name="$PROJECT_DIR$/Tests/jsonlogic-swiftTests/AccessingDataOperations" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.jsonlogic-cli">
+    <configuration default="true" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" PASS_PARENT_ENVS_2="true" PROJECT_NAME="jsonlogic" TARGET_NAME="jsonlogicTests" CONFIG_NAME="Debug" IS_LOCATION_SIMULATION_ALLOWED="true" LOCATION_SCENARIO_ID="com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier" LOCATION_SCENARIO_TYPE="1" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.jsonlogic-cli" />
+      <item itemvalue="Application.jsonlogic-Package" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600" />
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600/Carthage/Checkouts/FileCheck" />
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/FileCheck.git-3707568005381339244" />
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/swift-json.git--5936073587385482202" />
+      <branch name="master" repository="$PROJECT_DIR$" />
+      <changelist id="69774a67-ecac-4e04-aea4-6b8e4f607788" name="Default" comment="" />
+      <created>1532962197121</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550503351333</updated>
+      <workItem from="1532962199720" duration="451000" />
+      <workItem from="1533051461912" duration="1109000" />
+      <workItem from="1533106705649" duration="37000" />
+      <workItem from="1533128302665" duration="59000" />
+      <workItem from="1533221914930" duration="190000" />
+      <workItem from="1533325487249" duration="613000" />
+      <workItem from="1534430445026" />
+      <workItem from="1534430840462" />
+      <workItem from="1534431486553" />
+      <workItem from="1534536310694" />
+      <workItem from="1534690523733" />
+      <workItem from="1536694265753" />
+      <workItem from="1536694328589" />
+      <workItem from="1539505720633" />
+      <workItem from="1539506213269" />
+      <workItem from="1539506605697" />
+      <workItem from="1540020155756" />
+      <workItem from="1540020333004" />
+      <workItem from="1540022173547" />
+      <workItem from="1550503351884" />
+      <workItem from="1550505431333" />
+      <workItem from="1550597643848" />
+      <workItem from="1550744545997" />
+      <workItem from="1550745326962" />
+      <workItem from="1550766564612" />
+      <workItem from="1550820723081" />
+      <workItem from="1550855505579" />
+      <workItem from="1550992583346" />
+      <workItem from="1550995644830" />
+      <workItem from="1551029028173" />
+      <workItem from="1551030467219" />
+      <workItem from="1551164813375" />
+      <workItem from="1551198927418" />
+      <workItem from="1551263451766" />
+      <workItem from="1551289316172" />
+      <workItem from="1551364928366" />
+      <workItem from="1551394545386" />
+      <workItem from="1551437476391" />
+      <workItem from="1551689279600" />
+      <workItem from="1551898756664" />
+      <workItem from="1552157600358" />
+      <workItem from="1552736330668" />
+      <workItem from="1552751987418" />
+      <workItem from="1552939371281" />
+      <workItem from="1553096366562" />
+      <workItem from="1553186863315" />
+      <workItem from="1553194621632" />
+      <workItem from="1553267984699" />
+      <workItem from="1553339313986" />
+      <workItem from="1553358927291" />
+      <workItem from="1553378609175" />
+      <workItem from="1553508489437" />
+    </task>
+    <task id="LOCAL-00001" summary="if">
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600" original="true" />
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600/Carthage/Checkouts/FileCheck" original="true" />
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/FileCheck.git-3707568005381339244" original="true" />
+      <branch name="master" repository="$PROJECT_DIR$/.build/checkouts/swift-json.git--5936073587385482202" original="true" />
+      <branch name="master" repository="$PROJECT_DIR$" original="true" />
+      <branch name="if" repository="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600" />
+      <branch name="if" repository="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600/Carthage/Checkouts/FileCheck" />
+      <branch name="if" repository="$PROJECT_DIR$/.build/checkouts/FileCheck.git-3707568005381339244" />
+      <branch name="if" repository="$PROJECT_DIR$/.build/checkouts/swift-json.git--5936073587385482202" />
+      <branch name="if" repository="$PROJECT_DIR$" />
+      <changelist id="7763a732-4c8b-4c7c-b869-5f20781b9777" name="if" comment="" />
+      <created>1540022188696</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1550503351288</updated>
+      <workItem from="1540022193619" />
+      <workItem from="1543605513318" />
+      <workItem from="1550498943270" />
+      <workItem from="1550502880699" />
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers>
+      <JIRA url="http://jira.afse.eu">
+        <option name="apiType" value="REST_2_0" />
+        <option name="jiraVersion" value="7.2.1" />
+        <username>c.koninis</username>
+      </JIRA>
+    </servers>
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_jsonlogicTests - 2019.03.22 at 19h 05m 03s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.22 at 19h 05m 30s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.22 at 19h 05m 39s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.22 at 19h 06m 56s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.22 at 19h 07m 02s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.22 at 19h 07m 50s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.23 at 15h 29m 40s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.23 at 18h 43m 27s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.23 at 22h 34m 59s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in_jsonlogicTests - 2019.03.23 at 23h 22m 59s.xml">
+      <configuration name="All in jsonlogicTests" configurationId="OCUnitRunConfiguration" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="enabled" value="true" />
+    <option name="totallyTimeSpent" value="2459000" />
+    <option name="autoMode" value="false" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1680" height="1027" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5925134" weight="0.1996337" />
+      <window_info id="Structure" order="1" sideWeight="0.40748662" side_tool="true" weight="0.17521368" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" sideWeight="0.2628651" side_tool="true" weight="0.14643237" />
+      <window_info id="Messages" order="4" sideWeight="0.4945055" weight="0.21489622" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3187166" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49893504" weight="0.25561497" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34611398" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" visible="true" weight="0.3272727" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3272727" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32834226" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50106496" side_tool="true" weight="0.2580311" />
+      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection Results" order="11" sideWeight="0.49893504" weight="0.32192513" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Time Tracking" order="4" weight="0.28221512" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49946523" weight="0.32905984" />
+      <window_info anchor="right" x="835" y="184" width="539" height="637" id="Documentation" order="6" sideWeight="0.5005348" side_tool="true" weight="0.32905984" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.73713493" visible="true" weight="0.17582418" />
+      <window_info id="Structure" order="1" sideWeight="0.5006605" side_tool="true" weight="0.20833333" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" sideWeight="0.2628651" side_tool="true" weight="0.14643237" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49893504" weight="0.24919786" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.34611398" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32834226" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32834226" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
+      <window_info active="true" anchor="bottom" id="Messages" order="9" sideWeight="0.49893504" visible="true" weight="0.20855615" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50106496" side_tool="true" weight="0.2580311" />
+      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Inspection Results" order="12" sideWeight="0.49893504" weight="0.32192513" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info anchor="right" id="Time Tracking" order="4" weight="0.28221512" />
+      <window_info anchor="right" id="Database" order="5" sideWeight="0.49946523" weight="0.32905984" />
+      <window_info anchor="right" x="0" y="0" width="370" height="827" id="Documentation" order="6" sideWeight="0.5005348" side_tool="true" weight="0.32905984" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.build/checkouts/FileCheck.git-3707568005381339244" />
+      <path value="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600" />
+      <path value="$PROJECT_DIR$/.build/checkouts/SwiftCheck.git--7376325060294941600/Carthage/Checkouts/FileCheck" />
+      <path value="$PROJECT_DIR$/.build/checkouts/swift-json.git--3721310189002311388" />
+      <path value="$PROJECT_DIR$/.build/checkouts/swift-json.git--5936073587385482202" />
+    </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Sources/jsonlogic-swift/JsonLogic.swift</url>
+          <line>44</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Tests/jsonlogicTests/ArithmeticTests.swift</url>
+          <line>17</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Tests/jsonlogicTests/ArithmeticTests.swift</url>
+          <line>23</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/ArrayMapTests.swift</url>
+          <line>84</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="CidrExceptionBreakpoint">
+          <properties />
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Sources/jsonlogic-swift/JsonLogic.swift" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Optional.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Bool.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Foundation.NSJSONSerialization/Foundation.NSJSONSerialization.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="73" column="20" selection-start-line="73" selection-start-column="20" selection-end-line="73" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Foundation.NSError/Foundation.NSError.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="68" column="316" selection-start-line="68" selection-start-column="291" selection-end-line="68" selection-end-column="316" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.3/DerivedData/jsonlogic-hcrtxmxntwfnvacrnjmjunrdgppq/Build/Products/Debug/JSON.framework/Headers/JSON-Swift.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-733" />
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Protocols.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="177" column="1" lean-forward="true" selection-start-line="177" selection-start-column="1" selection-end-line="177" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Foundation.NSScriptObjectSpecifiers/Foundation.NSScriptObjectSpecifiers.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="73" column="11" selection-start-line="73" selection-start-column="11" selection-end-line="73" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Pointer.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Foundation.NSValue/Foundation.NSValue.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="26" column="1" lean-forward="true" selection-start-line="26" selection-start-column="1" selection-end-line="26" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Collection.Array.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="214" column="14" selection-start-line="214" selection-start-column="14" selection-end-line="214" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Foundation/Foundation.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="8367" column="52" lean-forward="true" selection-start-line="8367" selection-start-column="52" selection-end-line="8367" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Foundation.NSNull/Foundation.NSNull.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Math.Integers.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="1837" column="23" selection-start-line="1837" selection-start-column="23" selection-end-line="1837" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Misc.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="1177" lean-forward="true" selection-start-line="1177" selection-end-line="1177" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/jsonlogic/JSON2.swift" />
+    <entry file="file://$PROJECT_DIR$/Package.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/String.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="22" column="18" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/Resources/module_cache.zip!/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/Swift/Collection.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="824" column="55" selection-start-line="824" selection-start-column="47" selection-end-line="824" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/MergeArrayTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/MissingTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/NoneTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/SomeTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/ArithmeticTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/CompoundTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/AndTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/DoubleNegationTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/EqualsTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/NotStrictEqualsTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/OrTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/MinMaxTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/BetweenTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/GreaterThanTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/LessThanOrEqualTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/AppCode2018.3/ModuleCache/10B61/4.2.1/x86_64/macosx10.14/XCTest/XCTest.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="518" selection-start-line="518" selection-end-line="518" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/InTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="44" column="5" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/SubstringTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="463">
+          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/LogicAndBooleanOperations/IfTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="158" column="25" selection-start-line="158" selection-start-column="25" selection-end-line="158" selection-end-column="25" />
+          <folding>
+            <element signature="e#94#107#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/JsonLogicTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2460">
+          <caret line="164" column="47" selection-start-line="164" selection-start-column="47" selection-end-line="164" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/LogTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/XCTestManifests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="176" column="24" lean-forward="true" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/jsonlogic/Parser.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2505">
+          <caret line="168" selection-start-line="168" selection-end-line="168" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/LessThanTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/JSON/JSON.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2190">
+          <caret line="146" column="2" selection-start-line="146" selection-start-column="2" selection-end-line="146" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/jsonlogic/JsonLogic.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1725">
+          <caret line="116" column="3" selection-start-line="116" selection-start-column="3" selection-end-line="116" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/StringOperations/CatTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/AllTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/AccessingDataOperations/ArrayMapTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2355">
+          <caret line="158" column="27" selection-start-line="158" selection-start-column="27" selection-end-line="158" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tests/jsonlogicTests/NumericalOperations/GreaterThanOrEqualTests.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1050">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sources/jsonlogic-cli/main.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="43" lean-forward="true" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="297">
+            <caret line="171" column="127" lean-forward="true" selection-start-line="171" selection-start-column="127" selection-end-line="171" selection-end-column="127" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

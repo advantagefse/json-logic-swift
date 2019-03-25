@@ -1,0 +1,22 @@
+PODS:
+  - json-enum (1.0.0)
+  - jsonlogic (1.0.0):
+    - json-enum (~> 1.0)
+
+DEPENDENCIES:
+  - json-enum (from `../`)
+  - jsonlogic (from `../`)
+
+EXTERNAL SOURCES:
+  json-enum:
+    :path: "../"
+  jsonlogic:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  json-enum: 9e77969b4bd6128d8dd7e5a78c7cd621eac25c8e
+  jsonlogic: 6d4f10618f490518acf4a1d5142cd97efacb80f2
+
+PODFILE CHECKSUM: 6ab1f77c01eab073b400e717f58b529f12e3c8d7
+
+COCOAPODS: 1.6.1

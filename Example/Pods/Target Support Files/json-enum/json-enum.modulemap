@@ -1,0 +1,6 @@
+framework module JSON {
+  umbrella header "json-enum-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,9 @@
+platform :ios, '8.0'
+
+target 'jsonlogicExample' do
+use_frameworks!
+
+pod 'jsonlogic', :path => '../'
+pod 'json-enum', :path => '../'
+
+end
