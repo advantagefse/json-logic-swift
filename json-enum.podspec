@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.homepage = "https://github.com/advantagefse/json-logic-swift"
   s.license = { :type => "LGPL", :file => "LICENSE" }
   s.author = { "Christos Koninis" => "c.koninis@afse.eu" }
-  s.source = { :git => "https://github.com/advantagefse/json-logic-swift.git", :tag => "json-enum-#{s.version}" }
+  s.source = { :git => "https://github.com/advantagefse/json-logic-swift.git", :tag => 'json-enum-1.0.0' }
   
   s.ios.deployment_target = '8.0'
   s.tvos.deployment_target = '10.0'
