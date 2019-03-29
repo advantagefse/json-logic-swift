@@ -1,0 +1,11 @@
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode10.1
+      sudo: required
+      env: CODECOV_ELIGIBLE=true
+before_install:
+  - git clone https://github.com/IBM-Swift/Package-Builder.git
+
+script:
+- ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
