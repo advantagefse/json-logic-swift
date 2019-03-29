@@ -1,41 +1,41 @@
 disabled_rules: # rule identifiers to exclude from running
-#  - colon
-#  - opening_brace
-#  - comma
-#  - trailing_comma
-#  - force_cast
-# - type_name
- - nesting
-#  - trailing_semicolon
-#  - function_body_length
-#  - nesting
-#  - conditional_binding_cascade
-#  - operator_whitespace
-#  - control_statement
-#  - legacy_constant
-#  - line_length
-#  - return_arrow_whitespace
-#  - trailing_whitespace
-#  - closing_brace
-#  - statement_position
-# - type_body_length
-#  - function_parameter_count
-#  - todo
-#  - legacy_constructor
-#  - valid_docs
-#  - missing_docs
-#  - file_length
-#  - leading_whitespace
-#  - trailing_newline
- - identifier_name
-#  - syntactic_sugar
-#  - vertical_parameter_alignment
-#  - void_return
-#  - vertical_whitespace
-#  - mark
-#  - notification_center_detachment
-#  - for_where
- - large_tuple
+  #  - colon
+  #  - opening_brace
+  #  - comma
+  #  - trailing_comma
+  #  - force_cast
+  # - type_name
+  - nesting
+  #  - trailing_semicolon
+  #  - function_body_length
+  #  - nesting
+  #  - conditional_binding_cascade
+  #  - operator_whitespace
+  #  - control_statement
+  #  - legacy_constant
+  #  - line_length
+  #  - return_arrow_whitespace
+  #  - trailing_whitespace
+  #  - closing_brace
+  #  - statement_position
+  # - type_body_length
+  #  - function_parameter_count
+  #  - todo
+  #  - legacy_constructor
+  #  - valid_docs
+  #  - missing_docs
+  #  - file_length
+  #  - leading_whitespace
+  #  - trailing_newline
+  - identifier_name
+  #  - syntactic_sugar
+  #  - vertical_parameter_alignment
+  #  - void_return
+  #  - vertical_whitespace
+  #  - mark
+  #  - notification_center_detachment
+  #  - for_where
+  - large_tuple
 #  - class_delegate_protocol
 #  - closure_parameter_position
 #  - shorthand_operator
@@ -68,15 +68,15 @@ opt_in_rules: # some rules are only opt-in
   - operator_usage_whitespace
   - pattern_matching_keywords
   - sorted_first_last
-#  - sorted_imports
+  #  - sorted_imports
   - switch_case_on_newline
-#  - vertical_parameter_alignment_on_call bug -> https://github.com/realm/SwiftLint/issues/2468
+  #  - vertical_parameter_alignment_on_call bug -> https://github.com/realm/SwiftLint/issues/2468
   - yoda_condition
   # Find all the available rules by running:
   # swiftlint rules
 included: # paths to include during linting. `--path` is ignored if present.
-   - Sources
-   - Tests
+  - Sources
+  - Tests
 #  - ProductProtype
 #  - PrototypeTests
 #  - ProductWidget
@@ -102,7 +102,7 @@ function_body_length:
   warning: 30
   error: 40
 type_body_length:
- warning: 250
+  warning: 250
 file_length:
   warning: 1000
 type_name:
@@ -113,10 +113,7 @@ identifier_name:
     warning: 3 # only error
   max_length: # only min_length
     warning: 64 # only error
-  excluded: # excluded via string array
-    - id
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji)
-
 custom_rules:
   late_force_unwrapping:
     included: ".*.swift"
@@ -124,12 +121,12 @@ custom_rules:
     name: "Late Force Unwrapping"
     message: "Don't use ? first to force unwrap later – directly unwrap within the parantheses."
     severity: warning
-#  multiple_closure_params:
-#    included: ".*.swift"
-#    regex: '\} *\) *\{'
-#    name: "Multiple Closure Params"
-#    message: "Don't use multiple in-line closures – save one or more of them to variables instead."
-#    severity: warning
+  #  multiple_closure_params:
+  #    included: ".*.swift"
+  #    regex: '\} *\) *\{'
+  #    name: "Multiple Closure Params"
+  #    message: "Don't use multiple in-line closures – save one or more of them to variables instead."
+  #    severity: warning
   single_line_return:
     included: ".*.swift"
     regex: '\.\S+ *\{(?: *return|[^\n\}]+ in return) [^\}]+\}'
