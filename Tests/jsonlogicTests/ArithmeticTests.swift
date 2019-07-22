@@ -193,23 +193,23 @@ class Arithmetic: XCTestCase {
     
     func testCos() {
         var rule =
-        """
-        { "cos": [\(Double.pi / 2)] }
-        """
+                """
+                { "cos": [\(Double.pi / 2)] }
+                """
         
         XCTAssertEqual(0, try applyRule(rule, to: nil), accuracy: 0.002)
         
         rule =
-        """
-        { "cos": [\(Double.pi / 3)] }
-        """
+                """
+                { "cos": [\(Double.pi / 3)] }
+                """
         
         XCTAssertEqual(0.5, try applyRule(rule, to: nil), accuracy: 0.002)
         
         rule =
-        """
-        { "cos": [\(2 * Double.pi)] }
-        """
+                """
+                { "cos": [\(2 * Double.pi)] }
+                """
         
         XCTAssertEqual(1, try applyRule(rule, to: nil), accuracy: 0.002)
     }
