@@ -735,6 +735,8 @@ class Parser {
             return Min(arg: try self.parse(json: value))
         case "sin":
             return Sin(arg: try self.parse(json: value))
+        case "cos":
+            return Cos(arg: try self.parse(json: value))
         case "substr":
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {
                 throw ParseError.GenericError("\(key) statement be followed by an array")
