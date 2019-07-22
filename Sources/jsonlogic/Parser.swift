@@ -798,6 +798,8 @@ class Parser {
             return Comparison(arg: try self.parse(json: value), operation: <=)
         case "rnd":
             return Round(arg: try self.parse(json: value))
+        case "num":
+            return CastToNumber(arg: try self.parse(json: value))
         case "if", "?:":
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {
                 throw ParseError.GenericError("\(key) statement be followed by an array")
