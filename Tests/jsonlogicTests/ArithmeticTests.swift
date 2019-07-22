@@ -241,6 +241,8 @@ class Arithmetic: XCTestCase {
         { "tan": [\(Double.pi / 2)] }
         """
         
-        XCTAssertEqual(.nan, try applyRule(rule, to: nil), accuracy: 0.002)
+        // In mathematics, this would be undefined
+        // In a programming language using IEEE 754, this is "a very large number"
+        XCTAssertGreaterThan(try applyRule(rule, to: nil), 1.5e16)
     }
 }
