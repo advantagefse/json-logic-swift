@@ -213,4 +213,34 @@ class Arithmetic: XCTestCase {
         
         XCTAssertEqual(1, try applyRule(rule, to: nil), accuracy: 0.002)
     }
+    
+    func testTan() {
+        var rule =
+        """
+        { "tan": [0] }
+        """
+        
+        XCTAssertEqual(0, try applyRule(rule, to: nil), accuracy: 0.002)
+        
+        rule =
+        """
+        { "tan": [\(Double.pi / 3)] }
+        """
+        
+        XCTAssertEqual(sqrt(3), try applyRule(rule, to: nil), accuracy: 0.002)
+        
+        rule =
+        """
+        { "tan": [\(Double.pi / 4)] }
+        """
+        
+        XCTAssertEqual(1, try applyRule(rule, to: nil), accuracy: 0.002)
+        
+        rule =
+        """
+        { "tan": [\(Double.pi / 2)] }
+        """
+        
+        XCTAssertEqual(.nan, try applyRule(rule, to: nil), accuracy: 0.002)
+    }
 }
