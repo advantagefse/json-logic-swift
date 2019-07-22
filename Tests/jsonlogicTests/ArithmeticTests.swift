@@ -171,9 +171,26 @@ class Arithmetic: XCTestCase {
     func testSin() {
         var rule =
                 """
-                { "sin": [1.57079632679] }
+                { "sin": [\(Double.pi / 2)] }
                 """
         
         XCTAssertEqual(1, try applyRule(rule, to: nil), accuracy: 0.002)
+        
+        rule =
+                """
+                { "sin": [\(Double.pi / 6)] }
+                """
+        
+        XCTAssertEqual(0.5, try applyRule(rule, to: nil), accuracy: 0.002)
+        
+        rule =
+                """
+                { "sin": [\(Double.pi)] }
+                """
+        
+        XCTAssertEqual(0, try applyRule(rule, to: nil), accuracy: 0.002)
+    }
+    
+    func testCos() {
     }
 }
