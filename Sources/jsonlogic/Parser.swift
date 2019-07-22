@@ -222,7 +222,18 @@ struct Sin: Expression {
     func evalWithData(_ data: JSON?) throws -> JSON {
         let jsonValue = try arg.evalWithData(data)
         
-        if case let JSON.Int(number) = jsonValue {
+        if case let JSON.Array(array) = try arg.evalWithData(data) {
+            guard array.count > 1 else {
+                return array.first?.double.flatMap(sin).flatMap(JSON.Double) ??
+                    array.first?.int.flatMap(Double.init).flatMap(sin).flatMap(JSON.Double) ??
+                    JSON.Null
+            }
+            
+            return JSON.Array(array.compactMap { value in
+                return value.double.flatMap(sin).flatMap(JSON.Double) ??
+                    value.int.flatMap(Double.init).flatMap(sin).flatMap(JSON.Double)
+            })
+        } else if case let JSON.Int(number) = jsonValue {
             let sinValue = sin(Double(number))
             return JSON.Double(sinValue)
         } else if case let JSON.Double(number) = jsonValue {
