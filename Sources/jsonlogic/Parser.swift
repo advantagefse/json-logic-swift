@@ -216,6 +216,23 @@ struct Not: Expression {
     }
 }
 
+struct Sin: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let jsonValue = try arg.evalWithData(data)
+        
+        if case let JSON.Int(number) = jsonValue {
+            let sinValue = sin(Double(number))
+            return JSON.Double(sinValue)
+        } else if case let JSON.Double(number) = jsonValue {
+            return JSON.Double(sin(number))
+        } else {
+            return JSON.Null
+        }
+    }
+}
+
 struct Max: Expression {
     let arg: Expression
 
