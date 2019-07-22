@@ -244,6 +244,35 @@ struct Sin: Expression {
     }
 }
 
+struct Cos: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let jsonValue = try arg.evalWithData(data)
+        
+        if case let JSON.Array(array) = try arg.evalWithData(data) {
+            guard array.count > 1 else {
+                return array.first?.double.flatMap(cos).flatMap(JSON.Double) ??
+                    array.first?.int.flatMap(Double.init).flatMap(cos).flatMap(JSON.Double) ??
+                    JSON.Null
+            }
+            
+            return JSON.Array(array.compactMap { value in
+                return value.double.flatMap(cos).flatMap(JSON.Double) ??
+                    value.int.flatMap(Double.init).flatMap(cos).flatMap(JSON.Double)
+            })
+        } else if case let JSON.Int(number) = jsonValue {
+            let sinValue = cos(Double(number))
+            return JSON.Double(sinValue)
+        } else if case let JSON.Double(number) = jsonValue {
+            return JSON.Double(cos(number))
+        } else {
+            return JSON.Null
+        }
+    }
+
+}
+
 struct Max: Expression {
     let arg: Expression
 
