@@ -208,7 +208,7 @@ class Arithmetic: XCTestCase {
         
         rule =
         """
-        { "cos": [\(Double.pi)] }
+        { "cos": [\(2 * Double.pi)] }
         """
         
         XCTAssertEqual(1, try applyRule(rule, to: nil), accuracy: 0.002)
