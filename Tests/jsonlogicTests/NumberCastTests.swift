@@ -25,6 +25,14 @@ class NumberCastTests: XCTestCase {
         """
         
         XCTAssertEqual(0.145, try applyRule(rule, to: nil), accuracy: 0.002)
+        
+        rule =
+        """
+        { "num": [".145"] }
+        """
+        
+        XCTAssertEqual(0.145, try applyRule(rule, to: nil), accuracy: 0.002)
+
 
         rule =
         """
