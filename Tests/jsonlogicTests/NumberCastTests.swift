@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import JSON
 @testable import jsonlogic
 
 class NumberCastTests: XCTestCase {
@@ -31,6 +32,43 @@ class NumberCastTests: XCTestCase {
         """
         
         XCTAssertEqual(Double.pi, try applyRule(rule, to: nil), accuracy: 0.002)
+    }
+    
+    func testCastInvalidString() {
+        var rule =
+        """
+        { "num": ["Hello World"] }
+        """
+        
+        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
+        
+        rule =
+        """
+        { "num": ["0.14AF"] }
+        """
+        
+        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
+
+        rule =
+        """
+        { "num": ["F0.14"] }
+        """
+        
+        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
+        
+        rule =
+        """
+        { "num": ["0...14"] }
+        """
+        
+        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
+        
+        rule =
+        """
+        { "num": ["2.1.4"] }
+        """
+        
+        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
     }
 
 }
