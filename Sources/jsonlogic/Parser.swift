@@ -198,7 +198,15 @@ struct CastToNumber: Expression {
             
             guard stringArray.isEmpty == false else { return .Null }
             
-            return .Array(stringArray.compactMap(Double.init).map(JSON.Double))
+            let doubleArray = stringArray.compactMap(Double.init).map(JSON.Double)
+            
+            guard doubleArray.isEmpty == false else { return .Null }
+            
+            if doubleArray.count == 1 {
+                return doubleArray[0]
+            }
+            
+            return .Array(doubleArray)
         case let .String(string):
             guard let value = Double(string) else { return .Null }
             
