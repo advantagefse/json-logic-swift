@@ -69,4 +69,34 @@ class RoundingTests: XCTestCase {
         
         XCTAssertEqual(-0.4, try applyRule(rule, to: nil))
     }
+    
+    func testRounding_twoDecimals() {
+        var rule =
+        """
+        { "rnd": [1.234, 2] }
+        """
+        
+        XCTAssertEqual(1.23, try applyRule(rule, to: nil))
+        
+        rule =
+        """
+        { "rnd": [1.789, 2] }
+        """
+        
+        XCTAssertEqual(1.79, try applyRule(rule, to: nil))
+        
+        rule =
+        """
+        { "rnd": [-0.799, 1] }
+        """
+        
+        XCTAssertEqual(-0.80, try applyRule(rule, to: nil))
+        
+        rule =
+        """
+        { "rnd": [-0.495, 1] }
+        """
+        
+        XCTAssertEqual(-0.50, try applyRule(rule, to: nil))
+    }
 }
