@@ -179,6 +179,36 @@ struct Round: Expression {
     }
 }
 
+struct CastToNumber: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let result = try arg.evalWithData(data)
+        
+        switch result {
+        case let .Array(array):
+            let stringArray = array.compactMap { element -> String? in
+                switch element {
+                case .String(let value):
+                    return value
+                default:
+                    return nil
+                }
+            }
+            
+            guard stringArray.isEmpty == false else { return .Null }
+            
+            return .Array(stringArray.compactMap(Double.init).map(JSON.Double))
+        case let .String(string):
+            guard let value = Double(string) else { return .Null }
+            
+            return .Double(value)
+        default:
+            return .Null
+        }
+    }
+}
+
 //swiftlint:disable:next type_name
 struct If: Expression {
     let arg: ArrayOfExpressions
