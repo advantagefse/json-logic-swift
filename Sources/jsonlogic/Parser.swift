@@ -159,6 +159,26 @@ struct Comparison: Expression {
     }
 }
 
+struct Round: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let result = try arg.evalWithData(data)
+        switch result {
+        case let .Array(array) where array.count == 2:
+            guard let numberToRound = array[0].double,
+                  let numberOfPlaces = array[1].int
+            else { fallthrough }
+            
+            let divisor = pow(10.0, Double(numberOfPlaces))
+            let result = (numberToRound * divisor).rounded() / divisor
+            return .Double(result)
+        default:
+            return result.toNumber()
+        }
+    }
+}
+
 //swiftlint:disable:next type_name
 struct If: Expression {
     let arg: ArrayOfExpressions
