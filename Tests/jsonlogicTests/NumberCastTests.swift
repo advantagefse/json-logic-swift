@@ -48,35 +48,35 @@ class NumberCastTests: XCTestCase {
         { "num": ["Hello World"] }
         """
         
-        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
+        XCTAssertThrowsError(try applyRule(rule, to: nil) as Optional<Any>)
         
         rule =
         """
         { "num": ["0.14AF"] }
         """
         
-        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
+        XCTAssertThrowsError(try applyRule(rule, to: nil) as Optional<Any>)
 
         rule =
         """
         { "num": ["F0.14"] }
         """
         
-        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
-        
+        XCTAssertThrowsError(try applyRule(rule, to: nil) as Optional<Any>)
+
         rule =
         """
         { "num": ["0...14"] }
         """
         
-        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
-        
+        XCTAssertThrowsError(try applyRule(rule, to: nil) as Optional<Any>)
+
         rule =
         """
         { "num": ["2.1.4"] }
         """
         
-        XCTAssertEqual(JSON.Null, try applyRule(rule, to: nil))
+        XCTAssertThrowsError(try applyRule(rule, to: nil) as Optional<Any>)
     }
 
 }
