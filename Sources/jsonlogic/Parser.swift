@@ -273,6 +273,35 @@ struct Cos: Expression {
 
 }
 
+struct Tan: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let jsonValue = try arg.evalWithData(data)
+        
+        if case let JSON.Array(array) = try arg.evalWithData(data) {
+            guard array.count > 1 else {
+                return array.first?.double.flatMap(tan).flatMap(JSON.Double) ??
+                    array.first?.int.flatMap(Double.init).flatMap(tan).flatMap(JSON.Double) ??
+                    JSON.Null
+            }
+            
+            return JSON.Array(array.compactMap { value in
+                return value.double.flatMap(tan).flatMap(JSON.Double) ??
+                    value.int.flatMap(Double.init).flatMap(tan).flatMap(JSON.Double)
+            })
+        } else if case let JSON.Int(number) = jsonValue {
+            let sinValue = tan(Double(number))
+            return JSON.Double(sinValue)
+        } else if case let JSON.Double(number) = jsonValue {
+            return JSON.Double(tan(number))
+        } else {
+            return JSON.Null
+        }
+    }
+    
+}
+
 struct Max: Expression {
     let arg: Expression
 
@@ -737,6 +766,8 @@ class Parser {
             return Sin(arg: try self.parse(json: value))
         case "cos":
             return Cos(arg: try self.parse(json: value))
+        case "tan":
+            return Tan(arg: try self.parse(json: value))
         case "substr":
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {
                 throw ParseError.GenericError("\(key) statement be followed by an array")
