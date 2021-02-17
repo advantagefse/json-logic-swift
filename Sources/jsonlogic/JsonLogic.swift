@@ -120,6 +120,10 @@ public final class JsonLogic {
             return convertedResult
         }
     }
+    
+    public func parseValue() -> Int64 {
+        (((self.parsedRule as? Comparison)?.arg as? ArrayOfExpressions)?.expressions[0] as? SingleValueExpression)?.json.int ?? 1
+    }
 }
 
 extension JSON {
