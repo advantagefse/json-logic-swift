@@ -51,6 +51,14 @@ public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) th
     return try JsonLogic(jsonRule).applyRule(to: jsonDataOrNil)
 }
 
+// workaround for swift bug that cause to fail when casting
+// from generic type that resolves to Ant? to Any? in certain compilers, see SR-14356
+#if compiler(>=5) && swift(<5)
+public func applyRule(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> Optional<Any> {
+    return try JsonLogic(jsonRule).applyRule(to: jsonDataOrNil)
+}
+#endif
+
 /**
     It parses json rule strings and executes the rules on provided data.
 */
@@ -120,6 +128,23 @@ public final class JsonLogic {
             return convertedResult
         }
     }
+
+    // workaround for swift bug that cause to fail when casting
+    // from generic type that resolves to Ant? to Any? in certain compilers, see SR-14356
+#if compiler(>=5) && swift(<5)
+    public func applyRule(to jsonDataOrNil: String? = nil) throws -> Optional<Any> {
+        var jsonData: JSON?
+
+        if let jsonDataOrNil = jsonDataOrNil {
+            jsonData = JSON(string: jsonDataOrNil)
+        }
+
+        let result = try parsedRule.evalWithData(jsonData)
+
+        return try result.convertToSwiftTypes()
+    }
+#endif
+
 }
 
 extension JSON {
