@@ -1,5 +1,4 @@
 import XCTest
-//import SwiftCheck
 
 @testable import jsonlogic
 
