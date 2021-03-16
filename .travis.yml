@@ -3,10 +3,13 @@ matrix:
     - os: osx
       osx_image: xcode12.2
       sudo: required
-      env: CODECOV_ELIGIBLE=true
 before_install:
-  - git clone https://github.com/IBM-Swift/Package-Builder.git
   - brew uninstall swiftlint || true && brew install swiftlint
 
 script:
-- ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR
+- swiftlint
+- swift test -Xswiftc -swift-version -Xswiftc 4
+- swift test -Xswiftc -swift-version -Xswiftc 4.2
+- swift test -Xswiftc -swift-version -Xswiftc 5 --enable-code-coverage
+- xcrun llvm-cov export -format="lcov" $TRAVIS_BUILD_DIR/.build/debug/jsonlogicPackageTests.xctest/Contents/MacOS/jsonlogicPackageTests -instr-profile $TRAVIS_BUILD_DIR/.build/debug/codecov/default.profdata > $TRAVIS_BUILD_DIR/coverage.lcov
+- bash <(curl -s https://codecov.io/bash)
