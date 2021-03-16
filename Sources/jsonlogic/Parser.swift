@@ -9,7 +9,7 @@
 import Foundation
 import JSON
 
-public enum ParseError: Error {
+public enum ParseError: Error, Equatable {
     case UnimplementedExpressionFor(_ operator: String)
     case GenericError(String)
 }
@@ -19,11 +19,12 @@ protocol Expression {
 }
 
 struct CustomExpression: Expression {
-    let json: JSON
-    let expression: (JSON?) -> JSON
+    let expression: Expression
+    let customOperator: (JSON?) -> JSON
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        return expression(data)
+        let result = try expression.evalWithData(data)
+        return customOperator(result)
     }
 }
 
@@ -584,9 +585,11 @@ struct Log: Expression {
 
 class Parser {
     private let json: JSON
+    private let customOperators: [String: (JSON?) -> JSON]
 
-    init(json: JSON) {
+    init(json: JSON, customOperators: [String: (JSON?) -> JSON]?) {
         self.json = json
+        self.customOperators = customOperators ?? [:]
     }
 
     func parse() throws -> Expression {
@@ -669,7 +672,7 @@ class Parser {
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {
                 throw ParseError.GenericError("\(key) statement be followed by an array")
             }
-            return LogicalAndOr(isAnd: key=="and", arg: array)
+            return LogicalAndOr(isAnd: key == "and", arg: array)
         case "!!":
             return DoubleNegation(arg: try self.parse(json: value[0]))
         case "max":
@@ -714,7 +717,12 @@ class Parser {
         case "log":
             return Log(expression: try self.parse(json: value))
         default:
-            throw ParseError.UnimplementedExpressionFor(key)
+            if let customOperation = self.customOperators[key] {
+                return CustomExpression(expression: try self.parse(json: value),
+                                    customOperator: customOperation)
+            } else {
+                throw ParseError.UnimplementedExpressionFor(key)
+            }
         }
     }
 }

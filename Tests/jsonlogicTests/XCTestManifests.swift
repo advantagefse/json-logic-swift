@@ -231,6 +231,16 @@ extension SubstringTests {
     ]
 }
 
+extension CustomOperatorTests {
+    static let __allTests = [
+        ("testCustomOperatorIsCalled_GivenItIsRegisted", testCustomOperatorIsCalled_GivenItIsRegisted),
+        ("testCustomOperatorIsNotCalled_GivenItIsNotRegisted", testCustomOperatorIsNotCalled_GivenItIsNotRegisted),
+        ("testCustomOperatorIsNotCalled_GivenItIsRegistedWithSameNameAsInternalOperators",
+         testCustomOperatorIsNotCalled_GivenItIsRegistedWithSameNameAsInternalOperators),
+        ("testCustomOperatorIsGivenExpetedJSONToEvaluate", testCustomOperatorIsGivenExpetedJSONToEvaluate),
+    ]
+}
+
 #if !os(macOS)
 public func __allTests() -> [XCTestCaseEntry] {
     return [
@@ -259,6 +269,7 @@ public func __allTests() -> [XCTestCaseEntry] {
         testCase(OrTests.__allTests),
         testCase(SomeTests.__allTests),
         testCase(SubstringTests.__allTests),
+        testCase(CustomOperatorWrapper._allTests)
     ]
 }
 #endif

@@ -81,11 +81,32 @@ public final class JsonLogic {
       - `ParseError.GenericError(String)` :
      An error occurred during parsing of the rule
     */
-    public init(_ jsonRule: String) throws {
+    public convenience init(_ jsonRule: String) throws {
+        try self.init(jsonRule, customOperators: nil)
+    }
+
+    /**
+    It parses the string containing a json logic and caches the result for reuse.
+
+    All calls to `applyRule()` will use the same parsed rule.
+
+    - parameters:
+        - jsonRule: A valid json rule string
+        - customOperators: custom operations that will be used during evalution
+
+    - throws:
+      - `JSONLogicError.canNotParseJSONRule`
+     If The jsonRule could not be parsed, possible the syntax is invalid
+      - `ParseError.UnimplementedExpressionFor(_ operator: String)` :
+     If you pass an json logic operation that is not currently implemented
+      - `ParseError.GenericError(String)` :
+     An error occurred during parsing of the rule
+    */
+    public init(_ jsonRule: String, customOperators: [String: (JSON?) -> JSON]?) throws {
         guard let rule = JSON(string: jsonRule) else {
             throw JSONLogicError.canNotParseJSONRule("Not valid JSON object")
         }
-        parsedRule = try Parser(json: rule ).parse()
+        parsedRule = try Parser(json: rule, customOperators: customOperators).parse()
     }
 
     /**
