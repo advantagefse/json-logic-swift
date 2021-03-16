@@ -18,7 +18,7 @@ format, these can be applied on JSON data with consistent results. So you can sh
 To use the pod in your project add in the Podfile:
 
     pod jsonlogic
-    
+
 To run the example project, just run:
 
     pod try jsonlogic    
@@ -170,6 +170,31 @@ let data = """
 
 let result: Bool = try applyRule(rule, to: data)
 //evaluates to true
+```
+
+### Custom operators
+
+You can register a custom operator
+
+```Swift
+// the key is the operator and the value is a closure that takes as argument
+// a JSON and returns a JSON
+let customRules =
+    ["numberOfElementsInArray": { (json: JSON?) -> JSON in                                 
+        switch json {
+        case let .Array(array):
+            return JSON(array.count)
+        default:
+            return JSON(0)
+        }
+    }]
+    
+let rule = """
+    { "numberOfElementsInArray" : [1, 2, 3] }
+"""
+    
+// The value is 3
+let value: Int = try JsonLogic(rule, customOperators: customRules).applyRule()
 ```
 
 ### Other operators
