@@ -51,18 +51,11 @@ public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) th
     return try JsonLogic(jsonRule).applyRule(to: jsonDataOrNil)
 }
 
-// workaround for swift bug that cause to fail when casting
-// from generic type that resolves to Ant? to Any? in certain compilers, see SR-14356
-#if compiler(>=5) && swift(<5)
-public func applyRule(_ jsonRule: String, to jsonDataOrNil: String? = nil) throws -> Optional<Any> {
-    return try JsonLogic(jsonRule).applyRule(to: jsonDataOrNil)
-}
-#endif
-
 /**
     It parses json rule strings and executes the rules on provided data.
 */
 public final class JsonLogic {
+    // The parsed json string to an Expression that can be used for evaluation upon specific data
     private let parsedRule: Expression
 
     /**
@@ -142,30 +135,22 @@ public final class JsonLogic {
             }
             return convertedResult
         default:
-            guard let convertedResult = convertedToSwiftStandardType as? T else {
-// print("canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
+            // workaround for swift bug that cause to fail when casting
+            // from generic type that resolves to Ant? to Any? in certain compilers, see SR-14356
+            #if compiler(>=5) && swift(<5)
+            guard let convertedResult = (convertedToSwiftStandardType as Any) as? T else {
+                // print("canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
                 throw JSONLogicError.canNotConvertResultToType(T.self)
             }
+            #else
+            guard let convertedResult = convertedToSwiftStandardType as? T else {
+                // print("canNotConvertResultToType \(T.self) from \(type(of: convertedToSwiftStandardType))")
+                throw JSONLogicError.canNotConvertResultToType(T.self)
+            }
+            #endif
             return convertedResult
         }
     }
-
-    // workaround for swift bug that cause to fail when casting
-    // from generic type that resolves to Ant? to Any? in certain compilers, see SR-14356
-#if compiler(>=5) && swift(<5)
-    public func applyRule(to jsonDataOrNil: String? = nil) throws -> Optional<Any> {
-        var jsonData: JSON?
-
-        if let jsonDataOrNil = jsonDataOrNil {
-            jsonData = JSON(string: jsonDataOrNil)
-        }
-
-        let result = try parsedRule.evalWithData(jsonData)
-
-        return try result.convertToSwiftTypes()
-    }
-#endif
-
 }
 
 extension JSON {
