@@ -177,6 +177,9 @@ let result: Bool = try applyRule(rule, to: data)
 You can register a custom operator
 
 ```Swift
+import jsonlogic
+import JSON
+
 // the key is the operator and the value is a closure that takes as argument
 // a JSON and returns a JSON
 let customRules =
