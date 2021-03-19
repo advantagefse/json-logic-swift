@@ -10,8 +10,8 @@ let package = Package(
             name: "jsonlogic",
             targets: ["jsonlogic"]),
         .library(
-                name: "JSON",
-                targets: ["JSON"]),
+            name: "JSON",
+            targets: ["JSON"]),
         .executable(
             name: "jsonlogic-cli",
             targets: ["jsonlogic-cli"]),
@@ -28,6 +28,10 @@ let package = Package(
             dependencies: []),
         .testTarget(
             name: "jsonlogicTests",
-            dependencies: ["jsonlogic"])
-    ], swiftLanguageVersions: [.v5, .v4_2, .v4]
+            dependencies: ["jsonlogic"]),
+        .testTarget(
+            name: "JSONTests",
+            dependencies: ["JSON"])
+    ],
+    swiftLanguageVersions: [.v5, .v4_2, .v4]
 )
