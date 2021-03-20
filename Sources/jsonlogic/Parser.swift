@@ -173,7 +173,7 @@ struct If: Expression {
             return JSON.Null
         } else if expressions.count == 1 {
             return try expressions[0].evalWithData(data)
-        } else if try expressions[0].evalWithData(data).thruthy() {
+        } else if try expressions[0].evalWithData(data).truthy() {
             return try expressions[1].evalWithData(data)
         } else if arg.expressions.count == 3 {
             return try expressions[2].evalWithData(data)
@@ -190,7 +190,7 @@ struct LogicalAndOr: Expression {
     func evalWithData(_ data: JSON?) throws -> JSON {
         for expression in arg.expressions {
             let data = try expression.evalWithData(data)
-            if data.thruthy() == !isAnd {
+            if data.truthy() == !isAnd {
                 return data
             }
         }
@@ -203,7 +203,7 @@ struct DoubleNegation: Expression {
     let arg: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        return JSON.Bool(try arg.evalWithData(data).thruthy())
+        return JSON.Bool(try arg.evalWithData(data).truthy())
     }
 }
 
@@ -213,7 +213,7 @@ struct Not: Expression {
     func evalWithData(_ data: JSON?) throws -> JSON {
         let lhsBool = try lhs.evalWithData(data)
 
-        return JSON.Bool(!lhsBool.thruthy())
+        return JSON.Bool(!lhsBool.truthy())
     }
 }
 
@@ -494,7 +494,7 @@ struct ArrayFilter: Expression {
 
         let filterOperation = array.expressions[1]
 
-        return JSON.Array(try dataArray.filter({ try filterOperation.evalWithData($0).thruthy() }))
+        return JSON.Array(try dataArray.filter({ try filterOperation.evalWithData($0).truthy() }))
     }
 }
 
@@ -511,7 +511,7 @@ struct ArrayNone: Expression {
         let operation = array.expressions[1]
 
         return JSON.Bool(try dataArray.reduce(into: true) {
-            $0 = try $0 && !operation.evalWithData($1).thruthy()
+            $0 = try $0 && !operation.evalWithData($1).truthy()
         })
     }
 }
@@ -530,7 +530,7 @@ struct ArrayAll: Expression {
         let operation = array.expressions[1]
 
         return JSON.Bool(try dataArray.reduce(into: !dataArray.isEmpty) {
-            $0 = try $0 && operation.evalWithData($1).thruthy()
+            $0 = try $0 && operation.evalWithData($1).truthy()
         })
     }
 }
@@ -549,7 +549,7 @@ struct ArraySome: Expression {
         let operation = array.expressions[1]
 
         return JSON.Bool(try dataArray.reduce(into: false) {
-            $0 = try $0 || operation.evalWithData($1).thruthy()
+            $0 = try $0 || operation.evalWithData($1).truthy()
         })
     }
 }

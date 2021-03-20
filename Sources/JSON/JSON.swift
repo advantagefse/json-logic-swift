@@ -495,7 +495,7 @@ extension JSON {
 
     - Returns: the truth value of the JSON object
     */
-    public func thruthy() -> Bool {
+    public func truthy() -> Bool {
         switch self {
         case let .Bool(bool):
             return bool
@@ -507,8 +507,8 @@ extension JSON {
             return !string.isEmpty
         case let .Array(array):
             return !array.isEmpty
-        case .Dictionary:
-            return true
+        case .Dictionary(dictionary):
+            return !dictionary!.isEmpty
         default:
             return false
         }

@@ -30,6 +30,7 @@ class JSONTests: XCTestCase {
         XCTAssertEqual(JSON(false), JSON(false))
         XCTAssertEqual(JSON(true), JSON(true))
         XCTAssertEqual(JSON([1, 2]), JSON([1, 2]))
+        XCTAssertEqual(JSON(["123": [1, 2]]), JSON(["123": [1, 2]]))
         XCTAssertEqual(JSON([1, 2, 123]), JSON([1, 2.0, "123"]))
     }
 
