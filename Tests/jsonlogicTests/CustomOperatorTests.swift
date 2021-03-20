@@ -95,19 +95,4 @@ class CustomOperatorTests: XCTestCase {
         XCTAssertEqual(4, result)
         XCTAssertEqual(expectedJSONInput, customOperatorWrapper.evalutedJSONInput)
     }
-
-    //Implementation that allows for throwing errors from error handler block
-    func _XCTAssertThrowsError<T>(_ expression: @autoclosure () throws -> T,
-                                  _ message: @autoclosure () -> String = "",
-                                  file: StaticString = #file,
-                                  line: UInt = #line,
-                                  _ errorHandler: (_ error: Swift.Error) throws -> Void) rethrows {
-
-        var iError: Error!
-        XCTAssertThrowsError(try expression(), message(), file: file, line: line, { aError in
-            iError = aError
-        })
-
-        try errorHandler(iError)
-    }
 }

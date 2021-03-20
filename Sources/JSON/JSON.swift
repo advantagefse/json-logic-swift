@@ -126,8 +126,21 @@ public enum JSON: Equatable {
             return x == y
         case let (.String(lhsString), .String(rhsString)):
             return lhsString == rhsString
+        case let (.Dictionary(lhs), .Dictionary(rhs)):
+            let lhsKeys = lhs.keys
+            let rhsKeys = rhs.keys
+            if lhsKeys.count == rhsKeys.count {
+                for key in lhsKeys {
+                    if lhs[key]! !== rhs[key]! {
+                        return false
+                    }
+                }
+            } else {
+                return false
+            }
+            return true
         case let (.Array(lhsArray), .Array(rhsArray)) where lhsArray.count == rhsArray.count:
-            for (idx, value) in lhsArray .enumerated() where value != rhsArray[idx] {
+            for (idx, value) in lhsArray .enumerated() where value !== rhsArray[idx] {
                     return false
             }
             return  true
@@ -180,6 +193,8 @@ public enum JSON: Equatable {
                 return false
             }
             return lhs == number
+        case let (.Dictionary(lhs), .Dictionary(rhs)):
+            return lhs == rhs
         case let (.Array(lhsArray), .Array(rhsArray)) where lhsArray.count == rhsArray.count:
             return lhsArray == rhsArray
         case let (.Array(array), _) where array.count <= 1:
