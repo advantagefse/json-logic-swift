@@ -387,7 +387,9 @@ extension JSON: Hashable {
 }
 
 extension JSON: ExpressibleByIntegerLiteral, ExpressibleByArrayLiteral, ExpressibleByBooleanLiteral,
-        ExpressibleByNilLiteral, ExpressibleByStringLiteral, ExpressibleByDictionaryLiteral {
+        ExpressibleByNilLiteral, ExpressibleByStringLiteral, ExpressibleByDictionaryLiteral,
+        ExpressibleByFloatLiteral {
+
     public init(stringLiteral value: String) {
         self = .String(value)
     }
@@ -416,12 +418,8 @@ extension JSON: ExpressibleByIntegerLiteral, ExpressibleByArrayLiteral, Expressi
         self = .Int(Int64(value))
     }
 
-    public init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
-        self = .String(value)
-    }
-
-    public init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
-        self = .String(value)
+    public init(floatLiteral value: Double) {
+        self = .Double(value)
     }
 }
 
