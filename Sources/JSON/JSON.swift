@@ -313,7 +313,7 @@ extension JSON: Comparable {
         case .Double, .Int:
             return result
         default:
-            throw NSError()
+            throw JSON.JSON2Error.notJSONValue
         }
     }
 
@@ -353,7 +353,7 @@ extension JSON: Comparable {
         case (.Null, _):
             return try lessThanWithTypeCoercion(JSON(0), rhs)
         default:
-            throw NSError()
+            throw JSON.JSON2Error.notJSONValue
         }
     }
 
