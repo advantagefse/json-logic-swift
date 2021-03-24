@@ -1,15 +1,21 @@
 matrix:
   include:
-    - os: osx
-      osx_image: xcode12.2
-      sudo: required
+  - os: osx
+    osx_image: xcode12.2
+    sudo: required
+  - os: linux
+    language: generic
+    dist: bionic
+    sudo: required
 before_install:
-  - brew uninstall swiftlint || true && brew install swiftlint
+  - if [ "$TRAVIS_OS_NAME" = "osx" ]; then brew uninstall swiftlint || true && brew install swiftlint ; fi
+install:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then eval "$(curl -sL https://swiftenv.fuller.li/install.sh)" ; fi
 
 script:
-- swiftlint
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then swiftlint ; fi
 - swift test -Xswiftc -swift-version -Xswiftc 4
 - swift test -Xswiftc -swift-version -Xswiftc 4.2
 - swift test -Xswiftc -swift-version -Xswiftc 5 --enable-code-coverage
-- xcrun llvm-cov export -format="lcov" $TRAVIS_BUILD_DIR/.build/debug/jsonlogicPackageTests.xctest/Contents/MacOS/jsonlogicPackageTests -instr-profile $TRAVIS_BUILD_DIR/.build/debug/codecov/default.profdata > $TRAVIS_BUILD_DIR/coverage.lcov
-- bash <(curl -s https://codecov.io/bash)
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then xcrun llvm-cov export -format="lcov" $TRAVIS_BUILD_DIR/.build/debug/jsonlogicPackageTests.xctest/Contents/MacOS/jsonlogicPackageTests -instr-profile $TRAVIS_BUILD_DIR/.build/debug/codecov/default.profdata > $TRAVIS_BUILD_DIR/coverage.lcov ; fi
+- if [ "$TRAVIS_OS_NAME" = "osx" ]; then bash <(curl -s https://codecov.io/bash) ; fi
