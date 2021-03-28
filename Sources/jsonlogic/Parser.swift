@@ -491,7 +491,7 @@ struct ArrayFilter: Expression {
             array.expressions.count >= 2,
             case let JSON.Array(dataArray) = try array.expressions[0].evalWithData(data)
             else {
-                return JSON.Null
+                return JSON.Array([])
         }
 
         let filterOperation = array.expressions[1]
