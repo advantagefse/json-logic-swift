@@ -411,13 +411,15 @@ struct MissingSome: Expression {
 
         guard case let JSON.Array(array) = arg,
               array.count >= 2,
-              case let .Int(minMissing) = array[0],
+              case let .Int(minRequired) = array[0],
               case let JSON.Array(keys) = array[1] else {
             return JSON.Null
         }
 
-        let missingKeys = keys.filter({ valueForKey($0.string, in: data) == JSON.Null })
-        return JSON.Array(missingKeys.count > minMissing ? missingKeys : [])
+        let foundKeys = keys.filter({ valueForKey($0.string, in: data) != JSON.Null })
+        let missingkeys = { keys.filter({ !foundKeys.contains($0) }) }
+
+        return JSON.Array(foundKeys.count < minRequired ? missingkeys() : [])
     }
 
     func valueForKey(_ key: String?, in data: JSON?) -> JSON? {
