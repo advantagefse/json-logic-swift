@@ -635,8 +635,8 @@ class Parser {
             return StrictEquals(lhs: try self.parse(json: value[0]),
                                 rhs: try self.parse(json: value[1]))
         case "!==":
-            return Not(lhs: StrictEquals(lhs: try parse(json: value[0]),
-                                         rhs: try parse(json: value[1])))
+            return Not(lhs: Equals(lhs: try parse(json: value[0]),
+                                   rhs: try parse(json: value[1])))
         case "==":
             return Equals(lhs: try self.parse(json: value[0]),
                           rhs: try self.parse(json: value[1]))
