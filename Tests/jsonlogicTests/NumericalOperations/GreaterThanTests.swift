@@ -124,4 +124,19 @@ class GreaterThanTests: XCTestCase {
                 """
         XCTAssertEqual(false, try applyRule(rule, to: data))
     }
+
+    func testGreaterThan_withThreeArguments() {
+        var rule =
+                """
+                { ">" : [3, 1, 0] }
+                """
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
+
+        rule =
+                """
+                    { ">" : [1, 2, 10] }
+                """
+
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
+    }
 }

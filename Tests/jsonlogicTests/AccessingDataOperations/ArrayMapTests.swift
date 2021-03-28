@@ -43,6 +43,12 @@ class ArrayMapTests: XCTestCase {
                 ]}
                 """
         XCTAssertEqual([1, 2, 3], try applyRule(rule, to: data))
+
+        rule =
+                """
+                {"map":[{"var":"desserts"}]}
+                """
+        XCTAssertEqual(emptyIntArray, try applyRule(rule))
     }
 
     func testReduce() {
@@ -149,13 +155,43 @@ class ArrayMapTests: XCTestCase {
         XCTAssertEqual([2, 3], try applyRule(rule, to: data))
 
         rule =
-        """
-        {"filter":[{"var":"integers"}, {"%":[{"var":""},2]}]}
-        """
+            """
+            {"filter":[{"var":"integers"}, {"%":[{"var":""},2]}]}
+            """
         data =
-        """
-        {"integers":[1,2,3]}
-        """
+            """
+            {"integers":[1,2,3]}
+            """
         XCTAssertEqual([1, 3], try applyRule(rule, to: data))
+
+        rule =
+            """
+            {"filter":[{"var":"integers"}]}
+            """
+        XCTAssertEqual(emptyIntArray, try applyRule(rule, to: data))
+    }
+
+    func testFilter_withMissingArguments() {
+        let rule =
+                """
+                 {"filter":[]}
+                """
+        XCTAssertEqual(emptyIntArray, try applyRule(rule))
+    }
+
+    func testReduce_withMissingArguments() {
+        let rule =
+                """
+                 {"reduce":[]}
+                """
+        XCTAssertNil(try applyRule(rule))
+    }
+
+    func testMap_withMissingArguments() {
+        let rule =
+                """
+                 {"map":[]}
+                """
+        XCTAssertEqual(emptyIntArray, try applyRule(rule))
     }
 }

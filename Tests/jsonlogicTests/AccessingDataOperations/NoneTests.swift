@@ -32,6 +32,12 @@ class NoneTests: XCTestCase {
                 {"none":[{"var":"integers"}, {"<":[{"var":""}, 1]}]}
                 """
         XCTAssertEqual(true, try applyRule(rule, to: data))
+
+        rule =
+                """
+                {"none":[{"var":"integers"}, {"<=":[{"var":""}, 1]}]}
+                """
+        XCTAssertEqual(false, try applyRule(rule, to: data))
     }
 
     func testNone_WithEmptyDataArray() {
@@ -96,5 +102,19 @@ class NoneTests: XCTestCase {
         {"items":[{"qty":1,"sku":"apple"},{"qty":2,"sku":"banana"}]}
         """
         XCTAssertEqual(true, try applyRule(rule, to: data))
+    }
+
+    func testNone_WithMissingArguments() {
+        var rule =
+                """
+                {"none":[{"var":"integers"}]}
+                """
+        XCTAssertNil(try applyRule(rule))
+
+        rule =
+                """
+                {"none":[]}
+                """
+        XCTAssertNil(try applyRule(rule))
     }
 }

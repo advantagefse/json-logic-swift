@@ -37,6 +37,12 @@ class AllTests: XCTestCase {
 
         rule =
                 """
+                {"all":[{"var":"integers"}, {"<=":[{"var":""}, 1]}]}
+                """
+        XCTAssertFalse(try applyRule(rule, to: data))
+
+        rule =
+                """
                 {"all":[{"var":"integers"}, {"<":[{"var":""}, 1]}]}
                 """
         data =
@@ -88,5 +94,13 @@ class AllTests: XCTestCase {
                 {"items":[]}
                 """
         XCTAssertFalse(try applyRule(rule, to: data))
+    }
+
+    func testAll_withMissingArguments() {
+        let rule =
+                """
+                 {"all":[]}
+                """
+        XCTAssertNil(try applyRule(rule))
     }
 }

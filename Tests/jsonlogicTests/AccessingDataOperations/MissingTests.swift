@@ -209,5 +209,65 @@ class MissingTests: XCTestCase {
         {"b":"banana"}
         """
         XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
+
+        rule =
+        """
+        {"missing_some":[2, ["a", "b", "c"]]}
+        """
+        data =
+        """
+        {"a":"apple"}
+        """
+        XCTAssertEqual(["b", "c"], try applyRule(rule, to: data))
+
+        //Following the rules for var for . notation
+        rule =
+        """
+        {"missing_some":[2, ["person.name", "b", "c"]]}
+        """
+        data =
+        """
+        {"a":"apple", "person": {"name": "Bruce"} }
+        """
+        XCTAssertEqual(["b", "c"], try applyRule(rule, to: data))
+
+        rule =
+        """
+        {"missing_some":[1, ["person.name", "b", "c"]]}
+        """
+        data =
+        """
+        {"a":"apple", "person": {"name": "Bruce"} }
+        """
+        XCTAssertEqual(emptyStringArray, try applyRule(rule, to: data))
+
+        //with wrong arguments
+        rule =
+        """
+        {"missing_some":[1]}
+        """
+        data =
+        """
+        {"b":"banana"}
+        """
+        XCTAssertNil(try applyRule(rule, to: data))
+
+        rule =
+        """
+        {"if" :[
+            {"merge": [
+            {"missing":["first_name", "last_name"]},
+            {"missing_some":[1, ["cell_phone", "home_phone"] ]}
+        ]},
+        "We require first name, last name, and one phone number.",
+        "OK to proceed"
+        ]}
+        """
+
+        data =
+        """
+        {"first_name":"Bruce", "last_name":"Wayne"}
+        """
+        XCTAssertEqual("We require first name, last name, and one phone number.", try applyRule(rule, to: data))
     }
 }
