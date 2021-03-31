@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "jsonlogic"
-  s.version = "1.0.0"
+  s.version = "1.1.0"
   s.summary = "A JsonLogic Swift library"
   s.description = "A JsonLogic implementation in Swift. JsonLogic is a way to write rules that involve computations in JSON format, these can be applied on JSON data with consistent results. So you can share between server and clients rules in a common format."
   s.homepage = "https://github.com/advantagefse/json-logic-swift"
@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   
   s.source_files = 'Sources/jsonlogic/*.swift'
   s.module_name = 'jsonlogic'
-  s.dependency 'json-enum', '~> 1.0' 
+  s.dependency 'json-enum', '~> 1.1' 
 
 end
