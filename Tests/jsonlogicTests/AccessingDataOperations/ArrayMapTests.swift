@@ -194,4 +194,16 @@ class ArrayMapTests: XCTestCase {
                 """
         XCTAssertEqual(emptyIntArray, try applyRule(rule))
     }
+  
+    func testAccessingVariableWithArrayIndexPath() {
+      let rule =
+        """
+        { "var" : "person.name.0" }
+        """
+      let data =
+        """
+        { "person" : { "name" : ["John", "Green"] } }
+        """
+        XCTAssertEqual("John", try applyRule(rule, to: data))
+    }
 }
