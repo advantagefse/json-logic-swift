@@ -15,11 +15,12 @@ public enum JSON: Equatable {
     case Int(Int64)
     case Double(Double)
     case String(String)
+    case Date(Date)
     case Bool(Bool)
     case Error(JSON2Error)
 
     public enum ContentType {
-        case error, null, bool, number, string, array, object
+        case error, null, bool, number, string, array, object, date
     }
 
     public var type: ContentType {
@@ -36,6 +37,8 @@ public enum JSON: Equatable {
             return .string
         case .Array:
             return .array
+        case .Date:
+            return .date
         case .Dictionary:
             return .object
         }
@@ -70,7 +73,13 @@ public enum JSON: Equatable {
         case let dictionary as Swift.Dictionary<String, Any>:
             self = .Dictionary(dictionary.mapValues({ JSON($0) }))
         case let string as Swift.String:
-            self = .String(string)
+            if let date = string.date {
+                self = .Date(date)
+            } else {
+                self = .String(string)
+            }
+        case let date as Date:
+            self = .Date(date)
         case let number as NSNumber:
             switch Swift.String(cString: number.objCType) {
             case "i", "s", "l", "q", "I", "S", "L", "Q":
@@ -173,6 +182,8 @@ public enum JSON: Equatable {
             return (try? toNumber(lhs)) == rhs
         case let (.String(lhsString), .String(rhsString)):
             return lhsString == rhsString
+        case let (.Date(lhsDate), .Date(rhsDate)):
+            return lhsDate == rhsDate
         case (.String, .Int):
             guard let number = try? toNumber(lhs) else {
                 return false
@@ -296,6 +307,8 @@ public enum JSON: Equatable {
 
     public var string: String? { if case let .String(value) = self { return value }; return nil }
 
+    public var date: Date? { if case let .Date(value) = self { return value }; return nil }
+
     public var array: [JSON]? { if case let .Array(value) = self { return value }; return nil }
 
     //swiftlint:disable:next line_length
@@ -336,6 +349,8 @@ extension JSON: Comparable {
             return try lessThanWithTypeCoercion(toNumber(lhs), rhs)
         case let (.String(lhsString), .String(rhsString)):
             return lhsString < rhsString
+        case let (.Date(lhsDate), .Date(rhsDate)):
+            return lhsDate < rhsDate
         case (.String, .Int):
             return try lessThanWithTypeCoercion(try toNumber(lhs), rhs)
         case (.Int, .String):
@@ -542,5 +557,52 @@ extension JSON {
         default:
             return JSON.Null
         }
+    }
+}
+
+extension Date {
+
+    static var shortFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+
+    //2021-06-03T09:40:51Z
+    static var fullFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .iso8601)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return formatter
+    }()
+    
+    func date(byAddingDays days: Int, in calendar: Calendar = .current) -> Date {
+        let result = calendar.date(byAdding: .day, value: days, to: self) ?? Date()
+        return result
+    }
+    
+    var shortFormatted: String {
+        return Date.shortFormatter.string(from: self)
+    }
+
+    var fullFormatted: String {
+        return Date.fullFormatter.string(from: self)
+    }
+}
+
+extension String {
+    var date: Date? {
+        if let date = Date.shortFormatter.date(from:self) {
+            return date
+        }
+        if let date = Date.fullFormatter.date(from:self) {
+            return date
+        }
+        return nil
     }
 }
