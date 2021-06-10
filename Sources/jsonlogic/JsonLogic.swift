@@ -168,6 +168,8 @@ extension JSON {
             return self.double
         case .String:
             return self.string
+        case .Date:
+            return self.date
         case let JSON.Array(array):
             return try array.map { try $0.convertToSwiftTypes() }
         case .Dictionary:

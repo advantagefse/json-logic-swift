@@ -335,22 +335,22 @@ struct Var: Expression {
             return JSON.Null
         }
 
-      let variablePath = try evaluateVarPathFromData(data)
-      if let variablePathParts = variablePath?.split(separator: ".").map({String($0)}) {
-          var partialResult: JSON? = data
-          for key in variablePathParts {
-              if partialResult?.type == .array {
-                if let index = Int(key), let maxElement = partialResult?.array?.count,  index < maxElement, index >= 0  {
-                  partialResult = partialResult?[index]
+        let variablePath = try evaluateVarPathFromData(data)
+        if let variablePathParts = variablePath?.split(separator: ".").map({String($0)}) {
+            var partialResult: JSON? = data
+            for key in variablePathParts {
+                if partialResult?.type == .array {
+                  if let index = Int(key), let maxElement = partialResult?.array?.count,  index < maxElement, index >= 0  {
+                    partialResult = partialResult?[index]
+                  } else {
+                    partialResult = partialResult?[key]
+                  }
                 } else {
                   partialResult = partialResult?[key]
                 }
-              } else {
-                partialResult = partialResult?[key]
-              }
-          }
-          return partialResult ?? JSON.Null
-      }
+            }
+            return partialResult ?? JSON.Null
+        }
 
         return JSON.Null
     }
@@ -619,6 +619,8 @@ class Parser {
         case .Double:
             return SingleValueExpression(json: json)
         case .String:
+            return SingleValueExpression(json: json)
+        case .Date:
             return SingleValueExpression(json: json)
         case let .Array(array):
             var arrayOfExpressions: [Expression] = []
