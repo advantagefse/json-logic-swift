@@ -129,6 +129,10 @@ public final class JsonLogic {
 
         switch convertedToSwiftStandardType {
         case let .some(value):
+        // if T is a boolean-like value return the truthy value of result
+            if let _ = true as? T {
+                return result.truthy() as! T
+            }
             guard let convertedResult = value as? T else {
                 print(" canNotConvertResultToType \(T.self) from \(type(of: value))")
                 throw JSONLogicError.canNotConvertResultToType(T.self)
