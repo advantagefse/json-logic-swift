@@ -602,7 +602,7 @@ extension String {
         if let date = Date.shortFormatter.date(from:self) {
             return date
         }
-        if let date = Date.fullFormatter.date(from:self) {
+        if let date = Date.fromISO8601(self) {
             return date
         }
         return nil
