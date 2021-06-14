@@ -212,7 +212,10 @@ struct Not: Expression {
 
     func evalWithData(_ data: JSON?) throws -> JSON {
         let lhsBool = try lhs.evalWithData(data)
-
+        if let array = lhsBool.array
+        {
+            return JSON.Bool(!array[0].truthy())
+        }
         return JSON.Bool(!lhsBool.truthy())
     }
 }
