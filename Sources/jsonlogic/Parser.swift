@@ -596,6 +596,74 @@ struct Log: Expression {
     }
 }
 
+struct PlusTime: Expression {
+    let expression: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let result = try expression.evalWithData(data)
+        if let arr = result.array,
+           let time = arr[0].date,
+           let amount = arr[1].int,
+           let unit = arr[2].string
+           {
+            return addTime(Int(amount), as: unit, to: time)
+        }
+        return JSON.Null
+    }
+}
+
+struct MinusTime : Expression {
+    let expression: Expression
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let result = try expression.evalWithData(data)
+        if let arr = result.array,
+           let time = arr[0].date,
+           let amount = arr[1].int,
+           let unit = arr[2].string
+           {
+            return addTime(Int(-amount), as: unit, to: time)
+        }
+        return JSON.Null
+    }
+}
+
+func addTime(_ amount: Int, as unit: String, to: Date) -> JSON {
+    switch unit {
+    case "year":
+        guard let date = Calendar.current.date(byAdding: .year, value: Int(amount), to: to) else {
+            return JSON.Null
+        }
+        return JSON(date)
+    case "month":
+        guard let date = Calendar.current.date(byAdding: .month, value: Int(amount), to: to) else {
+            return JSON.Null
+        }
+        return JSON(date)
+    case "day":
+        guard let date = Calendar.current.date(byAdding: .day, value: Int(amount), to: to) else {
+            return JSON.Null
+        }
+        return JSON(date)
+    case "hour":
+        guard let date = Calendar.current.date(byAdding: .hour, value: Int(amount), to: to) else {
+            return JSON.Null
+        }
+        return JSON(date)
+    case "minute":
+        guard let date = Calendar.current.date(byAdding: .minute, value: Int(amount), to: to) else {
+            return JSON.Null
+        }
+        return JSON(date)
+    case "second":
+        guard let date = Calendar.current.date(byAdding: .second, value: Int(amount), to: to) else {
+            return JSON.Null
+        }
+        return JSON(date)
+    default:
+        return JSON.Null
+    }
+}
+
 class Parser {
     private let json: JSON
     private let customOperators: [String: (JSON?) -> JSON]
@@ -731,6 +799,10 @@ class Parser {
             return ArrayMerge(expression: try self.parse(json: value))
         case "log":
             return Log(expression: try self.parse(json: value))
+        case "plusTime":
+            return PlusTime(expression: try self.parse(json: value))
+        case "minusTime":
+            return MinusTime(expression: try self.parse(json: value))
         default:
             if let customOperation = self.customOperators[key] {
                 return CustomExpression(expression: try self.parse(json: value),
