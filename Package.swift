@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "jsonlogic",
     platforms: [
-        .macOS(.v10_13), .iOS(.v8), .tvOS(.v9), .watchOS(.v2)
+        .macOS(.v10_13), .iOS(.v11), .tvOS(.v9), .watchOS(.v2)
     ],
     products: [
         .library(
