@@ -51,6 +51,21 @@ public func applyRule<T>(_ jsonRule: String, to jsonDataOrNil: String? = nil) th
     return try JsonLogic(jsonRule).applyRule(to: jsonDataOrNil)
 }
 
+public func applyRule<T>(_ jsonRule: JSON, to jsonDataOrNil: String? = nil) throws -> T {
+    return try JsonLogic(jsonRule).applyRule(to: jsonDataOrNil)
+}
+public func applyRule<T>(_ jsonRule: JSON, to jsonOrNil: JSON? = nil) throws -> T {
+    return try JsonLogic(jsonRule).applyRuleInternal(to: jsonOrNil)
+}
+
+public func applyRule<T>(_ jsonRule: JSON, to jsonDataOrNil: String? = nil, customOperators: [String: (JSON?) -> JSON]?) throws -> T {
+    return try JsonLogic(jsonRule, customOperators: customOperators).applyRule(to: jsonDataOrNil)
+}
+
+public func applyRule<T>(_ jsonRule: JSON, to jsonOrNil: JSON? = nil, customOperators: [String: (JSON?) -> JSON]?) throws -> T {
+    return try JsonLogic(jsonRule, customOperators: customOperators).applyRuleInternal(to: jsonOrNil)
+}
+
 /**
     It parses json rule strings and executes the rules on provided data.
 */
@@ -77,6 +92,9 @@ public final class JsonLogic {
     public convenience init(_ jsonRule: String) throws {
         try self.init(jsonRule, customOperators: nil)
     }
+    public convenience init(_ jsonRule: JSON) throws {
+        try self.init(jsonRule, customOperators: nil)
+    }
 
     /**
     It parses the string containing a json logic and caches the result for reuse.
@@ -101,6 +119,9 @@ public final class JsonLogic {
         }
         parsedRule = try Parser(json: rule, customOperators: customOperators).parse()
     }
+    public init(_ jsonRule: JSON, customOperators: [String: (JSON?) -> JSON]?) throws {
+        parsedRule = try Parser(json: jsonRule, customOperators: customOperators).parse()
+    }
 
     /**
     It applies the rule, you can optionally pass data to be used for the rule.
@@ -122,6 +143,10 @@ public final class JsonLogic {
         if let jsonDataOrNil = jsonDataOrNil {
             jsonData = JSON(string: jsonDataOrNil)
         }
+         return try self.applyRuleInternal(to: jsonData!)
+    }
+    
+    public func applyRuleInternal<T>(to jsonData: JSON? = nil) throws -> T {
 
         let result = try parsedRule.evalWithData(jsonData)
 
