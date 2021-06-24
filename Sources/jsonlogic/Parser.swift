@@ -216,7 +216,7 @@ struct Not: Expression {
         {
             if(array.count == 0)
             {
-                return JSON.Bool(false)
+                return JSON.Bool(!lhsBool.truthy())
             }
             else
             {

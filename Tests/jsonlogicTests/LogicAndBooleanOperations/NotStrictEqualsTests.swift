@@ -91,7 +91,7 @@ class NotStrictEquals: XCTestCase {
                 """
                     {"!" : []}
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
                 """

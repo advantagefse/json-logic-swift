@@ -38,9 +38,9 @@ class CatTests: XCTestCase {
 
         rule =
         """
-        {"cat":[1.1,2.1]}
+        {"cat":[221.1,2.122]}
         """
-        XCTAssertEqual("1.12.1", try applyRule(rule, to: nil))
+        XCTAssertEqual("221.12.122", try applyRule(rule, to: nil))
 
         rule =
         """
