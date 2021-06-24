@@ -143,7 +143,7 @@ public final class JsonLogic {
         if let jsonDataOrNil = jsonDataOrNil {
             jsonData = JSON(string: jsonDataOrNil)
         }
-         return try self.applyRuleInternal(to: jsonData!)
+         return try self.applyRuleInternal(to: jsonData)
     }
     
     public func applyRuleInternal<T>(to jsonData: JSON? = nil) throws -> T {

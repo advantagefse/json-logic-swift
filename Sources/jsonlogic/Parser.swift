@@ -214,7 +214,14 @@ struct Not: Expression {
         let lhsBool = try lhs.evalWithData(data)
         if let array = lhsBool.array
         {
-            return JSON.Bool(!array[0].truthy())
+            if(array.count == 0)
+            {
+                return JSON.Bool(false)
+            }
+            else
+            {
+               return JSON.Bool(!array[0].truthy())
+            }
         }
         return JSON.Bool(!lhsBool.truthy())
     }
@@ -627,6 +634,17 @@ struct MinusTime : Expression {
     }
 }
 
+extension Calendar {
+    static var utc : Calendar {
+        guard let utc = TimeZone(identifier: "UTC") else {
+            return Calendar.current
+        }
+        var tmpCalendar = Calendar(identifier: .gregorian)
+        tmpCalendar.timeZone = utc
+        return tmpCalendar
+    }
+}
+
 func addTime(_ amount: Int, as unit: String, to: Date) -> JSON {
     switch unit {
     case "year":
@@ -740,11 +758,19 @@ class Parser {
             return Modulo(arg: try self.parse(json: value))
         case ">":
             return Comparison(arg: try self.parse(json: value), operation: >)
+        case "after":
+            return Comparison(arg: try self.parse(json: value), operation: >)
         case "<":
+            return Comparison(arg: try self.parse(json: value), operation: <)
+        case "before":
             return Comparison(arg: try self.parse(json: value), operation: <)
         case ">=":
             return Comparison(arg: try self.parse(json: value), operation: >=)
+        case "not-before":
+            return Comparison(arg: try self.parse(json: value), operation: >=)
         case "<=":
+            return Comparison(arg: try self.parse(json: value), operation: <=)
+        case "not-after":
             return Comparison(arg: try self.parse(json: value), operation: <=)
         case "if", "?:":
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {

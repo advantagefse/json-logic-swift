@@ -71,7 +71,7 @@ class NotStrictEquals: XCTestCase {
                 """
                     { "!" : [false] }
                 """
-        XCTAssertEqual(false, try applyRule(rule, to: nil))
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
 
         rule =
                 """
@@ -91,19 +91,13 @@ class NotStrictEquals: XCTestCase {
                 """
                     {"!" : []}
                 """
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
+
+        rule =
+                """
+                    {"!" : [[]]}
+                """
         XCTAssertEqual(true, try applyRule(rule, to: nil))
-
-        rule =
-                """
-                    {"!" : [[]]}
-                """
-        XCTAssertEqual(false, try applyRule(rule, to: nil))
-
-        rule =
-                """
-                    {"!" : [[]]}
-                """
-        XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
 
     func testLogicalNot_withNumbers() {
