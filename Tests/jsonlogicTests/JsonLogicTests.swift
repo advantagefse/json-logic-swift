@@ -1,9 +1,41 @@
 import XCTest
-
+import JSON
 @testable import jsonlogic
 
 final class JsonLogicTests: XCTestCase {
 
+    
+    func testVarBasics()
+    {
+        let rule = """
+                    {
+                        "var": ""
+                    }
+                   """
+        let data = """
+                    {
+                        "foo": "bar"
+                    }
+                   """
+       
+        
+        XCTAssertEqual(try applyRule(rule, to: data),[ "foo": "bar"])
+    }
+    
+    
+    func testEmptyData() {
+        let rule =
+        """
+            ["a", "b"]
+        """
+
+        let data = """
+                        {}
+                   """
+        
+        XCTAssertEqual(try applyRule(rule, to: data),["a","b"])
+    }
+    
     func testEqualsWithTwoSameConstants() {
         let rule =
         """

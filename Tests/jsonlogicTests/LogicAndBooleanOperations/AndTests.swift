@@ -6,12 +6,17 @@
 //
 
 import XCTest
-
+import JSON
 @testable import jsonlogic
 
 class AndTests: XCTestCase {
 
     func testAnd_twoBooleans() {
+        
+        XCTAssertNil(try applyRule("""
+                                                  {"and": [null, true]}
+                                                  """, to: nil))
+        
         XCTAssertEqual(true, try applyRule("""
                                                   {"and": [true, true]}
                                                   """, to: nil))
