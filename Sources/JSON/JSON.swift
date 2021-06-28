@@ -448,6 +448,8 @@ extension JSON {
         get {
             switch self {
                     //we want the nested error to propagate unaltered
+            case .Null:
+                return JSON.Null
             case .Error:
                 return self
             case let .Array(array):
@@ -484,10 +486,17 @@ extension JSON {
         get {
             switch self {
                     //we want the nested error to propagate unaltered
+            case .Null:
+                return JSON.Null
             case .Error:
                 return self
+            case let .Array(array):
+               let idx = Swift.Int(key.self) ?? -1
+               if(idx == -1) {return JSON.Null}
+                guard idx < array.count else { return JSON.Null }
+                return array[idx]
             case let .Dictionary(dictionary):
-                return dictionary[key] ?? .Error(.keyNotFound(key))
+                return dictionary[key] ?? JSON.Null
             default:
                 return .Error(.notSubscriptableType(self.type))
             }
