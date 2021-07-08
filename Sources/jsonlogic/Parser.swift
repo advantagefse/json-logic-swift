@@ -285,14 +285,15 @@ struct In: Expression {
     let collectionExpression: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        guard let stringToFind = try stringExpression.evalWithData(data).string
-            else {
-            return false;
-        }
         if let stringToSearchIn = try collectionExpression.evalWithData(data).string {
+            guard let stringToFind = try stringExpression.evalWithData(data).string
+                else {
+                return false;
+            }
             return JSON(stringToSearchIn.contains(stringToFind))
         } else if let arrayToSearchIn = try collectionExpression.evalWithData(data).array {
-            return JSON(arrayToSearchIn.contains(JSON(stringToFind)))
+            let itemToFind = try stringExpression.evalWithData(data)
+            return JSON(arrayToSearchIn.contains(itemToFind))
         }
         return false
     }
@@ -721,6 +722,11 @@ class Parser {
             var arrayOfExpressions: [Expression] = []
             for (key, value) in object {
                 arrayOfExpressions.append(try parseExpressionWithKeyword(key, value: value))
+            }
+            
+            if(arrayOfExpressions.count == 0)
+            {
+              return ArrayOfExpressions(expressions: [])
             }
             //use only the first for now, we should warn or throw error here if array count > 1
             return arrayOfExpressions.first!
