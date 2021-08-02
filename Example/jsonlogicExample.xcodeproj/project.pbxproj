@@ -184,18 +184,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/json-enum/JSON.framework",
-				"${BUILT_PRODUCTS_DIR}/jsonlogic/jsonlogic.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSON.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsonlogic.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

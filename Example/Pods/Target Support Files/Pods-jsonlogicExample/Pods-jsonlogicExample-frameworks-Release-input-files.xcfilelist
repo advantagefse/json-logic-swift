@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-frameworks.sh
+${BUILT_PRODUCTS_DIR}/json-enum/JSON.framework
+${BUILT_PRODUCTS_DIR}/jsonlogic/jsonlogic.framework
