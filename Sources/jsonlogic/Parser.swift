@@ -3,7 +3,7 @@
 //  jsonlogic
 //
 //  Created by Christos Koninis on 16/06/2018.
-//  Licensed under LGPL
+//  Licensed under MIT
 //
 
 import Foundation

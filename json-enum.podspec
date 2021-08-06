@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary = "Parsing JSON to Swift enum parsing library"
   s.description = "Representing a JSON using a enumerated type makes it easy and type safe."
   s.homepage = "https://github.com/advantagefse/json-logic-swift"
-  s.license = { :type => "LGPL", :file => "LICENSE" }
+  s.license = { :type => "MIT", :file => "LICENSE" }
   s.author = { "Christos Koninis" => "c.koninis@afse.eu" }
   s.source = { :git => "https://github.com/advantagefse/json-logic-swift.git", :tag => 'json-enum-1.1.0' }
   

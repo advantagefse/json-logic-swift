@@ -3,7 +3,7 @@
 //  JSON
 //
 //  Created by Christos Koninis on 09/03/2019.
-//  Licensed under LGPL
+//  Licensed under MIT
 //
 
 import Foundation
