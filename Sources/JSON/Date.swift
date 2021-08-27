@@ -6,34 +6,40 @@
 import Foundation
 
 extension Date {
+
+    static var nonFractalISO8601Formatter: ISO8601DateFormatter = {
+      return ISO8601DateFormatter()
+    }()
+
+    static var fractalISO8601Formatter: ISO8601DateFormatter = {
+      let formatter = ISO8601DateFormatter()
+      formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+      return formatter
+    }()
+
     static func fromISO8601(_ dateString: String) -> Date? {
         // `ISO8601DateFormatter` does not support fractional zeros if not
         // configured (`.withFractionalSeconds`) and if configured, does not
         // parse dates without fractional seconds.
 
-        let formatter = ISO8601DateFormatter()
-
         // Try to parse without fractional seconds
-        if let d = formatter.date(from: dateString) {
+        if let d = Date.nonFractalISO8601Formatter.date(from: dateString) {
             return d
         }
 
         // Retry with fraction
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        if let d = formatter.date(from: dateString) {
+        if let d = Date.fractalISO8601Formatter.date(from: dateString) {
             return d
         }
 
         // nothing worked, try adding UTC timezone
 
-        let formatter_without_timezone = ISO8601DateFormatter()
         // Try to parse without fractional seconds
-        if let d = formatter_without_timezone.date(from: dateString + "Z") {
+        if let d = Date.nonFractalISO8601Formatter.date(from: dateString + "Z") {
             return d
         }
 
-        formatter_without_timezone.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        if let d = formatter_without_timezone.date(from: dateString + "Z") {
+        if let d = Date.fractalISO8601Formatter.date(from: dateString + "Z") {
             return d
         }
         return nil
