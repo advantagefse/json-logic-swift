@@ -818,21 +818,13 @@ class Parser {
             return Divide(arg: try self.parse(json: value))
         case "%":
             return Modulo(arg: try self.parse(json: value))
-        case ">":
+        case ">", "after":
             return Comparison(arg: try self.parse(json: value), operation: >)
-        case "after":
-            return Comparison(arg: try self.parse(json: value), operation: >)
-        case "<":
+        case "<", "before":
             return Comparison(arg: try self.parse(json: value), operation: <)
-        case "before":
-            return Comparison(arg: try self.parse(json: value), operation: <)
-        case ">=":
+        case ">=", "not-before":
             return Comparison(arg: try self.parse(json: value), operation: >=)
-        case "not-before":
-            return Comparison(arg: try self.parse(json: value), operation: >=)
-        case "<=":
-            return Comparison(arg: try self.parse(json: value), operation: <=)
-        case "not-after":
+        case "<=", "not-after":
             return Comparison(arg: try self.parse(json: value), operation: <=)
         case "if", "?:":
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {
