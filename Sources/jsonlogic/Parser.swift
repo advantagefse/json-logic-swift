@@ -684,7 +684,7 @@ class Parser {
             }
             return LogicalAndOr(isAnd: key == "and", arg: array)
         case "!!":
-            return DoubleNegation(arg: try self.parse(json: value[0]))
+            return DoubleNegation(arg: try self.parse(json: value))
         case "max":
              return Max(arg: try self.parse(json: value))
         case "min":
