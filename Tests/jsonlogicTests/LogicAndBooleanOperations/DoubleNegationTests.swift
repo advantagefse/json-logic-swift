@@ -21,6 +21,20 @@ class DoubleNegationTests: XCTestCase {
             """, to: nil))
     }
 
+    func testDoubleNegation_withObject() {
+        XCTAssertEqual(true, try applyRule("""
+            { "!!" : true }
+            """, to: nil))
+
+        XCTAssertEqual(false, try applyRule("""
+            { "!!" : false }
+            """, to: nil))
+
+        XCTAssertEqual(true, try applyRule("""
+            { "!!" : "0" }
+            """, to: nil))
+    }
+
     func testDoubleNegation_withArrays() {
         XCTAssertEqual(false, try applyRule("""
             { "!!" : [ [] ] }
