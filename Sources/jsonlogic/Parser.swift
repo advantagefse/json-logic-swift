@@ -160,6 +160,64 @@ struct Comparison: Expression {
     }
 }
 
+struct Round: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let result = try arg.evalWithData(data)
+        switch result {
+        case let .Array(array) where array.count == 2:
+            guard let numberToRound = array[0].double,
+                  let numberOfPlaces = array[1].int
+            else { fallthrough }
+            
+            let divisor = pow(10.0, Double(numberOfPlaces))
+            let result = (numberToRound * divisor).rounded() / divisor
+            return .Double(result)
+        default:
+            return result.toNumber()
+        }
+    }
+}
+
+struct CastToNumber: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let result = try arg.evalWithData(data)
+        
+        switch result {
+        case let .Array(array):
+            let stringArray = array.compactMap { element -> String? in
+                switch element {
+                case .String(let value):
+                    return value
+                default:
+                    return nil
+                }
+            }
+            
+            guard stringArray.isEmpty == false else { return .Null }
+            
+            let doubleArray = stringArray.compactMap(Double.init).map(JSON.Double)
+            
+            guard doubleArray.isEmpty == false else { return .Null }
+            
+            if doubleArray.count == 1 {
+                return doubleArray[0]
+            }
+            
+            return .Array(doubleArray)
+        case let .String(string):
+            guard let value = Double(string) else { return .Null }
+            
+            return .Double(value)
+        default:
+            return .Null
+        }
+    }
+}
+
 //swiftlint:disable:next type_name
 struct If: Expression {
     let arg: ArrayOfExpressions
@@ -222,6 +280,92 @@ struct Not: Expression {
 
         return JSON.Bool(!lhsBool.truthy())
     }
+}
+
+struct Sin: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let jsonValue = try arg.evalWithData(data)
+        
+        if case let JSON.Array(array) = try arg.evalWithData(data) {
+            guard array.count > 1 else {
+                return array.first?.double.flatMap(sin).flatMap(JSON.Double) ??
+                    array.first?.int.flatMap(Double.init).flatMap(sin).flatMap(JSON.Double) ??
+                    JSON.Null
+            }
+            
+            return JSON.Array(array.compactMap { value in
+                return value.double.flatMap(sin).flatMap(JSON.Double) ??
+                    value.int.flatMap(Double.init).flatMap(sin).flatMap(JSON.Double)
+            })
+        } else if case let JSON.Int(number) = jsonValue {
+            let sinValue = sin(Double(number))
+            return JSON.Double(sinValue)
+        } else if case let JSON.Double(number) = jsonValue {
+            return JSON.Double(sin(number))
+        } else {
+            return JSON.Null
+        }
+    }
+}
+
+struct Cos: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let jsonValue = try arg.evalWithData(data)
+        
+        if case let JSON.Array(array) = try arg.evalWithData(data) {
+            guard array.count > 1 else {
+                return array.first?.double.flatMap(cos).flatMap(JSON.Double) ??
+                    array.first?.int.flatMap(Double.init).flatMap(cos).flatMap(JSON.Double) ??
+                    JSON.Null
+            }
+            
+            return JSON.Array(array.compactMap { value in
+                return value.double.flatMap(cos).flatMap(JSON.Double) ??
+                    value.int.flatMap(Double.init).flatMap(cos).flatMap(JSON.Double)
+            })
+        } else if case let JSON.Int(number) = jsonValue {
+            let sinValue = cos(Double(number))
+            return JSON.Double(sinValue)
+        } else if case let JSON.Double(number) = jsonValue {
+            return JSON.Double(cos(number))
+        } else {
+            return JSON.Null
+        }
+    }
+
+}
+
+struct Tan: Expression {
+    let arg: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+        let jsonValue = try arg.evalWithData(data)
+        
+        if case let JSON.Array(array) = try arg.evalWithData(data) {
+            guard array.count > 1 else {
+                return array.first?.double.flatMap(tan).flatMap(JSON.Double) ??
+                    array.first?.int.flatMap(Double.init).flatMap(tan).flatMap(JSON.Double) ??
+                    JSON.Null
+            }
+            
+            return JSON.Array(array.compactMap { value in
+                return value.double.flatMap(tan).flatMap(JSON.Double) ??
+                    value.int.flatMap(Double.init).flatMap(tan).flatMap(JSON.Double)
+            })
+        } else if case let JSON.Int(number) = jsonValue {
+            let sinValue = tan(Double(number))
+            return JSON.Double(sinValue)
+        } else if case let JSON.Double(number) = jsonValue {
+            return JSON.Double(tan(number))
+        } else {
+            return JSON.Null
+        }
+    }
+    
 }
 
 struct Max: Expression {
@@ -680,6 +824,10 @@ class Parser {
             return Comparison(arg: try self.parse(json: value), operation: >=)
         case "<=":
             return Comparison(arg: try self.parse(json: value), operation: <=)
+        case "rnd":
+            return Round(arg: try self.parse(json: value))
+        case "num":
+            return CastToNumber(arg: try self.parse(json: value))
         case "if", "?:":
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {
                 throw ParseError.GenericError("\(key) statement be followed by an array")
@@ -696,6 +844,12 @@ class Parser {
              return Max(arg: try self.parse(json: value))
         case "min":
             return Min(arg: try self.parse(json: value))
+        case "sin":
+            return Sin(arg: try self.parse(json: value))
+        case "cos":
+            return Cos(arg: try self.parse(json: value))
+        case "tan":
+            return Tan(arg: try self.parse(json: value))
         case "substr":
             guard let array = try self.parse(json: value) as? ArrayOfExpressions else {
                 throw ParseError.GenericError("\(key) statement be followed by an array")
