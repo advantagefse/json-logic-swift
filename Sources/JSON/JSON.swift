@@ -56,6 +56,9 @@ public enum JSON: Equatable {
     public init() {
         self = .Null
     }
+    public init(_ json: JSON) {
+        self = json
+    }
 
     public init(_ array: [JSON]) {
         self = .Array(array)
@@ -68,6 +71,8 @@ public enum JSON: Equatable {
     //swiftlint:disable syntactic_sugar
     public init(_ json: Any) {
         switch json {
+        case let js as JSON:
+            self = js
         case let array as Swift.Array<Any>:
             self = .Array(array.map({JSON($0)}))
         case let dictionary as Swift.Dictionary<String, Any>:
