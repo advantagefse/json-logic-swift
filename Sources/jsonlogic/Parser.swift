@@ -3,7 +3,7 @@
 //  jsonlogic
 //
 //  Created by Christos Koninis on 16/06/2018.
-//  Licensed under LGPL
+//  Licensed under MIT
 //
 
 import Foundation
@@ -205,7 +205,14 @@ struct DoubleNegation: Expression {
     let arg: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        return JSON.Bool(try arg.evalWithData(data).truthy())
+        let data = try arg.evalWithData(data)
+        guard case let JSON.Array(array) = data else {
+            return JSON.Bool(data.truthy())
+        }
+        if let firstItem = array.first {
+            return JSON.Bool(firstItem.truthy())
+        }
+        return JSON.Bool(false)
     }
 }
 
@@ -837,7 +844,7 @@ class Parser {
             }
             return LogicalAndOr(isAnd: key == "and", arg: array)
         case "!!":
-            return DoubleNegation(arg: try self.parse(json: value[0]))
+            return DoubleNegation(arg: try self.parse(json: value))
         case "max":
              return Max(arg: try self.parse(json: value))
         case "min":

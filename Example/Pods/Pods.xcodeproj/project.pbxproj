@@ -7,214 +7,224 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		140A18030C8A673CF725FA081CABD720 /* Pods-jsonlogicExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B1CC3D5C53CA8EC18D02941512475AC2 /* Pods-jsonlogicExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1CBF311778FAE589C76F979272363B7E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859F4564F698B09BC52617BA69E87F3E /* Parser.swift */; };
-		4E1AAEA11A0B2371DF2B2917AC533A9A /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3908DD9EDECB488AB310622B0BE863C /* JSON.framework */; };
-		5409F3625A7DA090710A07A45849B292 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A5FA5E2C6D82D004080C641B64116A /* Foundation.framework */; };
-		61763E2C78BE661B82900EB142CB442D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A5FA5E2C6D82D004080C641B64116A /* Foundation.framework */; };
-		7B98E65B29FF9C9C9A9A7D73B3CE8748 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ED231BD44EC923DE6224C1C68923231 /* JSON.swift */; };
-		7CF1E4E3D79EE947DFC55FC80F4AD404 /* jsonlogic-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 641DEB976D808D9B089D457656E97FFD /* jsonlogic-dummy.m */; };
-		8B32DAA90AE56CB53E684A9C733E343B /* Pods-jsonlogicExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC3ADA4612BE690C36D8F0E054225106 /* Pods-jsonlogicExample-dummy.m */; };
-		957EA025F8987E1B6B739139AEC30C3A /* json-enum-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 252D20CF04D8DA4D355A9F3E2E107E67 /* json-enum-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A27ED2DA258D5360CA2692C87E7D627F /* json-enum-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B505D2C17B447AB44C51D5E78EA755 /* json-enum-dummy.m */; };
-		A5A12F45388FEF462A4F4E4EF454B664 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72A5FA5E2C6D82D004080C641B64116A /* Foundation.framework */; };
-		A9A794DAB30973B9D599042CFBD9DBDF /* jsonlogic-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 33F516A38EFA6121BD2F2E0904E0A204 /* jsonlogic-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FBD7652CE0B749E346E6EA638280B528 /* JsonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52D475F609F4459BC8CC01F3D5E8FBE /* JsonLogic.swift */; };
+		00AE5F944D6D76BAF09E0EB327195A5B /* Pods-jsonlogicExample-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 844C95545017CE214018DB8569CD66BC /* Pods-jsonlogicExample-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		03E538F2280FE94D0022B7F41A940D46 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA17E02B50B0CEBBCBAC6F7916E45FA /* Foundation.framework */; };
+		063C37E9D6911169E703A4294F2B7306 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA17E02B50B0CEBBCBAC6F7916E45FA /* Foundation.framework */; };
+		125B2A2F967BD47198B4B9064D2912CF /* JsonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25344B3CAF125BE04772FCE46FB8C667 /* JsonLogic.swift */; };
+		1922880DC591B6510298C736932BCD4D /* json-enum-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DB5D97E02F3935288E44DBE1C75D794B /* json-enum-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EBC9249F9A00CB51E71D1DC2E4D0233 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B9DB0CF90ABFAD3A96348E7310CE01 /* JSON.swift */; };
+		325A05FB2BD37D1A8CAF9F0638006C07 /* Pods-jsonlogicExample-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC697C43AA3191FD02B5F8C6B901A227 /* Pods-jsonlogicExample-dummy.m */; };
+		3C09AFA8AEABABF7E985C7A90677AF39 /* jsonlogic-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E323E93DFF3AE334243D4E03FA1C8B9 /* jsonlogic-dummy.m */; };
+		6843B4B429028623B71DEA61ED7B7EF2 /* json-enum-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 01305035B1053305B1443334C142C57E /* json-enum-dummy.m */; };
+		7511F3BC6288A76FA3F9E76C14546871 /* jsonlogic-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2E2632E396AAA280C04F94EAB21C0047 /* jsonlogic-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8081E9E086D7A3CD7C19C6DC359852F7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDA17E02B50B0CEBBCBAC6F7916E45FA /* Foundation.framework */; };
+		84A5423CB6D735E59816094A188B0063 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335EB89088B949802A1059273B20E2A4 /* Parser.swift */; };
+		D35889FB19AF5E328A30FE12CF67A54F /* JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46FEC7BA8F7BE9704C2A3DDAF0E7F5DA /* JSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A8706F7860258EA4D0135E7DA803FBC4 /* PBXContainerItemProxy */ = {
+		43012F79274148E382C9346FB8E260F3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 09A1E60ADBE233D23F22773900F35725;
+			remoteGlobalIDString = 8D6ACA4BF79B6016AAABE799D2D3D0B0;
 			remoteInfo = jsonlogic;
 		};
-		C67925D8B1257CCB5CAC818E78B1889B /* PBXContainerItemProxy */ = {
+		4A67A864F1C5BC812AA143FEF85B2A23 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5B20521BC6AA57C7AB6B596E8429A4E6;
+			remoteGlobalIDString = 6B8C774A84340B8F9340F16D6451D02F;
 			remoteInfo = "json-enum";
 		};
-		ECBD829800EEB1A25591CE97E9897A45 /* PBXContainerItemProxy */ = {
+		7B4E2B6126CFA73AF1AE336E59411380 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 5B20521BC6AA57C7AB6B596E8429A4E6;
+			remoteGlobalIDString = 6B8C774A84340B8F9340F16D6451D02F;
 			remoteInfo = "json-enum";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00EA7DED52840A3E94F6282A09958FFC /* Pods-jsonlogicExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jsonlogicExample-acknowledgements.plist"; sourceTree = "<group>"; };
-		0725A320FB295E04BC1EDEC6D9227245 /* json-enum-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "json-enum-prefix.pch"; sourceTree = "<group>"; };
-		149AEECEEE887A7F7BFDC24BAF217CEA /* Pods-jsonlogicExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jsonlogicExample.release.xcconfig"; sourceTree = "<group>"; };
-		160BEFBE020C27819BFB9AC2E4853C16 /* Pods-jsonlogicExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jsonlogicExample.modulemap"; sourceTree = "<group>"; };
-		252D20CF04D8DA4D355A9F3E2E107E67 /* json-enum-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "json-enum-umbrella.h"; sourceTree = "<group>"; };
-		27B505D2C17B447AB44C51D5E78EA755 /* json-enum-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "json-enum-dummy.m"; sourceTree = "<group>"; };
-		2ED231BD44EC923DE6224C1C68923231 /* JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Sources/JSON/JSON.swift; sourceTree = "<group>"; };
-		31D1C612F6A1FF2C6DBDC4D384429BB3 /* Pods_jsonlogicExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_jsonlogicExample.framework; path = "Pods-jsonlogicExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		33F516A38EFA6121BD2F2E0904E0A204 /* jsonlogic-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jsonlogic-umbrella.h"; sourceTree = "<group>"; };
-		36167CDDEBD1180BB2418EF27CFB4428 /* jsonlogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = jsonlogic.framework; path = jsonlogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5EE8000D7D491D1860B612E3E7222467 /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JSON.framework; path = "json-enum.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		63C15F5CC6084B3C542E3FD7F9A3FC2E /* jsonlogic-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "jsonlogic-Info.plist"; sourceTree = "<group>"; };
-		641DEB976D808D9B089D457656E97FFD /* jsonlogic-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "jsonlogic-dummy.m"; sourceTree = "<group>"; };
-		664FE0E6FC173CCBE202F099EFDB0B3E /* jsonlogic.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = jsonlogic.modulemap; sourceTree = "<group>"; };
-		72A5FA5E2C6D82D004080C641B64116A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		859F4564F698B09BC52617BA69E87F3E /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Sources/jsonlogic/Parser.swift; sourceTree = "<group>"; };
-		9249EF562EE2DD419C67E8D4B6CB3067 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		98CB86E17F3EA91055B9A5ADD931A13A /* Pods-jsonlogicExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jsonlogicExample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		01305035B1053305B1443334C142C57E /* json-enum-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "json-enum-dummy.m"; sourceTree = "<group>"; };
+		0212ACFFDE40D02928FC8F1998C602CA /* json-enum.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "json-enum.release.xcconfig"; sourceTree = "<group>"; };
+		03C3A7972C534C55E0D1150CB9867E8F /* json-enum.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "json-enum.modulemap"; sourceTree = "<group>"; };
+		167704A6F986F6FCB52DA4C1726CDD40 /* Pods-jsonlogicExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jsonlogicExample.debug.xcconfig"; sourceTree = "<group>"; };
+		25344B3CAF125BE04772FCE46FB8C667 /* JsonLogic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonLogic.swift; path = Sources/jsonlogic/JsonLogic.swift; sourceTree = "<group>"; };
+		2E2632E396AAA280C04F94EAB21C0047 /* jsonlogic-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jsonlogic-umbrella.h"; sourceTree = "<group>"; };
+		2E323E93DFF3AE334243D4E03FA1C8B9 /* jsonlogic-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "jsonlogic-dummy.m"; sourceTree = "<group>"; };
+		3226347BCA34C0D281167429BAE1E386 /* Pods-jsonlogicExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jsonlogicExample-Info.plist"; sourceTree = "<group>"; };
+		335EB89088B949802A1059273B20E2A4 /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = Sources/jsonlogic/Parser.swift; sourceTree = "<group>"; };
+		3407DEEAC4BE0692D40E0F879D723FDD /* jsonlogic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = jsonlogic.release.xcconfig; sourceTree = "<group>"; };
+		3B4C453BD09DE48FEDA035DBF16FE9A5 /* jsonlogic.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = jsonlogic.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		44DA8F024AE871A4C49BA6CB2665F247 /* jsonlogic-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "jsonlogic-Info.plist"; sourceTree = "<group>"; };
+		46FEC7BA8F7BE9704C2A3DDAF0E7F5DA /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		58B9DB0CF90ABFAD3A96348E7310CE01 /* JSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JSON.swift; path = Sources/JSON/JSON.swift; sourceTree = "<group>"; };
+		5E74D80D39E20C2979008A145D7C1938 /* Pods_jsonlogicExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_jsonlogicExample.framework; path = "Pods-jsonlogicExample.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		654C962C8EB45C7899746708EC6AAAF4 /* jsonlogic.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = jsonlogic.modulemap; sourceTree = "<group>"; };
+		6A364FCBA2131C1AEFFA4E90CEFC41ED /* Pods-jsonlogicExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jsonlogicExample.release.xcconfig"; sourceTree = "<group>"; };
+		6CE082C02CE5E1637FB5397F85D96874 /* Pods-jsonlogicExample-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jsonlogicExample-acknowledgements.plist"; sourceTree = "<group>"; };
+		6CF2794200F3316B8ECE1E4203C7D62C /* jsonlogic-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jsonlogic-prefix.pch"; sourceTree = "<group>"; };
+		8019C1AC6E0C0E29FAB40D112ED7ACD6 /* jsonlogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = jsonlogic.framework; path = jsonlogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		844C95545017CE214018DB8569CD66BC /* Pods-jsonlogicExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jsonlogicExample-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A3908DD9EDECB488AB310622B0BE863C /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7DFE467769BC5AE10077462AA69929C /* json-enum.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "json-enum.xcconfig"; sourceTree = "<group>"; };
-		AC3ADA4612BE690C36D8F0E054225106 /* Pods-jsonlogicExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jsonlogicExample-dummy.m"; sourceTree = "<group>"; };
-		B1CC3D5C53CA8EC18D02941512475AC2 /* Pods-jsonlogicExample-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-jsonlogicExample-umbrella.h"; sourceTree = "<group>"; };
-		BA24EEA3A0A2382EF8CBA153B917237F /* Pods-jsonlogicExample-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-jsonlogicExample-Info.plist"; sourceTree = "<group>"; };
-		C52D475F609F4459BC8CC01F3D5E8FBE /* JsonLogic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JsonLogic.swift; path = Sources/jsonlogic/JsonLogic.swift; sourceTree = "<group>"; };
-		C8C37221E1C346C43FB522BC0A83882B /* json-enum.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "json-enum.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		DD069C2E6F329B640718162DE684D40E /* json-enum.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "json-enum.modulemap"; sourceTree = "<group>"; };
-		DD3D68565AB0D92075EEA801BFB70959 /* Pods-jsonlogicExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-jsonlogicExample-frameworks.sh"; sourceTree = "<group>"; };
-		DDDC55A52C969F288F1EBD3F78860F88 /* jsonlogic.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = jsonlogic.xcconfig; sourceTree = "<group>"; };
-		DF0B3662A4851BCA67797CAD753F5AB4 /* json-enum-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "json-enum-Info.plist"; sourceTree = "<group>"; };
-		E04B15EAD6057D7652D3F8648D4488B4 /* jsonlogic-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "jsonlogic-prefix.pch"; sourceTree = "<group>"; };
-		F580B3AF29D1FEFD196C269DE701911E /* Pods-jsonlogicExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-jsonlogicExample.debug.xcconfig"; sourceTree = "<group>"; };
-		F5E2399DD35050A5B7B8E3BF2A5D8FF3 /* jsonlogic.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = jsonlogic.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A2C607693FE050366E9BE55E01C7C51B /* json-enum.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = "json-enum.podspec"; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6558B8F3AE9952A98C22EFE4DB8C0C3 /* Pods-jsonlogicExample-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-jsonlogicExample-frameworks.sh"; sourceTree = "<group>"; };
+		AC697C43AA3191FD02B5F8C6B901A227 /* Pods-jsonlogicExample-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-jsonlogicExample-dummy.m"; sourceTree = "<group>"; };
+		B1DB0B152EA343A09B03C9ADE8F09BAA /* Pods-jsonlogicExample-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-jsonlogicExample-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B51A585A2CD0A2ED8D0B06F3FA0F47B3 /* json-enum-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "json-enum-Info.plist"; sourceTree = "<group>"; };
+		C39594A4D7FFE9DFF93F03F1A7EFF728 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		D54B877A2745BE5FEEC1D170DB24F144 /* jsonlogic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = jsonlogic.debug.xcconfig; sourceTree = "<group>"; };
+		D6A488F555B95162EA0928E55CD01AAC /* JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JSON.framework; path = "json-enum.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB5D97E02F3935288E44DBE1C75D794B /* json-enum-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "json-enum-umbrella.h"; sourceTree = "<group>"; };
+		EDA17E02B50B0CEBBCBAC6F7916E45FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F234CDD767262845EB40046BDD24331D /* json-enum.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "json-enum.debug.xcconfig"; sourceTree = "<group>"; };
+		F569517F3C6A9455E03F38D6224F75A1 /* json-enum-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "json-enum-prefix.pch"; sourceTree = "<group>"; };
+		F5B56BC91FC95F2255AA7201C9AFAD47 /* Pods-jsonlogicExample.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-jsonlogicExample.modulemap"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2E8750B2D65443D3E224B55CF052548B /* Frameworks */ = {
+		11DE99680A564805C8C845DB5B7471D6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5A12F45388FEF462A4F4E4EF454B664 /* Foundation.framework in Frameworks */,
-				4E1AAEA11A0B2371DF2B2917AC533A9A /* JSON.framework in Frameworks */,
+				03E538F2280FE94D0022B7F41A940D46 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E8564B83FF55D98A87586576EB00B0F5 /* Frameworks */ = {
+		5A9301CEC50C8901CD6401933D727C54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61763E2C78BE661B82900EB142CB442D /* Foundation.framework in Frameworks */,
+				063C37E9D6911169E703A4294F2B7306 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EB67B28E972EE25433DD0C2116C9F726 /* Frameworks */ = {
+		6F51A298F78F2502E543032383617F65 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5409F3625A7DA090710A07A45849B292 /* Foundation.framework in Frameworks */,
+				8081E9E086D7A3CD7C19C6DC359852F7 /* Foundation.framework in Frameworks */,
+				D35889FB19AF5E328A30FE12CF67A54F /* JSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1CC9F05E4EA68E155D3475535F911819 /* Support Files */ = {
+		2180FC22CD6323A8B9A012FBF4F3F09E /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				DD069C2E6F329B640718162DE684D40E /* json-enum.modulemap */,
-				A7DFE467769BC5AE10077462AA69929C /* json-enum.xcconfig */,
-				27B505D2C17B447AB44C51D5E78EA755 /* json-enum-dummy.m */,
-				DF0B3662A4851BCA67797CAD753F5AB4 /* json-enum-Info.plist */,
-				0725A320FB295E04BC1EDEC6D9227245 /* json-enum-prefix.pch */,
-				252D20CF04D8DA4D355A9F3E2E107E67 /* json-enum-umbrella.h */,
+				A2C607693FE050366E9BE55E01C7C51B /* json-enum.podspec */,
+				C39594A4D7FFE9DFF93F03F1A7EFF728 /* LICENSE */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/json-enum";
+			name = Pod;
 			sourceTree = "<group>";
 		};
-		363AEB9D9B67EE7534979B4B2FB6B4C5 /* iOS */ = {
+		265CDBBDD995B2505E4A77B60770B73B /* Pods-jsonlogicExample */ = {
 			isa = PBXGroup;
 			children = (
-				72A5FA5E2C6D82D004080C641B64116A /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		40F9D0B1EDFE4A6D179B8D484C5A3CF4 /* json-enum */ = {
-			isa = PBXGroup;
-			children = (
-				2ED231BD44EC923DE6224C1C68923231 /* JSON.swift */,
-				45E425BCBC542CCEAE3EE9C5A2A3D121 /* Pod */,
-				1CC9F05E4EA68E155D3475535F911819 /* Support Files */,
-			);
-			name = "json-enum";
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		447006B85DB0BA06C42D22DD9BC6F97B /* Pods-jsonlogicExample */ = {
-			isa = PBXGroup;
-			children = (
-				160BEFBE020C27819BFB9AC2E4853C16 /* Pods-jsonlogicExample.modulemap */,
-				98CB86E17F3EA91055B9A5ADD931A13A /* Pods-jsonlogicExample-acknowledgements.markdown */,
-				00EA7DED52840A3E94F6282A09958FFC /* Pods-jsonlogicExample-acknowledgements.plist */,
-				AC3ADA4612BE690C36D8F0E054225106 /* Pods-jsonlogicExample-dummy.m */,
-				DD3D68565AB0D92075EEA801BFB70959 /* Pods-jsonlogicExample-frameworks.sh */,
-				BA24EEA3A0A2382EF8CBA153B917237F /* Pods-jsonlogicExample-Info.plist */,
-				B1CC3D5C53CA8EC18D02941512475AC2 /* Pods-jsonlogicExample-umbrella.h */,
-				F580B3AF29D1FEFD196C269DE701911E /* Pods-jsonlogicExample.debug.xcconfig */,
-				149AEECEEE887A7F7BFDC24BAF217CEA /* Pods-jsonlogicExample.release.xcconfig */,
+				F5B56BC91FC95F2255AA7201C9AFAD47 /* Pods-jsonlogicExample.modulemap */,
+				B1DB0B152EA343A09B03C9ADE8F09BAA /* Pods-jsonlogicExample-acknowledgements.markdown */,
+				6CE082C02CE5E1637FB5397F85D96874 /* Pods-jsonlogicExample-acknowledgements.plist */,
+				AC697C43AA3191FD02B5F8C6B901A227 /* Pods-jsonlogicExample-dummy.m */,
+				A6558B8F3AE9952A98C22EFE4DB8C0C3 /* Pods-jsonlogicExample-frameworks.sh */,
+				3226347BCA34C0D281167429BAE1E386 /* Pods-jsonlogicExample-Info.plist */,
+				844C95545017CE214018DB8569CD66BC /* Pods-jsonlogicExample-umbrella.h */,
+				167704A6F986F6FCB52DA4C1726CDD40 /* Pods-jsonlogicExample.debug.xcconfig */,
+				6A364FCBA2131C1AEFFA4E90CEFC41ED /* Pods-jsonlogicExample.release.xcconfig */,
 			);
 			name = "Pods-jsonlogicExample";
 			path = "Target Support Files/Pods-jsonlogicExample";
 			sourceTree = "<group>";
 		};
-		45E425BCBC542CCEAE3EE9C5A2A3D121 /* Pod */ = {
+		2A64C5A8462C36FCB341FE731ACE7AB8 /* jsonlogic */ = {
 			isa = PBXGroup;
 			children = (
-				C8C37221E1C346C43FB522BC0A83882B /* json-enum.podspec */,
-				9249EF562EE2DD419C67E8D4B6CB3067 /* LICENSE */,
-			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		46DA989191A67ECFA957E5719105955C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5EE8000D7D491D1860B612E3E7222467 /* JSON.framework */,
-				36167CDDEBD1180BB2418EF27CFB4428 /* jsonlogic.framework */,
-				31D1C612F6A1FF2C6DBDC4D384429BB3 /* Pods_jsonlogicExample.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		5140AC4D70837FAA1072132B6718C3E3 /* jsonlogic */ = {
-			isa = PBXGroup;
-			children = (
-				C52D475F609F4459BC8CC01F3D5E8FBE /* JsonLogic.swift */,
-				859F4564F698B09BC52617BA69E87F3E /* Parser.swift */,
-				80026AB1478E5E765127DC929F9B5E53 /* Pod */,
-				FEEE5F633D39B17BB494559C253A108A /* Support Files */,
+				25344B3CAF125BE04772FCE46FB8C667 /* JsonLogic.swift */,
+				335EB89088B949802A1059273B20E2A4 /* Parser.swift */,
+				3778EC08BCE843F9E50C9402E466A939 /* Pod */,
+				4551F87BF2BED4DBA78E31749AD7FEC5 /* Support Files */,
 			);
 			name = jsonlogic;
 			path = ../..;
 			sourceTree = "<group>";
 		};
-		80026AB1478E5E765127DC929F9B5E53 /* Pod */ = {
+		3778EC08BCE843F9E50C9402E466A939 /* Pod */ = {
 			isa = PBXGroup;
 			children = (
-				F5E2399DD35050A5B7B8E3BF2A5D8FF3 /* jsonlogic.podspec */,
+				3B4C453BD09DE48FEDA035DBF16FE9A5 /* jsonlogic.podspec */,
 			);
 			name = Pod;
+			sourceTree = "<group>";
+		};
+		4551F87BF2BED4DBA78E31749AD7FEC5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				654C962C8EB45C7899746708EC6AAAF4 /* jsonlogic.modulemap */,
+				2E323E93DFF3AE334243D4E03FA1C8B9 /* jsonlogic-dummy.m */,
+				44DA8F024AE871A4C49BA6CB2665F247 /* jsonlogic-Info.plist */,
+				6CF2794200F3316B8ECE1E4203C7D62C /* jsonlogic-prefix.pch */,
+				2E2632E396AAA280C04F94EAB21C0047 /* jsonlogic-umbrella.h */,
+				D54B877A2745BE5FEEC1D170DB24F144 /* jsonlogic.debug.xcconfig */,
+				3407DEEAC4BE0692D40E0F879D723FDD /* jsonlogic.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/jsonlogic";
+			sourceTree = "<group>";
+		};
+		46DA989191A67ECFA957E5719105955C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D6A488F555B95162EA0928E55CD01AAC /* JSON.framework */,
+				8019C1AC6E0C0E29FAB40D112ED7ACD6 /* jsonlogic.framework */,
+				5E74D80D39E20C2979008A145D7C1938 /* Pods_jsonlogicExample.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5780A932C018CFBF25F80B85B48F4F75 /* json-enum */ = {
+			isa = PBXGroup;
+			children = (
+				58B9DB0CF90ABFAD3A96348E7310CE01 /* JSON.swift */,
+				2180FC22CD6323A8B9A012FBF4F3F09E /* Pod */,
+				71C123B25242495DB50FAE355C371887 /* Support Files */,
+			);
+			name = "json-enum";
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		69A7A8AA4E459F5C7534BD8A37770D2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46FEC7BA8F7BE9704C2A3DDAF0E7F5DA /* JSON.framework */,
+				FDB73E255BFE86BDF3BEC124D728BC2A /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71C123B25242495DB50FAE355C371887 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				03C3A7972C534C55E0D1150CB9867E8F /* json-enum.modulemap */,
+				01305035B1053305B1443334C142C57E /* json-enum-dummy.m */,
+				B51A585A2CD0A2ED8D0B06F3FA0F47B3 /* json-enum-Info.plist */,
+				F569517F3C6A9455E03F38D6224F75A1 /* json-enum-prefix.pch */,
+				DB5D97E02F3935288E44DBE1C75D794B /* json-enum-umbrella.h */,
+				F234CDD767262845EB40046BDD24331D /* json-enum.debug.xcconfig */,
+				0212ACFFDE40D02928FC8F1998C602CA /* json-enum.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/json-enum";
 			sourceTree = "<group>";
 		};
 		94F9F553AFD836A65264890EF4356E90 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				447006B85DB0BA06C42D22DD9BC6F97B /* Pods-jsonlogicExample */,
+				265CDBBDD995B2505E4A77B60770B73B /* Pods-jsonlogicExample */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		C52EADE9805F350F1C1B9401E19B6A6B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A3908DD9EDECB488AB310622B0BE863C /* JSON.framework */,
-				363AEB9D9B67EE7534979B4B2FB6B4C5 /* iOS */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -222,7 +232,7 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				F33EF57EAB54FC958858F44F70C9EA46 /* Development Pods */,
-				C52EADE9805F350F1C1B9401E19B6A6B /* Frameworks */,
+				69A7A8AA4E459F5C7534BD8A37770D2D /* Frameworks */,
 				46DA989191A67ECFA957E5719105955C /* Products */,
 				94F9F553AFD836A65264890EF4356E90 /* Targets Support Files */,
 			);
@@ -231,83 +241,58 @@
 		F33EF57EAB54FC958858F44F70C9EA46 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
-				40F9D0B1EDFE4A6D179B8D484C5A3CF4 /* json-enum */,
-				5140AC4D70837FAA1072132B6718C3E3 /* jsonlogic */,
+				5780A932C018CFBF25F80B85B48F4F75 /* json-enum */,
+				2A64C5A8462C36FCB341FE731ACE7AB8 /* jsonlogic */,
 			);
 			name = "Development Pods";
 			sourceTree = "<group>";
 		};
-		FEEE5F633D39B17BB494559C253A108A /* Support Files */ = {
+		FDB73E255BFE86BDF3BEC124D728BC2A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				664FE0E6FC173CCBE202F099EFDB0B3E /* jsonlogic.modulemap */,
-				DDDC55A52C969F288F1EBD3F78860F88 /* jsonlogic.xcconfig */,
-				641DEB976D808D9B089D457656E97FFD /* jsonlogic-dummy.m */,
-				63C15F5CC6084B3C542E3FD7F9A3FC2E /* jsonlogic-Info.plist */,
-				E04B15EAD6057D7652D3F8648D4488B4 /* jsonlogic-prefix.pch */,
-				33F516A38EFA6121BD2F2E0904E0A204 /* jsonlogic-umbrella.h */,
+				EDA17E02B50B0CEBBCBAC6F7916E45FA /* Foundation.framework */,
 			);
-			name = "Support Files";
-			path = "Example/Pods/Target Support Files/jsonlogic";
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		9E4531418ED23A3E7A8DB5F2643AD067 /* Headers */ = {
+		3086ADEE54FBDC01B20453B98DCDA3B3 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957EA025F8987E1B6B739139AEC30C3A /* json-enum-umbrella.h in Headers */,
+				00AE5F944D6D76BAF09E0EB327195A5B /* Pods-jsonlogicExample-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BA42BDD26BC9F67706B5F905983EB372 /* Headers */ = {
+		6091F9739506B84C446A31202B49828B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				140A18030C8A673CF725FA081CABD720 /* Pods-jsonlogicExample-umbrella.h in Headers */,
+				7511F3BC6288A76FA3F9E76C14546871 /* jsonlogic-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D89A83C8C73B6FF51E959CBC782BFD82 /* Headers */ = {
+		8378E37A596A09575BB5943A3804EAB4 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9A794DAB30973B9D599042CFBD9DBDF /* jsonlogic-umbrella.h in Headers */,
+				1922880DC591B6510298C736932BCD4D /* json-enum-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		09A1E60ADBE233D23F22773900F35725 /* jsonlogic */ = {
+		6B8C774A84340B8F9340F16D6451D02F /* json-enum */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EFBDD31B490434C72CFD5D0017E91439 /* Build configuration list for PBXNativeTarget "jsonlogic" */;
+			buildConfigurationList = A2711C8AF4A26ADE08823315253691DB /* Build configuration list for PBXNativeTarget "json-enum" */;
 			buildPhases = (
-				D89A83C8C73B6FF51E959CBC782BFD82 /* Headers */,
-				F7C2E16824B7310E35E97FC4C386A568 /* Sources */,
-				2E8750B2D65443D3E224B55CF052548B /* Frameworks */,
-				5E62E985120485242A4E3DD1E42A646B /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				79C6B1E3A0B0A56D6CC34A9ADA0ADFC1 /* PBXTargetDependency */,
-			);
-			name = jsonlogic;
-			productName = jsonlogic;
-			productReference = 36167CDDEBD1180BB2418EF27CFB4428 /* jsonlogic.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		5B20521BC6AA57C7AB6B596E8429A4E6 /* json-enum */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D4207AEE0406B9C61AE2533134DCFB28 /* Build configuration list for PBXNativeTarget "json-enum" */;
-			buildPhases = (
-				9E4531418ED23A3E7A8DB5F2643AD067 /* Headers */,
-				5DA46C26116CA1BAFEF89E4EA6C3D8FF /* Sources */,
-				EB67B28E972EE25433DD0C2116C9F726 /* Frameworks */,
-				DEB4181A7D576952376160C5A4BB19E2 /* Resources */,
+				8378E37A596A09575BB5943A3804EAB4 /* Headers */,
+				9D801CE8C336812DC48362A23DA31C03 /* Sources */,
+				11DE99680A564805C8C845DB5B7471D6 /* Frameworks */,
+				C0734ACF8F1D61ABC83D60816BDA14AA /* Resources */,
 			);
 			buildRules = (
 			);
@@ -315,27 +300,46 @@
 			);
 			name = "json-enum";
 			productName = "json-enum";
-			productReference = 5EE8000D7D491D1860B612E3E7222467 /* JSON.framework */;
+			productReference = D6A488F555B95162EA0928E55CD01AAC /* JSON.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A5D7F1206E9A590BA5A95E4E1EE28160 /* Pods-jsonlogicExample */ = {
+		801783CDDFF1036F77F43AB21CB2C7C8 /* Pods-jsonlogicExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A3E9469C1B47B0EF4947930C0B00A0B /* Build configuration list for PBXNativeTarget "Pods-jsonlogicExample" */;
+			buildConfigurationList = 8E64947E80FAD351306922202B783E03 /* Build configuration list for PBXNativeTarget "Pods-jsonlogicExample" */;
 			buildPhases = (
-				BA42BDD26BC9F67706B5F905983EB372 /* Headers */,
-				DE40CCBAE63D28171E254D7CCB27EAD0 /* Sources */,
-				E8564B83FF55D98A87586576EB00B0F5 /* Frameworks */,
-				53EAEAE939F883BA2A71376BFE52F5F7 /* Resources */,
+				3086ADEE54FBDC01B20453B98DCDA3B3 /* Headers */,
+				54822EF840F926827BA9D6F754D1F692 /* Sources */,
+				5A9301CEC50C8901CD6401933D727C54 /* Frameworks */,
+				152C8F561249BC4524D2DC9E67A92719 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3CC8AAF7992F72FBF16114B7F478FFDD /* PBXTargetDependency */,
-				3955F7E14790D43A424594D53F4FC4CA /* PBXTargetDependency */,
+				F21849AFC51734EFAE708732F64D9729 /* PBXTargetDependency */,
+				55F071A1B6FE0F2EA3BEBCB18C7F9C4F /* PBXTargetDependency */,
 			);
 			name = "Pods-jsonlogicExample";
 			productName = "Pods-jsonlogicExample";
-			productReference = 31D1C612F6A1FF2C6DBDC4D384429BB3 /* Pods_jsonlogicExample.framework */;
+			productReference = 5E74D80D39E20C2979008A145D7C1938 /* Pods_jsonlogicExample.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8D6ACA4BF79B6016AAABE799D2D3D0B0 /* jsonlogic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 575802E2663A421F765F2C46B6CEF838 /* Build configuration list for PBXNativeTarget "jsonlogic" */;
+			buildPhases = (
+				6091F9739506B84C446A31202B49828B /* Headers */,
+				52FAE0768ADE80E8ED549C38FAA450E3 /* Sources */,
+				6F51A298F78F2502E543032383617F65 /* Frameworks */,
+				594E69C67070D43DC7043FFEB9AE32BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D429310F80291A57B3E19FF5923E0800 /* PBXTargetDependency */,
+			);
+			name = jsonlogic;
+			productName = jsonlogic;
+			productReference = 8019C1AC6E0C0E29FAB40D112ED7ACD6 /* jsonlogic.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -344,44 +348,45 @@
 		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
 			productRefGroup = 46DA989191A67ECFA957E5719105955C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5B20521BC6AA57C7AB6B596E8429A4E6 /* json-enum */,
-				09A1E60ADBE233D23F22773900F35725 /* jsonlogic */,
-				A5D7F1206E9A590BA5A95E4E1EE28160 /* Pods-jsonlogicExample */,
+				6B8C774A84340B8F9340F16D6451D02F /* json-enum */,
+				8D6ACA4BF79B6016AAABE799D2D3D0B0 /* jsonlogic */,
+				801783CDDFF1036F77F43AB21CB2C7C8 /* Pods-jsonlogicExample */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		53EAEAE939F883BA2A71376BFE52F5F7 /* Resources */ = {
+		152C8F561249BC4524D2DC9E67A92719 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5E62E985120485242A4E3DD1E42A646B /* Resources */ = {
+		594E69C67070D43DC7043FFEB9AE32BA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DEB4181A7D576952376160C5A4BB19E2 /* Resources */ = {
+		C0734ACF8F1D61ABC83D60816BDA14AA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -391,61 +396,200 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5DA46C26116CA1BAFEF89E4EA6C3D8FF /* Sources */ = {
+		52FAE0768ADE80E8ED549C38FAA450E3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A27ED2DA258D5360CA2692C87E7D627F /* json-enum-dummy.m in Sources */,
-				7B98E65B29FF9C9C9A9A7D73B3CE8748 /* JSON.swift in Sources */,
+				3C09AFA8AEABABF7E985C7A90677AF39 /* jsonlogic-dummy.m in Sources */,
+				125B2A2F967BD47198B4B9064D2912CF /* JsonLogic.swift in Sources */,
+				84A5423CB6D735E59816094A188B0063 /* Parser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DE40CCBAE63D28171E254D7CCB27EAD0 /* Sources */ = {
+		54822EF840F926827BA9D6F754D1F692 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B32DAA90AE56CB53E684A9C733E343B /* Pods-jsonlogicExample-dummy.m in Sources */,
+				325A05FB2BD37D1A8CAF9F0638006C07 /* Pods-jsonlogicExample-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F7C2E16824B7310E35E97FC4C386A568 /* Sources */ = {
+		9D801CE8C336812DC48362A23DA31C03 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CF1E4E3D79EE947DFC55FC80F4AD404 /* jsonlogic-dummy.m in Sources */,
-				FBD7652CE0B749E346E6EA638280B528 /* JsonLogic.swift in Sources */,
-				1CBF311778FAE589C76F979272363B7E /* Parser.swift in Sources */,
+				6843B4B429028623B71DEA61ED7B7EF2 /* json-enum-dummy.m in Sources */,
+				2EBC9249F9A00CB51E71D1DC2E4D0233 /* JSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3955F7E14790D43A424594D53F4FC4CA /* PBXTargetDependency */ = {
+		55F071A1B6FE0F2EA3BEBCB18C7F9C4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = jsonlogic;
-			target = 09A1E60ADBE233D23F22773900F35725 /* jsonlogic */;
-			targetProxy = A8706F7860258EA4D0135E7DA803FBC4 /* PBXContainerItemProxy */;
+			target = 8D6ACA4BF79B6016AAABE799D2D3D0B0 /* jsonlogic */;
+			targetProxy = 43012F79274148E382C9346FB8E260F3 /* PBXContainerItemProxy */;
 		};
-		3CC8AAF7992F72FBF16114B7F478FFDD /* PBXTargetDependency */ = {
+		D429310F80291A57B3E19FF5923E0800 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "json-enum";
-			target = 5B20521BC6AA57C7AB6B596E8429A4E6 /* json-enum */;
-			targetProxy = ECBD829800EEB1A25591CE97E9897A45 /* PBXContainerItemProxy */;
+			target = 6B8C774A84340B8F9340F16D6451D02F /* json-enum */;
+			targetProxy = 4A67A864F1C5BC812AA143FEF85B2A23 /* PBXContainerItemProxy */;
 		};
-		79C6B1E3A0B0A56D6CC34A9ADA0ADFC1 /* PBXTargetDependency */ = {
+		F21849AFC51734EFAE708732F64D9729 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "json-enum";
-			target = 5B20521BC6AA57C7AB6B596E8429A4E6 /* json-enum */;
-			targetProxy = C67925D8B1257CCB5CAC818E78B1889B /* PBXContainerItemProxy */;
+			target = 6B8C774A84340B8F9340F16D6451D02F /* json-enum */;
+			targetProxy = 7B4E2B6126CFA73AF1AE336E59411380 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		05DF210AC65EBB0E593AAF976B2C2177 /* Release */ = {
+		13990CE5B3B4B367D8F6845EAD8461BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0212ACFFDE40D02928FC8F1998C602CA /* json-enum.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/json-enum/json-enum-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/json-enum/json-enum-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/json-enum/json-enum.modulemap";
+				PRODUCT_MODULE_NAME = JSON;
+				PRODUCT_NAME = JSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		17FF400C1741F37216488945AE846E87 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D54B877A2745BE5FEEC1D170DB24F144 /* jsonlogic.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/jsonlogic/jsonlogic-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/jsonlogic/jsonlogic-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/jsonlogic/jsonlogic.modulemap";
+				PRODUCT_MODULE_NAME = jsonlogic;
+				PRODUCT_NAME = jsonlogic;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		22BBDCA8946EF3F7957AEC34E1BCBF6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F234CDD767262845EB40046BDD24331D /* json-enum.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/json-enum/json-enum-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/json-enum/json-enum-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/json-enum/json-enum.modulemap";
+				PRODUCT_MODULE_NAME = JSON;
+				PRODUCT_NAME = JSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		55FF5E3A50A9E02523B2A8431AC5424F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3407DEEAC4BE0692D40E0F879D723FDD /* jsonlogic.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/jsonlogic/jsonlogic-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/jsonlogic/jsonlogic-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/jsonlogic/jsonlogic.modulemap";
+				PRODUCT_MODULE_NAME = jsonlogic;
+				PRODUCT_NAME = jsonlogic;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6D42DC62C4F2E194221DF89C48496C98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -468,6 +612,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -497,16 +642,16 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		19D00C3896D69A8229DD8E5A522505C4 /* Debug */ = {
+		9F46AB20D1B9A7D58DDC073C544BC557 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7DFE467769BC5AE10077462AA69929C /* json-enum.xcconfig */;
+			baseConfigurationReference = 6A364FCBA2131C1AEFFA4E90CEFC41ED /* Pods-jsonlogicExample.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -515,8 +660,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/json-enum/json-enum-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/json-enum/json-enum-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -524,48 +668,15 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MODULEMAP_FILE = "Target Support Files/json-enum/json-enum.modulemap";
-				PRODUCT_MODULE_NAME = JSON;
-				PRODUCT_NAME = JSON;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		1ED9903509BF5159F9E83A81C1012452 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A7DFE467769BC5AE10077462AA69929C /* json-enum.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/json-enum/json-enum-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/json-enum/json-enum-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/json-enum/json-enum.modulemap";
-				PRODUCT_MODULE_NAME = JSON;
-				PRODUCT_NAME = JSON;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -573,10 +684,47 @@
 			};
 			name = Release;
 		};
-		421ECB1396280A8D83853C3DDBED1700 /* Debug */ = {
+		A349C48A94674D14766A9BA883E5C16B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 167704A6F986F6FCB52DA4C1726CDD40 /* Pods-jsonlogicExample.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E4D0D44B090D4284607EBBC4E71A96C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -599,6 +747,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -632,192 +781,46 @@
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		B30A7A4E171531571017676F2CF3B787 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 149AEECEEE887A7F7BFDC24BAF217CEA /* Pods-jsonlogicExample.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		BED6C18C9FC268B6DF821E3E92504DD3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDDC55A52C969F288F1EBD3F78860F88 /* jsonlogic.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/jsonlogic/jsonlogic-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/jsonlogic/jsonlogic-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/jsonlogic/jsonlogic.modulemap";
-				PRODUCT_MODULE_NAME = jsonlogic;
-				PRODUCT_NAME = jsonlogic;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C6E4E13C3A4326B8FAF5AC0BF8D51982 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DDDC55A52C969F288F1EBD3F78860F88 /* jsonlogic.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/jsonlogic/jsonlogic-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/jsonlogic/jsonlogic-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/jsonlogic/jsonlogic.modulemap";
-				PRODUCT_MODULE_NAME = jsonlogic;
-				PRODUCT_NAME = jsonlogic;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		D29367F904411BB52ADF1B38FA863BB7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F580B3AF29D1FEFD196C269DE701911E /* Pods-jsonlogicExample.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-jsonlogicExample/Pods-jsonlogicExample.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0A3E9469C1B47B0EF4947930C0B00A0B /* Build configuration list for PBXNativeTarget "Pods-jsonlogicExample" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D29367F904411BB52ADF1B38FA863BB7 /* Debug */,
-				B30A7A4E171531571017676F2CF3B787 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				421ECB1396280A8D83853C3DDBED1700 /* Debug */,
-				05DF210AC65EBB0E593AAF976B2C2177 /* Release */,
+				E4D0D44B090D4284607EBBC4E71A96C1 /* Debug */,
+				6D42DC62C4F2E194221DF89C48496C98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4207AEE0406B9C61AE2533134DCFB28 /* Build configuration list for PBXNativeTarget "json-enum" */ = {
+		575802E2663A421F765F2C46B6CEF838 /* Build configuration list for PBXNativeTarget "jsonlogic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				19D00C3896D69A8229DD8E5A522505C4 /* Debug */,
-				1ED9903509BF5159F9E83A81C1012452 /* Release */,
+				17FF400C1741F37216488945AE846E87 /* Debug */,
+				55FF5E3A50A9E02523B2A8431AC5424F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EFBDD31B490434C72CFD5D0017E91439 /* Build configuration list for PBXNativeTarget "jsonlogic" */ = {
+		8E64947E80FAD351306922202B783E03 /* Build configuration list for PBXNativeTarget "Pods-jsonlogicExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				BED6C18C9FC268B6DF821E3E92504DD3 /* Debug */,
-				C6E4E13C3A4326B8FAF5AC0BF8D51982 /* Release */,
+				A349C48A94674D14766A9BA883E5C16B /* Debug */,
+				9F46AB20D1B9A7D58DDC073C544BC557 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2711C8AF4A26ADE08823315253691DB /* Build configuration list for PBXNativeTarget "json-enum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22BBDCA8946EF3F7957AEC34E1BCBF6F /* Debug */,
+				13990CE5B3B4B367D8F6845EAD8461BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
