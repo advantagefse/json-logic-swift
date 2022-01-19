@@ -18,6 +18,12 @@ extension Date {
     }()
 
     static func fromISO8601(_ dateString: String) -> Date? {
+        // An ISO 8601 date needs to at least contain dashes
+        // If the string does not have a minimum length and contain any dashes
+        // we can avoid the costly date parsing
+        guard dateString.count >= 10 else { return nil }
+        guard dateString.contains("-") else { return nil }
+        
         // `ISO8601DateFormatter` does not support fractional zeros if not
         // configured (`.withFractionalSeconds`) and if configured, does not
         // parse dates without fractional seconds.
