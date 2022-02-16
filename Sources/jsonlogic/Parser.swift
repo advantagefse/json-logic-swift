@@ -336,10 +336,16 @@ func evalWithData(_ data: JSON?) throws -> JSON {
 
 struct Var: Expression {
     let expression: Expression
+    let defaultArgument: JSON
+
+    internal init(expression: Expression, defaultArgument: JSON = JSON.Null) {
+        self.expression = expression
+        self.defaultArgument = defaultArgument
+    }
 
     func evalWithData(_ data: JSON?) throws -> JSON {
         guard let data = data else {
-            return JSON.Null
+            return defaultArgument
         }
 
       let variablePath = try evaluateVarPathFromData(data)
@@ -356,7 +362,13 @@ struct Var: Expression {
                 partialResult = partialResult?[key]
               }
           }
-          return partialResult ?? JSON.Null
+
+          if let partialResult = partialResult,
+             case JSON.Error(_) = partialResult {
+              return defaultArgument
+          } else {
+              return partialResult ?? JSON.Null
+          }
       }
 
         return JSON.Null
@@ -647,7 +659,12 @@ class Parser {
     func parseExpressionWithKeyword(_ key: String, value: JSON) throws -> Expression {
         switch key {
         case "var":
-            return Var(expression: try self.parse(json: value))
+            guard let array = try self.parse(json: value) as? ArrayOfExpressions,
+                  array.expressions.count >= 2,
+                  let defaultArgument = array.expressions[1] as? SingleValueExpression else {
+                      return Var(expression: try self.parse(json: value))
+                  }
+            return Var(expression: array.expressions[0], defaultArgument: try defaultArgument.evalWithData(nil))
         case "===":
             return StrictEquals(lhs: try self.parse(json: value[0]),
                                 rhs: try self.parse(json: value[1]))
