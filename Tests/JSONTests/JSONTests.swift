@@ -12,9 +12,6 @@ import XCTest
 class JSONTests: XCTestCase {
 
     func testJSONEquality() {
-        let json1: JSON = [1, 2]
-        let json: JSON = ["+":  [1, 2]]
-
         XCTAssertEqual(JSON(10.10), JSON(10.10))
         XCTAssertEqual(JSON(10), JSON(10))
         XCTAssertEqual(JSON(10.0), JSON(10))

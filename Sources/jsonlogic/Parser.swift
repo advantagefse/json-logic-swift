@@ -363,12 +363,15 @@ struct Var: Expression {
               }
           }
 
-          if let partialResult = partialResult,
-             case JSON.Error(_) = partialResult {
+          guard let partialResult = partialResult else {
               return defaultArgument
-          } else {
-              return partialResult ?? JSON.Null
           }
+
+          if case JSON.Error(_) = partialResult {
+              return defaultArgument
+          }
+
+          return partialResult
       }
 
         return JSON.Null
