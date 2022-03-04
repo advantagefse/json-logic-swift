@@ -165,4 +165,34 @@ final class JsonLogicTests: XCTestCase {
             XCTAssertEqual($0 as! JSONLogicError, .canNotConvertResultToType(SomeType.self))
         }
     }
+
+    /// Test for the bug advantagefse/json-logic-swift/issues/24
+    func testComplexRule() {
+        let rule =
+        """
+        {
+            "!": [{
+                "and": [{
+                        "in": ["Population", {
+                            "var": "CHOIX"
+                        }]
+                    },
+                    {
+                        "in": [{
+                                "var": "TAILLE_POP"
+                            },
+                            ["", null]
+                        ]
+                    }
+                ]
+            }]
+        }
+        """
+        let data =
+        """
+            { "COMPARTIEMENT" : "Faune/Wildlife", "ACTIF" : "false" }
+        """
+
+        XCTAssertTrue(try applyRule(rule, to: data))
+    }
 }

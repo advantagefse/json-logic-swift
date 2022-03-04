@@ -213,7 +213,14 @@ struct Not: Expression {
     func evalWithData(_ data: JSON?) throws -> JSON {
         let lhsBool = try lhs.evalWithData(data)
 
-        return JSON.Bool(!lhsBool.thruthy())
+        guard case let JSON.Array(array) = lhsBool else {
+            return JSON.Bool(!lhsBool.thruthy())
+        }
+        if let firstItem = array.first {
+            return JSON.Bool(!firstItem.thruthy())
+        }
+
+        return JSON.Bool(true)
     }
 }
 
@@ -277,14 +284,14 @@ struct In: Expression {
     func evalWithData(_ data: JSON?) throws -> JSON {
         guard let stringToFind = try stringExpression.evalWithData(data).string
             else {
-                return JSON.Null
+                return JSON.Bool(false)
         }
         if let stringToSearchIn = try collectionExpression.evalWithData(data).string {
             return JSON(stringToSearchIn.contains(stringToFind))
         } else if let arrayToSearchIn = try collectionExpression.evalWithData(data).array {
             return JSON(arrayToSearchIn.contains(JSON(stringToFind)))
         }
-        return JSON.Null
+        return JSON.Bool(false)
     }
 }
 
