@@ -95,6 +95,7 @@ class AllTests: XCTestCase {
                 """
         XCTAssertFalse(try applyRule(rule, to: data))
     }
+    
 
     func testAll_withMissingArguments() {
         let rule =
