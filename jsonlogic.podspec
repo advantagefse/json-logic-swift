@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.12'
   
   s.cocoapods_version = '>= 1.6.1'
-#  s.swift_version = '4.2.1'
+  s.swift_version = '5'
   
   s.frameworks = 'Foundation'
   
