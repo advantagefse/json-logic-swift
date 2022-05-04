@@ -613,6 +613,54 @@ struct Log: Expression {
     }
 }
 
+struct dccDateOfBirth: Expression {
+    let expression: Expression
+    
+    func evalWithData(_ data: JSON?) throws -> JSON {
+      guard let data = data else { return JSON.Null }
+      let result = try expression.evalWithData(data)
+      let arr = try result.array!
+                
+        if arr[0].type == JSON.ContentType.date {
+            return JSON(arr[0])
+        }
+        
+        if arr[0].type == JSON.ContentType.string {
+            let timeSuffix = "T00:00:00.000Z"
+            let regex1 = "^\\d{4}$"
+            let regex2 = "^\\d{4}-\\d{2}$"
+            let regex3 = "^\\d{4}-\\d{2}-\\d{2}$"
+            let date = arr[0].string!
+            
+            if date.range(of: regex1, options:.regularExpression) != nil {
+                let newDate = date+"-12-31"+timeSuffix
+                return JSON(newDate)
+            }
+            
+            if date.range(of: regex2, options:.regularExpression) != nil {
+                let newDate = date + "-01" + timeSuffix
+                var date = JSON(newDate).date!
+                var dateComponent = DateComponents()
+                dateComponent.month = 1
+                dateComponent.day = -1
+                guard let futureDate = Calendar.current.date(byAdding: dateComponent, to: date) else {
+                    return JSON.Null
+                }
+                return JSON(futureDate)
+            }
+            
+            if date.range(of: regex3, options:.regularExpression) != nil {
+                let newDate = date + timeSuffix
+                return JSON(newDate)
+            }
+            
+            throw ParseError.GenericError("can't parse EU DCC date-of-birth")
+        }
+        return JSON.Null
+    }
+    
+}
+
 struct ExtractFromUVCI: Expression {
     let expression: Expression
     
@@ -892,6 +940,8 @@ class Parser {
             return MinusTime(expression: try self.parse(json: value))
         case "extractFromUVCI":
             return ExtractFromUVCI(expression: try self.parse(json: value))
+        case "dccDateOfBirth":
+            return dccDateOfBirth(expression: try self.parse(json: value))
         default:
             if let customOperation = self.customOperators[key] {
                 return CustomExpression(expression: try self.parse(json: value),

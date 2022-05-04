@@ -80,6 +80,10 @@ final class CertLogic: XCTestCase {
                                     XCTAssertEqual(try applyRule(c.element["certLogicExpression"],to: a.element["data"]),1)
                                 case "var-ing non-existing array elements":
                                     XCTAssertEqual(try applyRule(c.element["certLogicExpression"],to: a.element["data"]),2)
+                                case "should return first falsy operand":
+                                    XCTAssertEqual(try applyRule(c.element["certLogicExpression"],to: a.element["data"]),0)
+                                case "should return last truthy operand":
+                                    XCTAssertEqual(try applyRule(c.element["certLogicExpression"],to: a.element["data"]),1)
                                 default:
                                     XCTAssertFalse(true)
                                 }
