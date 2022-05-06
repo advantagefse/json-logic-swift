@@ -19,6 +19,7 @@ let package = Package(
             name: "jsonlogic-cli",
             targets: ["jsonlogic-cli"]),
     ],
+    
     targets: [
         .target(
             name: "jsonlogic-cli",
@@ -36,5 +37,6 @@ let package = Package(
             name: "JSONTests",
             dependencies: ["JSON"])
     ],
+    
     swiftLanguageVersions: [.v5, .v4_2, .v4]
 )
