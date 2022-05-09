@@ -4,35 +4,35 @@
 import PackageDescription
 
 let package = Package(
-    name: "jsonlogic",
+    name: "JsonLogic",
     platforms: [
         .macOS(.v10_13), .iOS(.v11), .tvOS(.v9), .watchOS(.v2)
     ],
     products: [
         .library(
-            name: "jsonlogic",
-            targets: ["jsonlogic"]),
+            name: "JsonLogic",
+            targets: ["JsonLogic"]),
         .library(
             name: "JSON",
             targets: ["JSON"]),
         .executable(
-            name: "jsonlogic-cli",
-            targets: ["jsonlogic-cli"]),
+            name: "JsonLogic-cli",
+            targets: ["JsonLogic-cli"]),
     ],
     
     targets: [
         .target(
-            name: "jsonlogic-cli",
-            dependencies: ["jsonlogic"]),
+            name: "JsonLogic-cli",
+            dependencies: ["JsonLogic"]),
         .target(
-            name: "jsonlogic",
+            name: "JsonLogic",
             dependencies: ["JSON"]),
         .target(
             name: "JSON",
             dependencies: []),
         .testTarget(
-            name: "jsonlogicTests",
-            dependencies: ["jsonlogic"]),
+            name: "JsonLogicTests",
+            dependencies: ["JsonLogic"]),
         .testTarget(
             name: "JSONTests",
             dependencies: ["JSON"])

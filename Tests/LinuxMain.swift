@@ -1,10 +1,10 @@
 import XCTest
 
 import JSONTests
-import jsonlogicTests
+import JsonLogicTests
 
 var tests = [XCTestCaseEntry]()
 tests += JSONTests.__allTests()
-tests += jsonlogicTests.__allTests()
+tests += JsonLogicTests.__allTests()
 
 XCTMain(tests)

@@ -576,58 +576,12 @@ extension JSON {
     }
 }
 
-extension Date {
-
-    static func dateFromShortFormatString(_ string: String) -> Date? {
-        // Since we use a DateFormatter with a fixed format we only need
-        // to attempt parsing a date when we have a string with the exact length
-        let trimmedString = string.trimmingCharacters(in: .whitespaces)
-        guard trimmedString.count == 10 else { return nil }
-        // and additionally if the fifth character is a dash
-        guard trimmedString[trimmedString.index(string.startIndex, offsetBy: 4)] == "-" else { return nil }
-
-        return shortFormatter.date(from: string)
-    }
-    
-    static var shortFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-
-    //2021-06-03T09:40:51Z
-    static var fullFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.calendar = Calendar(identifier: .iso8601)
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.timeZone = TimeZone(secondsFromGMT: 0)
-        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        return formatter
-    }()
-    
-    func date(byAddingDays days: Int, in calendar: Calendar = .current) -> Date {
-        let result = calendar.date(byAdding: .day, value: days, to: self) ?? Date()
-        return result
-    }
-    
-    var shortFormatted: String {
-        return Date.shortFormatter.string(from: self)
-    }
-
-    var fullFormatted: String {
-        return Date.fullFormatter.string(from: self)
-    }
-}
-
 extension String {
     var date: Date? {
-        if let date = Date.dateFromShortFormatString(self) {
+        if let date = Date(dateFromShortFormatString: self) {
             return date
         }
-        if let date = Date.fromISO8601(self) {
+        if let date = Date(dateISO8601String: self) {
             return date
         }
         return nil

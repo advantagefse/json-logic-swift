@@ -1,13 +1,13 @@
 //
 //  AppDelegate.swift
-//  jsonlogic
+//  JsonLogic
 //
 //  Created by Christos Koninis on 25/03/2019.
 //  Copyright © 2019 Christos Koninis. All rights reserved.
 //
 
 import UIKit
-import jsonlogic
+import JsonLogic
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
