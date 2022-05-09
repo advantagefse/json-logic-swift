@@ -1,4 +1,4 @@
-# jsonlogic-swift
+# JsonLogic-swift
 
 [![CI Status](http://img.shields.io/travis/advantagefse/json-logic-swift.svg?style=flat)](https://travis-ci.org/advantagefse/json-logic-swift)
 [![Version](https://img.shields.io/cocoapods/v/jsonlogic.svg?style=flat)](https://cocoapods.org/pods/jsonlogic)
@@ -177,7 +177,7 @@ let result: Bool = try applyRule(rule, to: data)
 You can register a custom operator
 
 ```Swift
-import jsonlogic
+import JsonLogic
 import JSON
 
 // the key is the operator and the value is a closure that takes as argument
@@ -202,7 +202,7 @@ let value: Int = try JsonLogic(rule, customOperators: customRules).applyRule()
 
 ### Other operators
 
-For a complete list of the supported operators and their usages see [jsonlogic operators](http://jsonlogic.com/operations.html).
+For a complete list of the supported operators and their usages see [JsonLogic operators](http://jsonlogic.com/operations.html).
 
 ### Command Line Interface
 
