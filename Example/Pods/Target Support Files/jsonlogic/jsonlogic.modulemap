@@ -1,6 +1,0 @@
-framework module jsonlogic {
-  umbrella header "jsonlogic-umbrella.h"
-
-  export *
-  module * { export * }
-}

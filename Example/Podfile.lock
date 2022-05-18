@@ -1,21 +1,21 @@
 PODS:
-  - json-enum (1.1.0)
-  - jsonlogic (1.1.0):
+    - json-enum (1.1.0)
+    - JsonLogic (1.1.0):
     - json-enum (~> 1.1)
 
 DEPENDENCIES:
   - json-enum (from `../`)
-  - jsonlogic (from `../`)
+  - JsonLogic (from `../`)
 
 EXTERNAL SOURCES:
   json-enum:
     :path: "../"
-  jsonlogic:
+    JsonLogic:
     :path: "../"
 
 SPEC CHECKSUMS:
-  json-enum: 76ac9934251153e252fbb5ba786a570e9b536fba
-  jsonlogic: 52ff96c22e6f9fa733355dcdc34677bd1a7bdc70
+    json-enum: 76ac9934251153e252fbb5ba786a570e9b536fba
+    JsonLogic: 52ff96c22e6f9fa733355dcdc34677bd1a7bdc70
 
 PODFILE CHECKSUM: 6ab1f77c01eab073b400e717f58b529f12e3c8d7
 

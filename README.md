@@ -1,8 +1,8 @@
 # JsonLogic-swift
 
 [![CI Status](http://img.shields.io/travis/advantagefse/json-logic-swift.svg?style=flat)](https://travis-ci.org/advantagefse/json-logic-swift)
-[![Version](https://img.shields.io/cocoapods/v/jsonlogic.svg?style=flat)](https://cocoapods.org/pods/jsonlogic)
-[![Platform](https://img.shields.io/cocoapods/p/jsonlogic.svg?style=flat)](https://cocoapods.org/pods/jsonlogic)
+[![Version](https://img.shields.io/cocoapods/v/JsonLogic.svg?style=flat)](https://cocoapods.org/pods/JsonLogic)
+[![Platform](https://img.shields.io/cocoapods/p/JsonLogic.svg?style=flat)](https://cocoapods.org/pods/JsonLogic)
 [![codecov](https://codecov.io/gh/advantagefse/json-logic-swift/branch/master/graph/badge.svg)](https://codecov.io/gh/advantagefse/json-logic-swift)
 
 A native Swift JsonLogic implementation. This parser accepts [JsonLogic](http://jsonlogic.com) 
@@ -17,11 +17,11 @@ format, these can be applied on JSON data with consistent results. So you can sh
 
 To use the pod in your project add in the Podfile:
 
-    pod jsonlogic
+    pod JsonLogic
 
 To run the example project, just run:
 
-    pod try jsonlogic    
+    pod try JsonLogic    
 
 #### Using Swift Package Manager
 
@@ -38,7 +38,7 @@ if you use Swift Package Manager add the following in dependencies:
 You simply import the module and either call the applyRule global method:
 
 ```swift
-import jsonlogic
+import JsonLogic
 
 let rule =
 """

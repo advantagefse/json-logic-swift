@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_jsonlogicExampleVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_jsonlogicExampleVersionString[];
+FOUNDATION_EXPORT double JsonLogicVersionNumber;
+FOUNDATION_EXPORT const unsigned char JsonLogicVersionString[];
 
