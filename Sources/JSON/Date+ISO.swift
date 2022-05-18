@@ -8,6 +8,10 @@
 import Foundation
 
 extension Date {
+    static var nonFractalISO8601Formatter: ISO8601DateFormatter = {
+      return ISO8601DateFormatter()
+    }()
+
      static var fractionalISO8601DateFormatter: ISO8601DateFormatter {
       let formatter = ISO8601DateFormatter()
       formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
@@ -21,21 +25,22 @@ extension Date {
         guard dateStr.count >= 10, dateStr.contains("-") else { return nil }
         
         // Try to parse without fractional seconds
-        if let date = Date.fractionalISO8601DateFormatter.date(from: dateStr) {
+        if let date = Date.nonFractalISO8601Formatter.date(from: dateStr) {
             self = date
             return
             
         } else if let date = Date.fractionalISO8601DateFormatter.date(from: dateStr) {
             self = date
-            return // Retry with fraction
+            return
+            
+        } else if let date = Date.nonFractalISO8601Formatter.date(from: dateStr + "Z") {
+            self = date
+            return
             
         } else if let date = Date.fractionalISO8601DateFormatter.date(from: dateStr + "Z") {
             self = date
             return  // Try to parse without fractional seconds, try adding UTC timezone
             
-        } else if let date = Date.fractionalISO8601DateFormatter.date(from: dateStr + "Z") {
-            self = date
-            return
         } else {
             return nil
         }
