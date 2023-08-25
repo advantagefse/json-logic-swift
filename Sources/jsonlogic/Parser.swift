@@ -285,18 +285,21 @@ struct Substr: Expression {
 
 //swiftlint:disable:next type_name
 struct In: Expression {
-    let stringExpression: Expression
+    let targetExpression: Expression
     let collectionExpression: Expression
 
     func evalWithData(_ data: JSON?) throws -> JSON {
-        guard let stringToFind = try stringExpression.evalWithData(data).string
-            else {
-                return JSON.Bool(false)
-        }
-        if let stringToSearchIn = try collectionExpression.evalWithData(data).string {
+        if let stringToFind = try targetExpression.evalWithData(data).string,
+            let stringToSearchIn = try collectionExpression.evalWithData(data).string {
             return JSON(stringToSearchIn.contains(stringToFind))
         } else if let arrayToSearchIn = try collectionExpression.evalWithData(data).array {
-            return JSON(arrayToSearchIn.contains(JSON(stringToFind)))
+            if let stringToFind = try targetExpression.evalWithData(data).string {
+                return JSON(arrayToSearchIn.contains(JSON(stringToFind)))
+            } else if let integerToFind = try targetExpression.evalWithData(data).int {
+                return JSON(arrayToSearchIn.contains(JSON(integerToFind)))
+            } else if let doubleToFind = try targetExpression.evalWithData(data).double {
+                return JSON(arrayToSearchIn.contains(JSON(doubleToFind)))
+            }
         }
         return JSON.Bool(false)
     }
@@ -736,7 +739,7 @@ class Parser {
                            startExpression: array.expressions[1],
                           lengthExpression: nil)
         case "in":
-            return In(stringExpression: try self.parse(json: value[0]),
+            return In(targetExpression: try self.parse(json: value[0]),
                   collectionExpression: try self.parse(json: value[1]))
         case "cat":
             return Cat(arg: try self.parse(json: value))
