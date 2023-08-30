@@ -43,4 +43,32 @@ class InTests: XCTestCase {
         """
         XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
+    
+    func testIn_IntegerArgument() {
+        var rule =
+        """
+        {"in":[5,[-1,0,1,2,3,4,5]]}
+        """
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
+
+        rule =
+        """
+        {"in":[5,[-0,0,1,2,3,4,6]]}
+        """
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
+    }
+    
+    func testIn_DoubleArgument() {
+        var rule =
+        """
+        {"in":[5.1,[1.2,2.5,3.5,4.333,5.1]]}
+        """
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
+
+        rule =
+        """
+        {"in":[5.1,[1.2,2,2.5,3.5,4.333,5]]}
+        """
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
+    }
 }
