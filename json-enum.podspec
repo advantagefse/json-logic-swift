@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
   s.author = { "Christos Koninis" => "c.koninis@afse.eu" }
   s.source = { :git => "https://github.com/advantagefse/json-logic-swift.git", :tag => 'json-enum-1.2.1' }
   
-  s.ios.deployment_target = '8.0'
-  s.tvos.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
+  s.tvos.deployment_target = '11.0'
   s.watchos.deployment_target = '2.0'
   s.osx.deployment_target = '10.12'
   
