@@ -299,6 +299,8 @@ struct In: Expression {
                 return JSON(arrayToSearchIn.contains(JSON(integerToFind)))
             } else if let doubleToFind = try targetExpression.evalWithData(data).double {
                 return JSON(arrayToSearchIn.contains(JSON(doubleToFind)))
+            } else if let boolToFind = try targetExpression.evalWithData(data).bool {
+                return JSON(arrayToSearchIn.contains(JSON(boolToFind)))
             }
         }
         return JSON.Bool(false)
