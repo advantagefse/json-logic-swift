@@ -71,4 +71,18 @@ class InTests: XCTestCase {
         """
         XCTAssertEqual(false, try applyRule(rule, to: nil))
     }
+
+    func testIn_BoolArgument() {
+        var rule =
+        """
+        {"in":[true,[false, true, false]]}
+        """
+        XCTAssertEqual(true, try applyRule(rule, to: nil))
+
+        rule =
+        """
+        {"in":[true,[false, false, false]]}
+        """
+        XCTAssertEqual(false, try applyRule(rule, to: nil))
+    }
 }
